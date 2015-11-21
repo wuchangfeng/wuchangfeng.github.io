@@ -112,7 +112,7 @@ span[data-note] {
   -webkit-animation-fill-mode: both;
   -webkit-animation-name: bounce; }
   .logo a {
-    background: #DDDDDD url("gravatar.png");
+    background: #DDDDDD url("gravatar.jpg");
     color: #000000;
     text-decoration: none;
     font-weight: 700;
@@ -192,7 +192,7 @@ pre {
   font-family: Consolas, monospace, x; }
 
 code {
-  color: #F14E32;
+  color: #000000;
   background: #EEEEEE;
   padding: 2px 6px;
   font-size: 13px; }

@@ -12,6 +12,7 @@ twitter_username:   mth_li
 baseurl:            ""
 permalink:          /:title
 timezone:           Asia/Shanghai
+encoding:           UTF-8  
 
 # 网站生成
 highlighter:        pygments

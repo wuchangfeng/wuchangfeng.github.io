@@ -1,0 +1,50 @@
+# 网站信息
+title:              "小李的杂货铺"
+description:        "大概会用来放一些奇奇怪怪的东西吧"
+
+# 作者信息
+author_name:        "李明亮"
+author_email:       matthewlee0725@gmail.com
+author_gravatar:    06601def6c7ee3967ea0cfcf9cd8b970
+twitter_username:   mth_li
+
+# 网站设置
+baseurl:            ""
+permalink:          /:title
+timezone:           Asia/Shanghai
+
+# 网站生成
+highlighter:        pygments
+markdown:           kramdown
+kramdown:
+    input:          GFM
+sass:
+    style:          :compressed
+
+# 其他配置
+include:            [ "robots.txt" ]
+exclude:            [ "LICENSE", "README.md", "CNAME", "vendor", "Gemfile" ]
+gems:
+  - jekyll-sitemap
+
+compress_html:
+    clippings:      all
+    ingore:
+        envs:       [ "test" ]
+
+defaults:
+  -
+    scope:
+      path:         ""
+    values:
+      layout:       "null"
+  -
+    scope:
+      type:         "pages"
+    values:
+      layout:       "page"
+  -
+    scope:
+      type:         "posts"
+    values:
+      layout:       "post"

@@ -16,12 +16,12 @@ title: 使用 Otto 的一些思考
 
 {% highlight java %}
 viewA.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
-	@Override
-	public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
-		// BusProvider 是 Otto 的 Bus 单例实现，
-		// HeightEvent 是 Otto 分发高度的自定义事件。
-		BusProvider.getInstance().post(new HeightEvent(bottom - top));
-	}
+    @Override
+    public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+        // BusProvider 是 Otto 的 Bus 单例实现，
+        // HeightEvent 是 Otto 分发高度的自定义事件。
+        BusProvider.getInstance().post(new HeightEvent(bottom - top));
+    }
 }); {% endhighlight %}
 
 同时在另一个 Fragment 里面订阅 HeightEvent 来控制相关 View 的布局：
@@ -29,10 +29,10 @@ viewA.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
 {% highlight java %}
 @Subscribe
 public void onHeightEvent(HeightEvent heightEvent) {
-	// 获取 View A 的高度。
-	int height = heightEvent.getHeight();
-	
-	// 布局代码...
+    // 获取 View A 的高度。
+    int height = heightEvent.getHeight();
+
+    // 布局代码...
 } {% endhighlight %}
 
 看来起来很完美，逻辑上似乎也没有问题。但是真正实现起来，有的布局并没有像我想象中的那样正确，会乱掉。

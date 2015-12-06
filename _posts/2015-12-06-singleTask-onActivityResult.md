@@ -168,13 +168,13 @@ public class A extend Activity {
     
     // 响应来自 AgentActivity 的事件。
     @Subscribe
-    public void onAgentEvent(AgentActivity.AgentEvent pAgentEvent) {
-        int requestCode = pAgentEvent.getRequestCode();
-        int resultCode = pAgentEvent.getResultCode();
-        Intent data = pAgentEvent.getData();
+    public void onAgentEvent(AgentActivity.AgentEvent event) {
+        int requestCode = event.getRequestCode();
+        int resultCode = event.getResultCode();
+        Intent data = event.getData();
     
         // 处理你接收到的事件...
     }
 } {% endhighlight %}
 
-当然从上面的例子我们也可以看出，使用一个中介 Activity 的功能不止于此，你还可以用来处理一些只有 Activity 才能接收的系统 Intent 等。当然具体怎么使用，就请发挥你自己的想象力啦～ 
+当然从上面的例子我们也可以看出，使用一个中介 Activity 的功能不止于此，你还可以用来处理一些只有 Activity 才能接收的 Intent Action 等。当然具体怎么使用，就请发挥你自己的想象力啦～ 

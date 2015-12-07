@@ -29,7 +29,9 @@ public class Agent implements Parcelable {
     // 都是类似 Intent intent = new Intent(Context, Class) 这样使用，
     // 所以对于传递给 B 的 Intent ，需要修改对应的 Context ；
     // 对于调用系统服务，比如相机，可设置为 false ；
-    // 对于 App 本身的 Intent ，则设置为 true 。
+    // 对于 App 内部的 Intent ，则设置为 true ；
+	// 但通常来说如果只是调用 App 内部的 Intent ，
+	// 其实也没有必要使用中介，直接使用 Otto 就好了。
     private boolean cls;
 
     public Agent(Intent intent, int requestCode, boolean cls) {
@@ -102,7 +104,7 @@ public class AgentActivity extends Activity {
 接下来是 AgentEvent 的实现：
 
 {% highlight java %}
-public static class AgentEvent {
+public class AgentEvent {
     private int requestCode;
     private int resultCode;
     private Intent data;

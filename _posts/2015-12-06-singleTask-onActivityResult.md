@@ -30,8 +30,8 @@ public class Agent implements Parcelable {
     // 所以对于传递给 B 的 Intent ，需要修改对应的 Context ；
     // 对于调用系统服务，比如相机，可设置为 false ；
     // 对于 App 内部的 Intent ，则设置为 true ；
-	// 但通常来说如果只是调用 App 内部的 Intent ，
-	// 其实也没有必要使用中介，直接使用 Otto 就好了。
+    // 但通常来说如果只是调用 App 内部的 Intent ，
+    // 其实也没有必要使用中介，直接使用 Otto 就好了。
     private boolean cls;
 
     public Agent(Intent intent, int requestCode, boolean cls) {

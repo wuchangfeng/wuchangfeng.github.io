@@ -14,7 +14,7 @@ timezone:           Asia/Shanghai
 encoding:           UTF-8  
 
 # 网站生成
-highlighter:        pygments
+highlighter:        rouge
 markdown:           kramdown
 kramdown:
     input:          GFM

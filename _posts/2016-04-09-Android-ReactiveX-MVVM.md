@@ -1,8 +1,6 @@
- ---
- title: 使用 ReactiveX 构建 MVVM
- ---
-
- ![Jake Wharton's Twitter](/assets/img/2016-04-09-Jake.png "Jake Wharton's Twitter")
+---
+title: 使用 ReactiveX 构建 MVVM
+---
 
 最近在思考一些问题。
 
@@ -14,8 +12,10 @@
 
 现在我们需要一个来转发状态的东西，很自然想到了 Bus ，或者说事件总线。同时我们还需要能够将 Model 的数据映射到 View 可以呈现的状态上，将 View 的事件映射成 Model 可以承载的数据格式（双向绑定）。也就是说 Bus 不光只做状态转发，我还希望它能在转发的过程中对状态做一些处理。那么做这样事情的最佳选择，显然就是 [ReactiveX](http://reactivex.io/ "ReactiveX") 了。
 
-其实讲了半天，只是把 MVVM 的思想又复述了一遍而已。只是我很好奇的是，为什么 Google 了一下， Android 关于 MVVM 的实践文章大多集中在 [DataBinding](http://developer.android.com/intl/zh-cn/tools/data-binding/guide.html "Data Binding Guide") 的使用上，鲜有和本文类似的观点。 DataBinding 至今官方都没有很好的实践，个人观点，写起来比较恶心，而且还没有正式版。倒是 iOS 开发中使用 ReactiveX 实现 MVVM 的资料比较多， ReactiveCocoa 更是直接支持 [ReactiveViewModel](https://github.com/ReactiveCocoa/ReactiveViewModel "ReactiveViewModel") ，更详细的文章推荐阅读这篇译文《[ MVVM 介绍](http://objccn.io/issue-13-1/ "MVVM 介绍")》。
+![Jake Wharton's Twitter](/assets/img/2016-04-09-Jake.png "Jake Wharton's Twitter")
+
+其实讲了半天，只是把 MVVM 的思想又复述了一遍而已。只是我很好奇的是，为什么 Google 了一下， Android 关于 MVVM 的实践文章大多集中在 [DataBinding](http://developer.android.com/intl/zh-cn/tools/data-binding/guide.html "Data Binding Guide") 的使用上，鲜有和本文类似的观点。 DataBinding 至今官方都没有很好的实践，个人观点，写起来比较恶心，而且还没有正式版。倒是 iOS 开发中使用 ReactiveX 实现 MVVM 的资料比较多， ReactiveCocoa 更是直接支持 [ReactiveViewModel](https://github.com/ReactiveCocoa/ReactiveViewModel "ReactiveViewModel") ，更详细的文章推荐阅读这篇译文[《 MVVM 介绍》](http://objccn.io/issue-13-1/ "MVVM 介绍")。
 
 另外对于 View 自身无法掌控的行为，比如滑动时多个 View 联动，并不是说分割的思想就不太好了。同样在 Activity/Fragment 里处理滚动事件，但是仅限于控制多个 View 的联动，不要去干涉 View 的其他行为。我们的本质思想是**分割状态**，不同层级的状态应该交给不同层级的组件去管理，不是一味地拍平，或者一味地聚集在一起。
 
-最后附上一篇 Medium 的文章 *[RxJava: Android MVVM App structure with Retrofit](https://medium.com/@manuelvicnt/rxjava-android-mvvm-app-structure-with-retrofit-a5605fa32c00#.9nllsmr4b "RxJava: Android MVVM App structure with Retrofit")* 。其实我们不光可以使用 DataBinding 来做 MVVM 。可以不使用 [MVP](https://zh.wikipedia.org/wiki/Model_View_Presenter "MVP") 。
+最后附上一篇 Medium 的文章 *[RxJava: Android MVVM App structure with Retrofit](https://medium.com/@manuelvicnt/rxjava-android-mvvm-app-structure-with-retrofit-a5605fa32c00#.9nllsmr4b "RxJava: Android MVVM App structure with Retrofit")* 。其实我们不只可以使用 DataBinding 来做 MVVM 。可以不使用 [MVP](https://zh.wikipedia.org/wiki/Model_View_Presenter "MVP") 。

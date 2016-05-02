@@ -11,7 +11,8 @@ Deploy my blog in GitHub.
 
     The MIT License (MIT)
 
-    Copyright (c) 2015 Matthew Lee
+    Copyright (c) 2016 Matthew Lee
+    Copyright (c) 2015 Heiswayi Nrird
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal

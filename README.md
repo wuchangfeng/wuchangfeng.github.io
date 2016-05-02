@@ -3,6 +3,12 @@ mthli.github.io
 
 Deploy my blog in GitHub.
 
+## Thanks
+
+[heiswayi/the-plain](https://github.com/heiswayi/the-plain "heiswayi/the-plain")
+
+## License
+
     The MIT License (MIT)
 
     Copyright (c) 2015 Matthew Lee

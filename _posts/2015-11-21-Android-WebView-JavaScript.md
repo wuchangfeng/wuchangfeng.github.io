@@ -12,11 +12,13 @@ title: Android WebView 与 JavaScript 交互
 
 如果只是单纯地想要调用 JavaScript 的方法，可以直接使用 `webView.loadUrl("javascript:METHOD")` 来实现，`METHOD` 就是你期望的 JavaScript 方法，相当于直接在 Chrome 中按 F12 进入 Console 操作。
 
+需要注意的是，调用 `loadUrl()` 在 4.4 之前的 WebView 中，会导致网页重载（4.4 之后现象无明显影响），而网页重载会导致软键盘输入焦点消失等问题。
+
 #### 向 JavaScript 中传递参数
 
-首先我们需要注意的一件事是， JavaScript 是**弱类型**的，所以对于从 Java 中传递的参数，我们需要自己在 JavaScript 中处理，而不能想当然的传进去就用。
+首先我们需要注意的一件事是，JavaScript 是**弱类型**的，所以对于从 Java 中传递的参数，我们需要自己在 JavaScript 中处理，而不能想当然的传进去就用。
 
-对于字符串形式的参数，一定要记住使用单引号 `'` 将其包裹，否则 JavaScript （可能）会无法解析这个字符串，提示未定义。
+对于字符串形式的参数，一定要记住使用单引号 `'` 将其包裹，否则 JavaScript（可能）会无法解析这个字符串，提示未定义。
 
 除此意外还要注意一个坑，假设我们希望向 JavaScript 中传递字符串中包含 `\` 或者 `%5C` 的子串，那么都会导致在 JavaScript 中的**转义**，因此我们需要对 `\` 或 `%5C` 进行处理。比如对于 `\` 我们就可以做一个字符串替换，变为 `\\` ，而 `\\` 会被转义为我们真正需要的 `\` 。
 
@@ -27,9 +29,9 @@ title: Android WebView 与 JavaScript 交互
 function insertHTML(html) {
     ...
 } {% endhighlight %}
-    
+
 在 WebView 中我们就可以这么调用：
-    
+
 {% highlight java %}
 String html = ...;
 html = html.replaceAll("\\\\", "\\\\\\\\");
@@ -48,18 +50,18 @@ webView.loadUrl("javascript:insertHTML('" + html + "')"); {% endhighlight %}
 {% highlight java %}
 public class MyWebView extends WebView {
     public MyWebView(Context context) {
-        ...            
+        ...
         getSettings().setJavaScriptEnabled(true);
         addJavascriptInterface(this, "MyName");
         ...
     }
-        
+
     @JavascriptInterface
     public void example() {
         ...
     }
 } {% endhighlight %}
-    
+
 在 JavaScript 中这样写：
 
 {% highlight javascript %}
@@ -81,7 +83,7 @@ function example() {
 public void log(String tag, boolean value) {
     Log.v(tag, String.valueOf(value));
 } {% endhighlight %}
-    
+
 在 JavaScript 中这样写：
 
 {% highlight javascript %}
@@ -98,9 +100,9 @@ Android 只允许在主线程中修改 UI 。如果你在 JavaScript 中调用�
 {% highlight java %}
 public class MyWebView extends WebView {
     private Handler handler = new Handler(Looper.getMainLooper());
-    
+
     ...
-    
+
     @JavascriptInterface
     public void changeUI() {
         handler.post(new Runnable() {

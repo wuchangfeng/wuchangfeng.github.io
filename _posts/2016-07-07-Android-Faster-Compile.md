@@ -1,5 +1,5 @@
 ---
-titile: 简单提升编译速度的一个方法
+title: 简单提升编译速度的一个方法
 ---
 
 随着项目越来越大，编译速度越来越是一个问题。在编译我们的 Android App 的时候，印象里最快的时候也得一分半，当然这还是在关闭 Chrome 的时候。当你改几行代码时，仍然要花上几分钟来编译，这是很操蛋的一件事。Google 官方推出的 [Instant Run](https://developer.android.com/studio/run/index.html#instant-run "Instant Run") 看上去很美好，但也是很操蛋的，广大人民群众纷纷表示，为什么我改了代码以后，编译不生效啊摔（
@@ -8,7 +8,7 @@ titile: 简单提升编译速度的一个方法
 
 ![5120MB](/assets/img/2016-07-07-5120MB.png "5120MB")
 
-当然大多数开发者的电脑可能没有这么高的内存（包括我），尤其是电脑同时运行着 AS 和 Chrome 的情况下。 不过值得庆幸的是，Google 官方在[介绍 MultiDex 的文档](https://developer.android.com/studio/build/multidex.html#dev-build "Optimizing Multidex Development Builds")中提到，通过限定 minSdkVersion 为 21 可以提升编译速度，原因在于省略了 MultiDex 向后兼容的过程，而这通常是编译最耗时的部分。在项目的 build.gradle 中按照如下配置：
+当然大多数开发者的电脑可能没有这么高的内存（包括我），尤其是电脑同时运行着 AS 和 Chrome 的情况下。 不过值得庆幸的是，Google 官方在[介绍 MultiDex 的文档](https://developer.android.com/studio/build/multidex.html#dev-build "Optimizing Multidex Development Builds")中提到，通过限定 minSdkVersion 为 21 可以提升编译速度，原因在于省略了 MultiDex 向后兼容的过程，而这通常是编译最耗时的部分。在项目的 `build.gradle` 中按照如下配置：
 
 {% highlight groovy %}
 android {

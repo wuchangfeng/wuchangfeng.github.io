@@ -65,8 +65,7 @@ public static void setImageUrl(ImageView view, String url) {
 {% highlight java %}
 // requireAll = false 表示不是所有参数都是必须的
 @BindingAdapter(value = {"url", "placeHolder"}, requireAll = false)
-public static void setImageUrl(
-        ImageView view, String url, int placeHolder) {
+public static void setImageUrl(ImageView view, String url, int placeHolder) {
     RequestCreator creator = Picasso.with(view.getContext()).load(url);
     if (placeHolder != 0) {
         creator.placeholder(placeHolder);
@@ -76,4 +75,4 @@ public static void setImageUrl(
 
 实际上从上面的举例我们可以看出， BindingAdapter 不仅可以对原有 XML 属性值进行重写，还可以很方便地添加新的 XML 属性及其实现。想要 View 根据 XML 属性值做动画？当然也没有问题。 Wow , such BindingAdapter, very excited!
 
-更多 DataBinding 的高级用法比如依赖注入、事件处理，可以参考这篇文章。
+更多 DataBinding 的高级用法比如依赖注入、事件处理，可以参考[这篇文章](https://realm.io/cn/news/data-binding-android-boyar-mount/ "棉花糖给 Android 带来的 Data Bindings （数据绑定库）")。

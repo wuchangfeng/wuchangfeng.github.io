@@ -12,7 +12,7 @@ title: Android WebView 与 JavaScript 交互
 
 如果只是单纯地想要调用 JavaScript 的方法，可以直接使用 `webView.loadUrl("javascript:METHOD")` 来实现，`METHOD` 就是你期望的 JavaScript 方法，相当于直接在 Chrome 中按 F12 进入 Console 操作。
 
-需要注意的是，调用 `loadUrl()` 在 4.4 之前的 WebView 中，会导致网页重载（4.4 之后现象无明显影响），而网页重载会导致软键盘输入焦点消失等问题。
+需要注意的是，调用 `loadUrl()` 在 4.4 之前的 WebView 中，会导致网页重载（ 4.4 之后现象无明显影响），而网页重载会导致软键盘输入焦点消失等问题。
 
 #### 向 JavaScript 中传递参数
 

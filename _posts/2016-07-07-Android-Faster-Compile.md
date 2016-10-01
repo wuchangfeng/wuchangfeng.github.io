@@ -29,7 +29,7 @@ dependencies {
     devCompile 'com.android.support:multidex:1.0.1'
 } {% endhighlight %}
 
-上述配置完成之后，按照 Google 的说法，我们在编译 dev 版本时，就是**增量编译**。
+上述配置完成之后，按照 Google 的说法，我们在编译 `dev` 版本时，就是**增量编译**。
 
 下图为 clean 后第一次编译时所花费的时间：
 

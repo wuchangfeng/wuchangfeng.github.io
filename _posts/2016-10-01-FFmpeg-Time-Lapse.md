@@ -13,5 +13,5 @@ title: 使用 FFmpeg 合成延时视频
 # -s 视频分辨率，缩放比例与原照片分辨率比例一致
 # -i 照片名字的编码格式，我的照片格式是 DSC*****.jpg 五位数字
 # -start_number 照片的起始编号
-# 最后再输入视频名称即可，在这里就是 video.mp4
+# 最后输入视频名称，在这里是 video.mp4
 $ ffmpeg -r 24 -s 1200x800 -i DSC%05d.jpg -start_number 2931 video.mp4 {% endhighlight %}

@@ -6,7 +6,7 @@ title: 使用 FFmpeg 合成延时视频
 
 开源免费的 [FFmpeg](https://www.ffmpeg.org/ "FFmpeg") 是不二选择。
 
-使用方法也很简单，只需要在你存放照片的目录下执行以下命令即可：
+使用方法也很简单，只需要在你存放照片的目录下执行以下命令：
 
 {% highlight shell %}
 # -r 帧率，在这里取每秒 24 帧

@@ -1,11 +1,11 @@
 # 网站信息
-title:              "小李的杂货铺"
-description:        "大概会用来放一些奇奇怪怪的东西吧"
+title:              "Less is More"
+description:        "个人小站"
 
 # 作者信息
-author_name:        "李明亮"
-author_email:       matthewlee0725@gmail.com
-twitter_username:   mth_li
+author_name:        "allenwu"
+author_email:       wuchangfeng2015@gmail.com
+twitter_username:   allenwu
 
 # 网站设置
 baseurl:            ""

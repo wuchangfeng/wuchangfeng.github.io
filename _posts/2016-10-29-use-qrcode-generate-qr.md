@@ -10,7 +10,7 @@ tags: qrcode
 
 <!--more-->
 
-qrcode GitHub 地址：https://github.com/lincolnloop/python-qrcode
+QrCode 官方地址在[这里](https://github.com/lincolnloop/python-qrcode)
 
 ### 安装模块
 

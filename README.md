@@ -8,3 +8,5 @@
 * 输入文章标题，即 .md 文件中 front matter 里的 title 的值
 * 输入文章的分类，如果有多个分类，以空格分隔，比如 Jekyll zfanw 这样
 * 最后，Rake 会启动 vi，打开新创建的 md 文件，当然，你也可以配置其他编辑器
+
+博客样式面板来源于 [mthli](https://github.com/mthli/mthli.github.io),Thanks !!!

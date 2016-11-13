@@ -13,7 +13,7 @@ permalink:          /:title
 timezone:           Asia/Shanghai
 encoding:           UTF-8  
 
-paginate: 10
+paginate: 15
 paginate_path: "page:num"
 gems: [jekyll-paginate]
 

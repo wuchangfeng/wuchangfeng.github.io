@@ -13,6 +13,11 @@ permalink:          /:title
 timezone:           Asia/Shanghai
 encoding:           UTF-8  
 
+paginate: 10
+paginate_path: "page:num"
+gems: [jekyll-paginate]
+
+
 # 网站生成
 highlighter:        rouge
 markdown:           kramdown
@@ -24,8 +29,8 @@ sass:
 # 其他配置
 include:            [ "robots.txt" ]
 exclude:            [ "LICENSE", "README.md", "CNAME", "vendor", "Gemfile" ]
-gems:
-  - jekyll-sitemap
+#gems:
+#  - jekyll-sitemap
 
 compress_html:
     clippings:      all

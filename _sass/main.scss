@@ -21,6 +21,67 @@ h5 {
     display: none;
 }
 
+.bottom-page {
+    margin-top: 8px;
+    margin-bottom: 32px;
+    height: 64px;
+}
+
+.previous-page, .next-page {
+    position: relative;
+    line-height: 64px;
+    left: 0;
+    width: auto;
+    height: 64px;
+}
+
+.previous-page {
+    float: left;
+}
+
+.next-page {
+    float: right;
+}
+
+.page {
+    text-align: center;
+    height: 64px;
+    float: none;
+}
+
+.page-img {
+    margin-top: 16px;
+    width: 32px;
+    height: 32px;
+}
+
+.page-img a {
+    color: black;
+}
+
+.page-img a:hover {
+    color: #5A9094;
+}
+
+.page-num {
+    display: inline;
+    text-align: center;
+    line-height: 72px;
+    height: 72px;
+    margin: 0 8px;
+    font-size: 1.25em;
+    color: #5A9094;
+}
+
+.page-num a {
+    color: black;
+}
+
+.page-num a:hover {
+    color: #5A9094;
+}
+
+
 img {
   max-width: 100%;
 }

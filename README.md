@@ -9,4 +9,14 @@
 * 输入文章的分类，如果有多个分类，以空格分隔，比如 Jekyll zfanw 这样
 * 最后，Rake 会启动 vi，打开新创建的 md 文件，当然，你也可以配置其他编辑器
 
+如下命令简化每一次 Push 代码更新到 GitHub 的过程：
+
+在 git shell 中执行如下语句：
+
+``` shell
+git config --global alias.blog '!git add . && git commit -m "blog update" && git push origin master'
+```
+
+以后每次更新博客之后，执行：`git blog` 即可。
+
 博客样式面板来源于 [mthli](https://github.com/mthli/mthli.github.io),分页功能样式定义来自于 [写代码的猴子](http://jaeger.itscoder.com/)，Thanks！！！

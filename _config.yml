@@ -19,6 +19,7 @@ gems: [jekyll-paginate]
 
 
 # 网站生成
+#highlighter:        pygments
 highlighter:        rouge
 markdown:           kramdown
 kramdown:

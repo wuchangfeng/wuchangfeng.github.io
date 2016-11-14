@@ -10,7 +10,7 @@ tags: Pygal
 
 SVG可以算是目前最最火热的[图像文件格式](http://baike.baidu.com/view/3413757.htm)了，它的英文全称为Scalable Vector Graphics，意思为可缩放的矢量图形。它是基于XML（Extensible Markup Language），由World Wide Web Consortium（W3C）联盟进行开发的。严格来说应该是一种开放标准的矢量图形语言，可让你设计激动人心的、高分辨率的Web图形页面。用户可以直接用代码来描绘图像，可以用任何文字处理工具打开SVG图像，通过改变部分代码来使图像具有交互功能，并可以随时插入到HTML中通过浏览器来观看。
 
-## 零.First Head in Pygal
+## First Head in Pygal
 
 首先安装 pygal 啦：
 
@@ -36,11 +36,13 @@ sudo apt-get install python-cairosvg
 ```
 如下两个库，只需正常 pip 安装即可：
 
-`pip install tinycss`
+``` shell
+pip install tinycss
 
-`pip install cssselect`
+pip install cssselect
+```
 
-## 一.Hello SVG
+## Hello SVG
 
 ```python
 import pygal                                                      
@@ -53,9 +55,7 @@ bar_chart.render_to_file('Hello.svg')
 
 ![](http://7xrl8j.com1.z0.glb.clouddn.com/svg.gif)
 
-
-
-更加骚气点的图：
+更加炫酷点的图：
 
 ```python
 import pygal
@@ -73,9 +73,7 @@ line_chart.render_to_file('Hello_line_chart.svg')
 
 ![](http://ww1.sinaimg.cn/large/b10d1ea5jw1f93qej26pij20os0ljgr7.jpg)
 
-
-
-## 二.Hello PNG
+## Hello PNG
 
 有时候，我们不需要 svg，只需要 png 格式的图表，没关系，pygal 也能够做到：
 
@@ -92,7 +90,7 @@ bar_chart.render_to_png(filename='bar_chart.png')
 
 ![](http://ww3.sinaimg.cn/large/b10d1ea5jw1f93n2b9euxj20ra0o4q7j.jpg)
 
-## 三.Hello Flask and Pygal
+## Hello Flask and Pygal
 
 让 Pygal 生成的 svg 格式图片中，显示在你的网页上呗，我们选择 flask 来提供 web 支持：
 
@@ -110,16 +108,16 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    """ 在html文件中渲染 svg """
-    return """
-<html>
+    return 
+"""
+	<html>
     <body>
         <h1>hello pygal and flask</h1>
         <figure>
         <embed type="image/svg+xml" src="/hellosvg/" />
         </figure>
     </body>
-</html>'
+	</html>'
 """
 
 @app.route('/hellosvg/')
@@ -138,10 +136,8 @@ if __name__ == '__main__':
 
 ![](http://ww4.sinaimg.cn/large/b10d1ea5jw1f93na6fa1nj20rl0oltfp.jpg)
 
-
-
-当然咯，你还可以做出如下骚气的 svg 图像，不过这一切都是 pygal 的用法啦：
+当然咯，你还可以做出如下更为炫酷的 svg 图像，不过这一切都是 pygal 的用法啦：
 
 ![](http://ww3.sinaimg.cn/large/b10d1ea5jw1f93ngn536yj20kg0efwgq.jpg)
 
-移步 [pygal](http://pygal.org/en/stable/documentation/configuration/value.html) 官方文档吧。
+学习更多内容还请移步 [pygal](http://pygal.org/en/stable/documentation/configuration/value.html) 官方文档吧。

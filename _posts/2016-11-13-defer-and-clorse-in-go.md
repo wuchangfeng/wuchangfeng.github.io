@@ -17,8 +17,8 @@ categories: Go
 func a() {
     i := 0
     defer fmt.Println(i)
-  	//defer fmt.Println(2)
-  	//defer fmt.Println(3)
+// defer fmt.Println(2)
+// defer fmt.Println(3)
     i++
     return
 }

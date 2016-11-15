@@ -1,6 +1,6 @@
 # Blog
 
-脚本 Rakefile 简化 Jeklly 发布博客的流程：
+## 一：脚本 Rakefile 简化 Jeklly 发布博客的流程：
 
 * 保存 Rakefile 到 Jekyll 创建的站点根目录下
 * 在根目录下执行 rake new 
@@ -9,7 +9,7 @@
 * 输入文章的分类，如果有多个分类，以空格分隔，比如 Jekyll zfanw 这样
 * 最后，Rake 会启动 vi，打开新创建的 md 文件，当然，你也可以配置其他编辑器
 
-如下命令简化每一次 Push 代码更新到 GitHub 的过程：
+## 二：如下命令简化每一次 Push 代码更新到 GitHub 的过程：
 
 在 git shell 中执行如下语句：
 
@@ -17,6 +17,6 @@
 git config --global alias.blog '!git add . && git commit -m "blog update" && git push origin master'
 ```
 
-以后每次更新博客之后，执行：`git blog` 即可。
+以后每次更新博客样式或者新添加文章之后，执行：`git blog` 即可。
 
 博客样式面板来源于 [mthli](https://github.com/mthli/mthli.github.io),分页功能样式定义来自于 [写代码的猴子](http://jaeger.itscoder.com/)，Thanks！！！

@@ -39,8 +39,8 @@ Flask 的一些优缺点如下所示：
 由于 `Django` 有自己的引导工具，所以即使建立一个很简单的 `Hello world` 界面，也需要建立一个相对 `复杂的`目录结构。启动引导( 内置在 django-admin 中 )：
 
 ```python
-django-admin startproject hello_django
-django-admin startapp howdy
+django-admin startproject mysite
+django-admin startapp polls
 ```
 
 项目基本的目录结构：

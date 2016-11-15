@@ -33,6 +33,7 @@ Flask 的一些优缺点如下所示：
 - 不需要去考虑 `MVC` 或者 `MTV` 设计，`Flask` 中有蓝图的设计，按功能划分模块。
 - 可以提供由 `Django` 衍生出来的模板引擎 `Jinja` 来渲染模板。
 - 提供与 `ORM` 功能相近的 `SQLAlchemy`。
+- 代码量约 6000 行左右，够简洁，够 `Pythonic`，`Python` 学习的好资料。
 
 ## Django框架
 
@@ -122,5 +123,6 @@ Django 的一些优缺点如下所示：
 - `PyCharm` 开发工具的不二选择
 - `Django1.9 & Flask & Python3.4`
 - 虚拟环境以及 `Git` 和 `GitHub` 账号
-- 免费的部署平台 `Heroku` 和 `pythonanywhere`
+- 免费的部署平台国外 `Heroku` 和 `pythonanywhere`
+- 国内免费部署的平台 `lecnCloud` 提供 `Flask` 部署示例
 - 自动化部署 `WebHook`

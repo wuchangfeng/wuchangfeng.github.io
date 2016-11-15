@@ -99,9 +99,9 @@ urlpatterns = [
 
 Django 的一些优缺点如下所示：
 
-- 活跃开源的社区、大量的实例 App、开发文档。
-- Django 自带模板引擎和 ORM 方便开发，但是同时导致 Django 看起来有点厚重。
-- Django 与关系型数据库结合非常好，但是与非关系型数据库结合就没有 Flask 那么好了。
+- 活跃开源的社区、大量的实例 `App`、开发文档。
+- Django 自带模板引擎和 `ORM` 方便开发，但是同时导致 Django 看起来有点厚重。
+- Django 与关系型数据库结合非常好，但是与非关系型数据库结合就没有 `Flask` 那么好了。
 - Django 后台管理及其方便，容易设定角色，几乎写很少的代码，就可以获得很丰富的后台功能权限。
 - Django 由于存在年限的问题，成熟，稳定，靠谱。
 
@@ -120,7 +120,7 @@ Django 的一些优缺点如下所示：
 ## 工具及部署
 
 - `PyCharm` 开发工具的不二选择
-- Django1.9 & Flask & Python3.4
-- 虚拟环境以及 Git 和 GitHub 账号
+- `Django1.9 & Flask & Python3.4`
+- 虚拟环境以及 `Git` 和 `GitHub` 账号
 - 免费的部署平台 `Heroku` 和 `pythonanywhere`
 - 自动化部署 `WebHook`

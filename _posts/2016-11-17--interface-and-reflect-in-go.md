@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Go语言中的 Interface 和 Reflect
+title: Go 中的 Interface 和 Reflect
 date: 2016-11-17 20:12:44 +0800
 categories: Go
 ---
@@ -36,6 +36,7 @@ type Shaper interface {
 type Square struct {
     side float32
 }
+
 // 此处就是结构体Square 实现了接口 Shaper
 func (sq *Square) Area() float32 {
     return sq.side * sq.side
@@ -152,8 +153,6 @@ func main() {
 	fmt.Println("Our new CameraPhone exhibits multiple behaviors ...")
 	fmt.Println("It exhibits behavior of a Camera: ", cp.TakeAPicture())
 	fmt.Println("It works like a Phone too: ", cp.Call())
-
-	
 }
 ```
 
@@ -362,8 +361,6 @@ func main() {
     // 通过反射遍历处结构体中的字段
     for i := 0; i < value.NumField(); i++ {
         fmt.Printf("Field %d: %v\n", i, value.Field(i))
-        // error: panic: reflect.Value.SetString using value obtained using unexported field
-        //value.Field(i).SetString("C#")
     }
 
     // call the first method, which is String():

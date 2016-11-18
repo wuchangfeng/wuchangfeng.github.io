@@ -1,8 +1,9 @@
 ---
 layout: post
-title: Go 中的 defer 函数和闭包
+title: Go 中的 Defer 和 Closure
 date: 2016-11-13 10:28:01 +0800
 categories: Go
+
 ---
 
 学习 Go 中的 defer 相关知识疑惑之处以及闭包的概念和用法。

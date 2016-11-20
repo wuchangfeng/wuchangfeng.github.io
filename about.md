@@ -6,7 +6,7 @@ title: 关于我
 
 * [GitHub](https://github.com/wuchangfeng)
 * [Vino 小站](http://vino.pythonanywhere.com)
-* [Resume](allenwu.itscoder.com/resume)
+* [Resume](resume)
 * QQ：437806668
 * Email:437806668@qq.com
 

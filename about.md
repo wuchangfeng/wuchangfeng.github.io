@@ -6,7 +6,6 @@ title: 关于我
 
 * [GitHub](https://github.com/wuchangfeng)
 * [Vino 小站](http://vino.pythonanywhere.com)
-* <a href="/resume.md" class="head_item">Resume</a>
 * QQ：437806668
 * Email:437806668@qq.com
 

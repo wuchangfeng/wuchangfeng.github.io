@@ -8,7 +8,7 @@ layout: default
         {% for post in paginator.posts %}
         <li>
             <div class="post-date">
-                <span>{{ page.date|date: "%m-%d-%Y"  }}</span>
+                <span>{{ post.date|date: "%m-%d-%Y"  }}</span>
             </div>
             <div class="title">
                 <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>

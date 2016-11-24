@@ -121,7 +121,7 @@ func main() {
     TwoAdder := Adder(2)
     fmt.Printf("The result is: %v\n", TwoAdder(3))
 }
-
+// 将函数作为返回值
 func Add2() func(b int) int {
   	// 注意在这里的结构
     return func(b int) int {

@@ -123,9 +123,9 @@ def main(wf):
 
 ![](http://ww2.sinaimg.cn/large/b10d1ea5jw1fa3ch96g6yj21kw0m8ah0.jpg)
 
-- 其余创建流程都跟上面一样的，重点还是 Gank.py ;
+- 其余创建流程都跟上面一样的，重点还是 Gank.py 文件的编写;
 
-  ​
+  请求数据以及解析的函数如下所示：
 
   ```python
   # 加载今天的干货列表
@@ -167,7 +167,7 @@ def main(wf):
                       arg=gank['url'],
                       valid=True,
                       icon=ICON_DEFAULT)
-   
+   	# feedback
       wf.send_feedback()
   ```
 

@@ -180,3 +180,6 @@ def main(wf):
 好了，以上就是开发一个 workflow 的大概流程，我们选择的语言是 Python，当然其他语言也是可以的，我在网上看了看，我写的这篇文章应该是比较全面的中文开发 workflow 的教程。虽然过程很简单，嘿嘿。
 
 **Thanks for reading ！！！**
+
+Ps:[有没有人要收实习啊？](http://allenwu.itscoder.com/resume)
+

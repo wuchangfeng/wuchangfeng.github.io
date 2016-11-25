@@ -5,7 +5,13 @@ date: 2016-11-24 19:05:35 +0800
 categories: Mac
 ---
 
-学习一下 Mac 下的 workflow 开发流程。
+学习一下 Mac 下的 workflow 开发流程。地址在[这里](https://github.com/wuchangfeng/Vino-Workflow)。
+
+### 更新
+
+* workflow for Gank 获取 Gank 当日开发干货
+* workflow for YouDao 获取中文对应的英文翻译
+* workflow for V2ex 获取 V2ex 当日最热 10 条帖子
 
 ### 准备
 

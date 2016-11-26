@@ -83,7 +83,7 @@ func shortWait() {
 
 我们初步来体验一下协程的魅力，如上述程序，输出如下结果，可以看到 Main() 程序在开启两个 Go 程序之后，就继续去**执行自己的逻辑了**，等待两个 Go 程序执行完毕之后，返回结果，最后 Main 程序结束。
 
-> In main
+>  In main
 >  About to sleep in main()
 >  Beginning longWait()
 >  Beginning shortWait()
@@ -93,7 +93,7 @@ func shortWait() {
 
 对比的实验，我们去掉 Go 关键字，Main 程序遇到额外的函数，会跟到额外的函数中去执行逻辑，等到额外的程序执行完毕之后，再跳回到 Main 程序中执行：
 
-> In main
+>  In main
 >  Beginning longWait()
 >  End of longWait()
 >  Beginning shortWait()

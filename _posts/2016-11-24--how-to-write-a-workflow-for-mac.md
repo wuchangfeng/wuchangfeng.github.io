@@ -19,6 +19,7 @@ categories: Mac
 
 
 - 利用 Python 编写脚本的教程：[Alfred-Workflow](http://www.deanishe.net/alfred-workflow/index.html)
+- 会 Python 编程
 
 ### 说明
 
@@ -93,9 +94,7 @@ def search(query):
 程序的主函数如下所示：
 
 ```python
-
 def main(wf):
-   	
     # 获取查询关键字
     query = wf.args[0]
     # Search ganks or load from cached data, 10 mins
@@ -137,7 +136,7 @@ def main(wf):
   # 加载今天的干货列表
   def today():
       ganks = []
-      url = 'http://gank.io/api/day/' + datetime.datetime.now().strftime("%Y/%m/%d)
+      url = 'http://gank.io/api/day/' + datetime.datetime.now().strftime("%Y/%m/%d")
       r = web.get(url)
       # 错误提示
       r.raise_for_status()

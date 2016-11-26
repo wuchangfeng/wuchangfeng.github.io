@@ -16,10 +16,9 @@ categories: Mac
 ### 准备
 
 - 购买了 Powerpack 的 Alfred 或者破解版的 Alfred workflow
-
-
 - 利用 Python 编写脚本的教程：[Alfred-Workflow](http://www.deanishe.net/alfred-workflow/index.html)
 - 会 Python 编程
+
 
 ### 说明
 

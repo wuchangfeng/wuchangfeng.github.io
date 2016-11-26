@@ -8,6 +8,8 @@ layout: default
         {% for post in paginator.posts %}
         <li>
             <div class="post-date">
+            
+                <span>{{&nbsp;page.categories  }}</span>
                 <span>{{ post.date|date: "%m-%d-%Y"  }}</span>
             </div>
             <div class="title">

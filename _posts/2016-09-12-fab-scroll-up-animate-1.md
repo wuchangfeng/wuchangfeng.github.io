@@ -1,5 +1,5 @@
 ---
-title: Fab 上下滑动的渐变效果
+title: Android：Fab 上下滑动的渐变效果
 toc: true
 date: 2016-06-15 07:06:19
 tags: android
@@ -11,8 +11,6 @@ feature:
 系统自带的 Fab 也会随着页面上下滚动,但是淡出或者进入的效果太不自然。
 
 这里记录一个小知识点,Fab 随着页面的 RecyclerView 上下滚动而渐变的动画效果。
-
-
 
 <!--more-->
 

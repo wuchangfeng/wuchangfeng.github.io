@@ -1,5 +1,5 @@
 ---
-title: 非关系型数据库之 MongoDB 初探
+title: MongoDB：非关系型数据库之 MongoDB 初探
 date: 2016-05-07 18:42:54
 tags: MongoDB
 categories: About SQL

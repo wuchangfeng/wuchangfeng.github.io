@@ -1,5 +1,5 @@
 ---
-title: 用 Qrcode 来快速生成二维码
+title: Python: 用 Qrcode 来快速生成二维码
 date: 2016-10-29 11:59:25
 tags: qrcode
 

@@ -1,5 +1,5 @@
 ---
-title: 理解 Dagger2 中的 Scope 用法
+title: Android：理解 Dagger2 中的 Scope 用法
 toc: true
 date: 2016-07-14 20:27:39
 tags: dagger2 android

@@ -1,5 +1,5 @@
 ---
-title: 使用 MarkDownHelper 来简化你的写作
+title: Python：使用 MarkDownHelper 来简化你的写作
 toc: true
 date: 2016-06-22 21:55:35
 tags: python markdown

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:Go：Go 中的 Goroutine 和 Channel
+title: Go：Go 中的 Goroutine 和 Channel
 date: 2016-11-17 21:28:21 +0800
 categories: Go
 ---

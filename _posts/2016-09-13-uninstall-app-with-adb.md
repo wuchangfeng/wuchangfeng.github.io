@@ -1,5 +1,5 @@
 ---
-title: 利用 Python 脚本结合 ADB 命令来卸载 App 
+title: Android：利用 Python 脚本结合 ADB 命令来卸载 App 
 toc: true
 date: 2016-06-22 22:09:37
 tags: python,adb,as

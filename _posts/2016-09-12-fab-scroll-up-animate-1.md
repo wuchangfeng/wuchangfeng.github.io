@@ -1,5 +1,5 @@
 ---
-title: Android：Fab 上下滑动的渐变效果
+title: Fab 上下滑动的渐变效果
 toc: true
 date: 2016-06-15 07:06:19
 tags: android

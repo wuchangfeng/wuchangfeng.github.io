@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Go：Go 中的 Interface 和 Reflect
+title: Go 中的 Interface 和 Reflect
 date: 2016-11-17 20:12:44 +0800
 categories: Go
 ---

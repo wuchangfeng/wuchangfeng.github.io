@@ -1,7 +1,8 @@
 ---
-title: Python: 用 Pygal 生成漂亮的 SVG 图像并显示在 Web 页面上
+title: 用 Pygal 生成漂亮的 SVG 图像并显示在 Web 页面上
 date: 2016-10-24 20:58:02
 tags: Pygal
+layout: post
 ---
 
 本篇文章讲述如何用 Pygal 来生成漂亮的 SVG 图表，并能够利用 Python 中的 Flask 框架来显示你的 SVG 图像。

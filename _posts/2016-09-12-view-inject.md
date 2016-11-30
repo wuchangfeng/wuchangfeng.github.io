@@ -1,5 +1,5 @@
 ---
-title: Android：利用 Annotation 实现基本的 View Inject 
+title: 利用 Annotation 实现基本的 View Inject 
 date: 2016-05-13 15:51:05
 tags: android
 categories: About Java

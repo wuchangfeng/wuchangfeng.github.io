@@ -1,5 +1,5 @@
 ---
-title: Java: 深入理解 Java 中的泛型
+title:  深入理解 Java 中的泛型
 date: 2016-8-1 09:21:55
 tags: java
 categories: About Java

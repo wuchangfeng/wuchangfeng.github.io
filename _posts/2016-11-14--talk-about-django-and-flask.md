@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python：浅叙 Python Web 开发中的框架对比
+title: 浅叙 Python Web 开发中的框架对比
 date: 2016-11-14 22:34:34 +0800
 categories: Python
 ---

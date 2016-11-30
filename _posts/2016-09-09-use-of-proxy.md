@@ -1,5 +1,5 @@
 ---
-title: Android：利用动态代理来做点事儿
+title: 利用动态代理来做点事儿
 toc: true
 date: 2016-09-11 15:30:23
 tags: itsCoder Proxy Android 

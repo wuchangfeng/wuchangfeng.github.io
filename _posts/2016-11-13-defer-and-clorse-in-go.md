@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Go: Go 中的 Defer 和 Closure
+title: Go 中的 Defer 和 Closure
 date: 2016-11-13 10:28:01 +0800
 categories: Go
 

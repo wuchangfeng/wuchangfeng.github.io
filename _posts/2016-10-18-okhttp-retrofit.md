@@ -1,5 +1,5 @@
 ---
-title: Android: 阅读 Okhttp3.0 以及 Retrofit2.0 相关技术博客总结
+title: 阅读 Okhttp3.0 以及 Retrofit2.0 相关技术博客总结
 toc: true
 date: 2016-05-18 21:20:55
 tags: java

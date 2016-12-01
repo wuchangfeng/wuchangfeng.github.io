@@ -83,6 +83,7 @@ func shortWait() {
 
 我们初步来体验一下协程的魅力，如上述程序，输出如下结果，可以看到 Main() 程序在开启两个 Go 程序之后，就继续去**执行自己的逻辑了**，等待两个 Go 程序执行完毕之后，返回结果，最后 Main 程序结束。
 
+>  ``` go
 >  In main
 >  About to sleep in main()
 >  Beginning longWait()
@@ -90,9 +91,11 @@ func shortWait() {
 >  End of shortWait()
 >  End of longWait()
 >  At the end of main()
+>  ```
 
 对比的实验，我们去掉 Go 关键字，Main 程序遇到额外的函数，会跟到额外的函数中去执行逻辑，等到额外的程序执行完毕之后，再跳回到 Main 程序中执行：
 
+>  ``` go
 >  In main
 >  Beginning longWait()
 >  End of longWait()
@@ -100,6 +103,7 @@ func shortWait() {
 >  End of shortWait()
 >  About to sleep in main()
 >  At the end of main()
+>  ```
 
 ### 使用通道进行协程间通信
 
@@ -504,7 +508,7 @@ func main() {
 
 ### 定时器
 
-故名思议，定时执行一个任务或者在某段时间间隔内重复执行：
+顾名思义，定时执行一个任务或者在某段时间间隔内重复执行：
 
 ``` go
 func main() {
@@ -527,7 +531,7 @@ func main() {
 
 ### 打点器
 
-固定时间内重复一个操作，知道我们将其停止：
+固定时间内重复一个操作，直到我们将其停止：
 
 ``` go
 func main() {

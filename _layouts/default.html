@@ -25,7 +25,16 @@ layout: compress
             document.write(unescape("%3Cspan id='cnzz_stat_icon_1260133858'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1260133858%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
             </script>
         </div>
-        </script>
+
     </div>
+
+    <script type="text/javascript">
+    // 图片放大
+    var imgs = document.getElementById("main").getElementsByTagName("img");
+    for (var i = imgs.length - 1; i >= 0; i--) {
+        imgs[i].setAttribute("data-action", "zoom");
+    }
+    </script>
+    <script src="/assets/zoom.js"></script>
     </body>
 </html>

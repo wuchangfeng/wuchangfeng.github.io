@@ -15,12 +15,10 @@ layout: default
     <div class="center">
         <h1>{{ page.title }}</h1>
         <time>{{ page.date|date: "%m-%d,&nbsp;%Y" }}</time>
-
-        <time>{{ &nbsp;&nbsp;page.categories }}</time>
     </div>
     <div class="divider"></div>
 
-    <div id="post-content">
+    <div id="content">
     {{ content }}
     </div>
 
@@ -31,10 +29,10 @@ layout: default
 </div>
 
 <script type="text/javascript">
-    // 图片放大
-    var imgs = document.getElementById("post-content").getElementsByTagName("img");
+    
+    var imgs = document.getElementById("content").getElementsByTagName("img");
     for (var i = imgs.length - 1; i >= 0; i--) {
         imgs[i].setAttribute("data-action", "zoom");
     }
 </script>
-<script src="/assets/zoom.js"></script>
+<script src="/zoom.js"></script>

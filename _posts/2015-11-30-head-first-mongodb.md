@@ -1,4 +1,9 @@
-使用 MongoDB 过程中的一些记录。
+---
+layout: post
+title: 非关系型数据库 MongoDB 初探
+date: 2015-11-30 20:12:44 +0800
+categories: MongoDB
+---
 
 <!--more--> 
 

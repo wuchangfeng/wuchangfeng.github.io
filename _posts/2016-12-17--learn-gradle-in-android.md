@@ -5,7 +5,17 @@ date: 2016-12-17 11:42:46 +0800
 categories: Android
 ---
 
-系统学习一下 Android Studio 中的 Gradle 相关知识，主要是跟随 《神兵利器》这本书总结的一些知识点进行实战。本篇博客系统的学习一下与 Gradle 相关的知识点,体会一下其带来的好处和方便,主要讲述 gradle 编译打包相关知识点。
+系统学习一下 Android Studio 中的 Gradle 相关知识，主要是跟随 《神兵利器》这本书总结的一些知识点进行实战。本篇博客系统的学习一下与 Gradle 相关的知识点,体会一下其带来的好处和方便。文章主要分为以下知识点：
+
+* 构建 buildTypes
+* 多渠道打包
+* 配置签名
+* 混淆 APK
+* 批量命名 APK
+* 为不同版本添加不同的代码
+* 解决最大方法书的限制
+
+### 开始
 
 新建一个 GradleDemo，以 Android 方式展开 Project，如下所示，红色部分就是主要与 Gradle 相关的配置和文件区域啦：
 
@@ -189,6 +199,35 @@ public final class BuildConfig {
   public static final boolean testFlag = false;
 }
 ```
+
+### 解决方法数超过 65535 的限制
+
+在 Android 域下的 defaultConfig 下添加如下代码：
+
+``` java
+ // dex 突破 65535 的限制
+multiDexEnabled true
+```
+
+引入依赖库：
+
+``` java 
+//引入解决方法数超过 65535 限制的库
+compile 'com.android.support:multidex:1.0.0'
+```
+
+接着在 Application() 下的 onCreate() 下添加如下代码：
+
+``` java
+@Override
+public void onCreate() {
+    //MultiDex 支持 65535 方法数量限制
+    MultiDex.install(getApplicationContext()); 
+    super.onCreate(); 
+}
+```
+
+这个我还没测试过，期待有测试过的朋友，能够反馈一下。
 
 好了，基本上都是使用 gradle 来进行编译打包相关知识点，后续还可以继续学习如下知识点，大都可以自行 google 到：
 

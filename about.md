@@ -2,11 +2,9 @@
 title: 关于我
 ---
 
-大家好,这是  allenwu 的小站。目前在天津读研二。热衷于 Android 和 Python 开发。正在探索 Golang 的魅力。
+你好,这是  allenwu 的小站。目前在天津读研二, 热衷于 Android 和 Python 开发，会一点点 Go。坚持写博客，希望自己能变得更好。
 
 * [荒岛](http://allenwu.itscoder.com/diary)
 * [GitHub ](https://github.com/wuchangfeng)
-* [SSbetter 梯子](http://t.cn/RfNFpNZ)
+* QQ: 437806668
 * Email: wuchangfeng2015@gmail.com
-
-欢迎多多交流。

@@ -56,7 +56,7 @@ def clearLogcat( ):
     
 ```
 
-### 效果如下
+### 效果实现
 
 ![img](http://7xrl8j.com1.z0.glb.clouddn.com/Use.gif)
 
@@ -67,8 +67,6 @@ def clearLogcat( ):
 - 在 AS 提供的 CMD 中找到当前脚本路径 输入: python unistall.py
 - 根据命令提示输入你想要删除 App 的包的核心关键字，如:com.example.RxCacheDemo ,输入 example 即可(每个人 AS 的这个配置应该都是一样的)
 - 以上步骤完成之后会有提示 删除成功与否。
-
-**当然,脚本还可以指定具体应用进行删除**,你只需要去掉注释以及注释调用现有函数的代码即可。
 
 ### 相关扩展
 

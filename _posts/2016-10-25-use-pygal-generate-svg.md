@@ -1,5 +1,5 @@
 ---
-title: 用 Pygal 生成漂亮的 SVG 图像并显示在 Web 页面上
+title: 用 Pygal 生成漂亮的 SVG 图像
 date: 2016-10-24 20:58:02
 tags: Pygal
 layout: post

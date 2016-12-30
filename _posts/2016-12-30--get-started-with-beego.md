@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Go Web 之 Beego 框架初探
+title: Go Web 开发之 Beego 框架初探
 date: 2016-12-30 16:43:46 +0800
 categories: Go
 ---

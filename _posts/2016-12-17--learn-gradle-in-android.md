@@ -204,15 +204,15 @@ public final class BuildConfig {
 
 在 Android 域下的 defaultConfig 下添加如下代码：
 
-``` java
- // dex 突破 65535 的限制
+``` shell
+// dex 突破 65535 的限制
 multiDexEnabled true
 ```
 
 引入依赖库：
 
-``` java 
-//引入解决方法数超过 65535 限制的库
+``` shell
+// 引入解决方法数超过 65535 限制的库
 compile 'com.android.support:multidex:1.0.0'
 ```
 
@@ -221,7 +221,7 @@ compile 'com.android.support:multidex:1.0.0'
 ``` java
 @Override
 public void onCreate() {
-    //MultiDex 支持 65535 方法数量限制
+    // MultiDex 支持 65535 方法数量限制
     MultiDex.install(getApplicationContext()); 
     super.onCreate(); 
 }
@@ -238,7 +238,7 @@ public void onCreate() {
 5. 使用 gradle 本地缓存
 6. gradle 资源冲突
 
-另外 gradle 最大的特点就是可以自定义开发插件，貌似 IDEA 对 gradle 插件开发更加友好，以后需要时候再研究吧！
+最后，本篇文章主要侧重点还是在用 Gradle 来进行应用程序的编译打包工作，具体 Gradle 的内容还是非常多的，这一点本篇文章的审阅者在[审阅PR](https://github.com/itsCoder/weeklyblog/pull/144#issuecomment-270295627)里面也做了一些评价，如果你想要利用好 Gradle 来为你工作，还是多建议看看相关文章。建议阅读 《Gradle for Android》。最后谢谢[老杨](https://github.com/YeungKC)对本篇文章的校审，提出修改意见等。
 
 以上，谢谢阅读！！！
 

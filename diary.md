@@ -6,7 +6,7 @@ title: 荒岛
 
 时间改变了很多又什么都没有。
 
-<img src="http://ww3.sinaimg.cn/large/b10d1ea5jw1fbh4kggvahj21iw0ve7ga.jpg"/>
+让我再次拥抱你，郑州。
 
 ### 2017-01-05 Done is better than perfect
 

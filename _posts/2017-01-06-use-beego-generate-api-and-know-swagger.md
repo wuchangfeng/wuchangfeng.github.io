@@ -54,6 +54,12 @@ bee api go-api -conn="root:123456@tcp(127.0.0.1:3306)/api"
 
 ### 集成Swagger UI
 
+首先我们开启本地调试：
+
+``` shell
+bee run -downdoc=true
+```
+
 swagger ui 是一个 API 在线生成文档的生成和测试的最好的工具，评价也是非常好的。API 设计人员完成项目之后，就可以远离痛苦的写文档的活了。
 
 我们到[这里](https://github.com/beego/swagger/releases)下载 swagger 压缩包，解压。赋值其中的内容到我们刚才生成的项目中的 swagger 文件夹中。最后访问http://127.0.0.1:8080/swagger. 即可进入如下界面，怎么样，第一感觉是不是很炫酷？接下来，我们在来体验一下功能上的全面吧。

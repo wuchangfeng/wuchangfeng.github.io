@@ -8,6 +8,7 @@ body {
   @media (min-width: 992px) {
     padding: 15px 25px;
   }
+  background: #f9f9f9;
 }
 
 h2,
@@ -394,8 +395,9 @@ article {
   }
 }
 
+/*主页核心代码*/
 section {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
   ul {
     list-style: none;
@@ -412,10 +414,14 @@ section {
       }
       a {
         text-decoration: none;
+        font-size: 1.1em;
         border: 0;
         color: #000000;
         box-sizing: border-box;
       }
+      .title a:hover {
+       color: #5A9094;
+     }
       .post-date {
         float: right;
         margin: 0 0 0 20px;

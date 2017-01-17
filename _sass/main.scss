@@ -396,7 +396,7 @@ article {
 
 /*主页核心代码*/
 section {
-  max-width: 600px;
+  max-width: 550px;
   margin: 0 auto;
   ul {
     list-style: none;
@@ -417,9 +417,6 @@ section {
         color: #000000;
         box-sizing: border-box;
       }
-      .title a:hover {
-       color: #f44242;
-     }
       .post-date {
         float: right;
         margin: 0 0 0 20px;
@@ -434,7 +431,7 @@ section {
         a {
           border-bottom: 2px solid transparent;
           &:hover {
-            border-color: #000000;
+            color: #f44242;
           }
         }
       }

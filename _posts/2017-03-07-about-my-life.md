@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 
+title: 一些心得与体会
 date: 2017-03-07 19:16:58 +0800
 categories: life
 ---

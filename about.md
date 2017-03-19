@@ -2,7 +2,7 @@
 title: 关于我
 ---
 
-
+<embed src="//music.163.com/style/swf/widget.swf?sid=28406900&type=2&auto=1&width=320&height=66" width="340" height="86"  allowNetworking="all">
 
 昨天在梦里
 
@@ -70,5 +70,5 @@ title: 关于我
 
 
 
-<embed src="//music.163.com/style/swf/widget.swf?sid=28406900&type=2&auto=1&width=320&height=66" width="340" height="86"  allowNetworking="all"></embed>
+
 

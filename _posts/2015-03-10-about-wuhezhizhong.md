@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 关于《乌合之众》读后感
-date: 2017-03-10 15:02:26 +0800
+date: 2015-03-10 15:02:26 +0800
 categories: book
 ---
 

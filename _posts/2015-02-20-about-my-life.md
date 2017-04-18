@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 生活体会
-date: 2017-02-20 17:33:02 +0800
+date: 2015-02-20 17:33:02 +0800
 categories: life
 ---
 

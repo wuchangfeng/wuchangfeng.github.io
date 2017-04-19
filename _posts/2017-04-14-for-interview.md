@@ -455,6 +455,12 @@ categories: interview
 - ThreadLocal 实现原理
   ThreadLocal如何为每个线程创建变量的副本的步骤已经明了。首先，在每个线程Thread内部有一个ThreadLocal.ThreadLocalMap类型的成员变量threadLocals，这个threadLocals就是用来存储实际的变量副本的，内部由名为table的Entry数组维护，Entry的键值为当前ThreadLocal变量，value为变量副本（即T类型的变量）。初始时，在Thread里面，threadLocals为空，当通过ThreadLocal变量调用get()方法或者set()方法，就会对Thread类中的threadLocals进行初始化，并且以当前ThreadLocal变量为键值，以ThreadLocal要保存的副本变量为value，存到threadLocals。然后在当前线程里面，如果要使用副本变量，就可以通过get方法在threadLocals里面查找。
 
+- ThreadLocal 与同步机制的区别
+
+  * 实现机制: 同步机制采用了“以时间换空间”的方式,提供一份变量,让不同的线程排队访问.而ThreadLocal采用了“以空间换时间”的方式,为每一个线程都提供一份变量的副本,从而实现同时访问而互不影响。
+  * 同步共享方面: Java中的synchronized是一个保留字,它依靠JVM的锁机制来实现临界区的函数或者变量的访问中的原子性.在同步机制中,通过对象的锁机制保证同一时间只有一个线程访问变量.此时,被用作“锁机制”的变量是多个线程共享的；而ThreadLocal会为每一个线程维护一个和该线程绑定的变量的副本，从而隔离了多个线程的数据，每一个线程都拥有自己的变量副本，从而也就没有必要对该变量进行同步了。　 　 
+  * 使用场合同步机制是为了同步多个线程对相同资源的并发访问，是为了多个线程之间进行通信的有效方式。而ThreadLocal是隔离多个线程的数据共享，从根本上就不在多个线程之间共享资源（变量），这样当然不需要对多个线程进行同步了。所以，如果你需要进行多个线程之间进行通信，则使用同步机制。如果需要隔离多个线程之间的共享冲突，可以使用ThreadLocal。
+
 - 利用阻塞队列实现生产者消费者模式 http://www.cnblogs.com/tonyspark/p/3722013.html
 
 - 讲解堆排序最好的文章 http://vickyqi.com/2015/08/14/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94%E5%A0%86%E6%8E%92%E5%BA%8F/

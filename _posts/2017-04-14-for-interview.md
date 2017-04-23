@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 个人知识体系构建-系列一
+title: 知识体系构建-系列一
 date: 2017-04-14 21:58:37 +0800
 categories: interview
 ---
@@ -187,7 +187,9 @@ categories: interview
 
   - 哈希因子
   - 自动扩容
-  - 再哈希
+  - 第一次 hash 过程
+  - 第二次哈希
+  - 利用 hash 数值求得数组的索引
 
 - 四种垃圾回收器 http://www.importnew.com/23752.html
 
@@ -206,7 +208,7 @@ categories: interview
   - 从逻辑角度来看，多线程的意义在于一个应用程序中，有多个执行部分可以同时执行。但操作系统并没有将多个线程看做多个独立的应用，来实现进程的调度和管理以及资源分配。**这就是进程和线程的重要区别。**
 
 
-- Java 中声明一个对象的过程 http://www.jianshu.com/p/ebaa1a03c594
+- Java 中声明一个对象的[过程](http://www.jianshu.com/p/ebaa1a03c594)
 
   ```Java
       Dog dog= new Dog()；
@@ -292,7 +294,7 @@ categories: interview
 
     一个事务一旦提交，他对数据库的修改应该永久保存在数据库中。
 
-- Hashset 底层实现原理 http://wiki.jikexueyuan.com/project/java-collection/hashset.html
+- Hashset 底层实现[原理](http://wiki.jikexueyuan.com/project/java-collection/hashset.html)
 
   问题简化一点就是如何确保元素不重复？
 
@@ -314,7 +316,7 @@ categories: interview
   ![](http://ww1.sinaimg.cn/large/b10d1ea5ly1femil6qakzj20dy0ext9l.jpg)
 
 
-- 路由框架支持热修复跳转吗？组件化、模块化开发 具体参考这篇文章 http://www.zhimengzhe.com/Androidkaifa/208300.html
+- 路由框架支持热修复跳转吗？组件化、模块化开发 具体参考这篇[文章](http://www.zhimengzhe.com/Androidkaifa/208300.html)
 
   Android系统已经给我们提供了api来做页面跳转，比如`startActivity`，为什么还需要路由框架呢？我们来简单分析下路由框架存在的意义：在一些复杂的业务场景下（比如电商），灵活性比较强，很多功能都是运营人员动态配置的，比如下发一个活动页面，我们事先并不知道具体的目标页面，但如果事先做了约定，提前做好页面映射，便可以自由配置。随着业务量的增长，客户端必然随之膨胀，开发人员的工作量越来越大，比如64K问题，比如协作开发问题。App一般都会走向组件化、插件化的道路，而组件化、插件化的前提就是解耦，那么我们首先要做的就是解耦页面之间的依赖关系。简化代码。数行跳转代码精简成一行代码。
 
@@ -363,7 +365,7 @@ categories: interview
 
 - View 的懒加载是什么意思
 
-  其实就是延迟加载，类似于 ViewStep 那样，等到需要的时候才进行加载，进行资源的节约。还有 Fragment 的赖加载。
+  其实就是延迟加载，类似于 ViewStub 那样，等到需要的时候才进行加载，进行资源的节约。还有 Fragment 的赖加载。
 
 - startActivity 启动流程
 
@@ -381,13 +383,15 @@ categories: interview
 
   直接继承自 AbsoluteLayout  。JavaScript在WebView中默认情况下是被禁用的。你可以通过附加在WebView上的WebSettings启用它。即使用getSettings()获取WebSettings，然后启用使用setJavaScriptEnabled()方法启用JavaScript。核心的是实现一个 JavacalHtml 方法。当你的WebView重载URL加载的时，WebView会自动累加访问过的网页的历史记录。您可以通过goBack()和 goForward()方法向后、向前浏览。WebViewClient就是帮助WebView处理各种通知、请求事件的。打开网页时不调用系统浏览器， 而是在本WebView中显示。
 
-- Android 开发插件化技术主要三个流派 http://www.infoq.com/cn/articles/android-plug-ins-from-entry-to-give-up
+- Android 开发插件化技术主要[三个流派](http://www.infoq.com/cn/articles/android-plug-ins-from-entry-to-give-up)
 
   - 第一种是动态替换，也就是Hook。可以在不同层次进行Hook，从而动态替换也细分为若干小流派。可以直接在Activity里做Hook，重写getAsset的几个方法，从而使用自己的ResourceManager和AssetPath；也可以在更抽象的层面，也就是在startActivity方法的位置做Hook，涉及的类包括ActivityThread、Instrumentation等；最高层次则是在AMS上做修改，也就是张勇的解决方案，这里需要修改的类非常多，AMS、PMS等都需要改动。总之，在越抽象的层次上做Hook，需要做的改动就越大，但好处就是更加灵活了。没有哪一个方法更好，一切看你自己的选择。
   - 第二种是静态代理，这是任玉刚的框架采取的思路。写一个PluginActivity继承自Activity基类，把Activity基类里面涉及生命周期的方法全都重写一遍，插件中的Activity是没有生命周期的，所以要让插件中的Activity都继承自PluginActivity，这样就有生命周期了。这里主要涉及三个点：1：资源的访问  2：Activity 生命周期的管理 3：插件 ClassLoader 的管理[即管理各个插件的 DexclassLoader]
   - 第三种是Dex合并，Dex合并就是Android热修复的思想。刚才说到了两个项目——AndFix和Nuwa，它们的思想是相同的。原生Apk自带的Dex是通过PathClassLoader来加载的，而插件Dex则是通过DexClassLoader来加载的。但有一个顺序问题，是由Davlik的机制决定的，如果宿主Dex和插件Dex都有一个相同命名空间的类的方法，那么先加载哪个Dex，哪个Dex中的这个类的方法将会占山为王，后面其他同名方法都替换了。所以，AndFix热修复就是优先加载插件包中的Dex，从而实现热修复。由于热修复的插件包通常只包括一个类的方法，体量很小，和正常的插件不是一个数量级的，所以只称为热修复补丁包，而不是插件。
 
 - 对于享元模式的理解？能够带来什么好处？
+
+  简单理解就是对象池，线程池的表现，对于其带来的好处也很容易理解。
 
 - 责任链模式在 Android 源码中的实现
 
@@ -444,7 +448,7 @@ categories: interview
   - 对 apk 文件进行签名
   - 对签名后的apk文件进行对其处理
 
-- 讲解 OkHttp 和 Retrofit 最好的一篇文章 http://www.infocool.net/kb/Android/201611/215768.html
+- 讲解 OkHttp 和 Retrofit 比较好的[文章](http://www.infocool.net/kb/Android/201611/215768.html)
 
   - 支持 HTTP2、SPDY
   - 自动选择最好的线路，并支持自动重连
@@ -461,16 +465,38 @@ categories: interview
   * 同步共享方面: Java中的synchronized是一个保留字,它依靠JVM的锁机制来实现临界区的函数或者变量的访问中的原子性.在同步机制中,通过对象的锁机制保证同一时间只有一个线程访问变量.此时,被用作“锁机制”的变量是多个线程共享的；而ThreadLocal会为每一个线程维护一个和该线程绑定的变量的副本，从而隔离了多个线程的数据，每一个线程都拥有自己的变量副本，从而也就没有必要对该变量进行同步了。　 　 
   * 使用场合同步机制是为了同步多个线程对相同资源的并发访问，是为了多个线程之间进行通信的有效方式。而ThreadLocal是隔离多个线程的数据共享，从根本上就不在多个线程之间共享资源（变量），这样当然不需要对多个线程进行同步了。所以，如果你需要进行多个线程之间进行通信，则使用同步机制。如果需要隔离多个线程之间的共享冲突，可以使用ThreadLocal。
 
-- 利用阻塞队列实现生产者消费者模式 http://www.cnblogs.com/tonyspark/p/3722013.html
+- 利用阻塞队列实现生产者消费者模式
+
+  http://www.cnblogs.com/tonyspark/p/3722013.html
 
 - 讲解堆排序最好的文章 http://vickyqi.com/2015/08/14/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94%E5%A0%86%E6%8E%92%E5%BA%8F/
 
 - 热补丁修复技术介绍 qq 空间的 https://mp.weixin.qq.com/s?__biz=MzI1MTA1MzM2Nw==&mid=400118620&idx=1&sn=b4fdd5055731290eef12ad0d17f39d4a
   注意问题就是在拆分 dex 的时候，有关联的两个类不在同一个 dex 中，存在一个 dex 校验问题，我们如何解决？解决这个校验问题，就要弄清楚校验过程出现在什么步骤。
 
-- 非常全面的各大热修复技术的比较 https://zhuanlan.zhihu.com/p/25863920
+- 非常全面的各大热修复技术的[比较]( https://zhuanlan.zhihu.com/p/25863920)
 
-- Binder 机制的讲解  http://www.jianshu.com/p/af2993526daf
+- [极力推荐-Binder 机制的讲解]( http://www.jianshu.com/p/af2993526daf)
+
+  ![](http://ww1.sinaimg.cn/large/b10d1ea5ly1fevo2lirnpj20ix0dhglu.jpg)
+
+  假设Client进程想要调用Server进程的`object`对象的一个方法`add`;对于这个跨进程通信过程，我们来看看Binder机制是如何做的。首先，Server进程要向SM注册；告诉自己是谁，自己有什么能力；在这个场景就是Server告诉SM，它叫`zhangsan`，它有一个`object`对象，可以执行`add` 操作；于是SM建立了一张表：`zhangsan`这个名字对应进程Server;
+
+  然后Client向SM查询：我需要联系一个名字叫做`zhangsan`的进程里面的`object`对象；这时候关键来了：进程之间通信的数据都会经过运行在内核空间里面的驱动，驱动在数据流过的时候做了一点手脚，它并不会给Client进程返回一个真正的`object`对象，而是返回一个看起来跟`object`一模一样的代理对象`objectProxy`，这个`objectProxy`也有一个`add`方法，但是这个`add`方法没有Server进程里面`object`对象的`add`方法那个能力；`objectProxy`的`add`只是一个傀儡，它唯一做的事情就是把参数包装然后交给驱动。(这里我们简化了SM的流程，见下文)
+
+  但是Client进程并不知道驱动返回给它的对象动过手脚，毕竟伪装的太像了，如假包换。Client开开心心地拿着`objectProxy`对象然后调用`add`方法；我们说过，这个`add`什么也不做，直接把参数做一些包装然后直接转发给Binder驱动。
+
+  驱动收到这个消息，发现是这个`objectProxy`；一查表就明白了：我之前用`objectProxy`替换了`object`发送给Client了，它真正应该要访问的是`object`对象的`add`方法；于是Binder驱动通知Server进程，*调用你的object对象的add方法，然后把结果发给我*，Sever进程收到这个消息，照做之后将结果返回驱动，驱动然后把结果返回给`Client`进程；于是整个过程就完成了。
+
+  由于驱动返回的`objectProxy`与Server进程里面原始的`object`是如此相似，给人感觉好像是**直接把Server进程里面的对象object传递到了Client进程**；因此，我们可以说**Binder对象是可以进行跨进程传递的对象**
+
+  但事实上我们知道，Binder跨进程传输并不是真的把一个对象传输到了另外一个进程；传输过程好像是Binder跨进程穿越的时候，它在一个进程留下了一个真身，在另外一个进程幻化出一个影子（这个影子可以很多个）；Client进程的操作其实是对于影子的操作，影子利用Binder驱动最终让真身完成操作。
+
+  一句话总结就是：**Client进程只不过是持有了Server端的代理；代理对象协助驱动完成了跨进程通信。**
+
+  另外下图是 Binder 的C/S 实现机制。在Android开发中，我们大量使用到了系统Service，比如媒体播放、各种传感器以及WindowManagerService等等等等（太多了~）。那么Android是怎么管理这些服务，并且让用户跨进程调用这些服务呢？首先我们看看调用系统服务的过程。在Android开机启动过程中，Android会初始化系统的各种Service，并将这些Service向ServiceManager注册（即让ServiceManager管理）。客户端想要得到具体的Service直接向ServiceManager要即可。客户端首先向ServiceManager查询得到具体的Service引用，然后通过这个引用向具体的服务端发送请求，服务端执行完成后就返回
+
+  ![](http://ww1.sinaimg.cn/large/b10d1ea5ly1fevo6xcz08j20bs07cdfw.jpg)
 
 - Android 中消息机制浅析
 
@@ -521,6 +547,9 @@ categories: interview
   * ScheuldThreadPool 核心线程数固定，非核心线程（闲着没活干会被立即回收）数没有限制。ScheduledThreadPool主要用于执行定时任务以及有固定周期的重复任务。
 
 - 四种 Activity 启动模式的应用场景
+
+  * 标准启动模式
+
 
   * SingleTop
 

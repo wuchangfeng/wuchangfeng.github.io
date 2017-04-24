@@ -11,26 +11,48 @@ categories: interview
 - Retrofit2 框架浅析
 - OkHttp 框架浅析
 - Glide 框架浅析
+- ImageLoader 框架
 - Butterknife 框架浅析
 - JNI 开发过程
 - 热修复的尝试
 - 事件分发机制
+- dex 文件格式，以及 JVM 能否加载 dex 文件
 - JDK1.8 新增加的特性
 - 枚举写出来的单利模式为什么安全
 - ThreadLocal 底层实现
 - hash 如何更加散列
 - Java 线程之间通信方式
+- Android 中 service 相关Service
 
 #### Https 为什么安全
 
 https://zhuanlan.zhihu.com/p/25324735?utm_source=qq&utm_medium=social
 
 - 对称加密
+
+  对称加密是最基本的，但是很不安全。
+
 - 公钥加密
-- 消息摘要  MD5 不可逆加密过程
-- 消息验证码
+
+  利用公钥进行加密，私钥进行解密。
+
+- 消息摘要  
+
+  消息摘要是用来判断数据完成性的一个算法，其加密过程是一个不可逆过程。常见的有 SHA、MD5.
+
+- 消息验证
+
+  消息认证码（message authentication code）是一种可以确认消息完整性并进行认证（消息认证是指确认消息来自正确的发送者）的技术，简称 MAC。消息认证码可以简单理解为一种与密钥相关的单向散列函数。
+
 - 数据签名
+
 - 公约证书
+
+#### 热修复实践过程
+
+http://www.jianshu.com/p/c36c9e0ca3fe
+
+微信热补丁技术的演进过程：https://zhuanlan.zhihu.com/p/22239844
 
 #### Okhttp
 
@@ -58,6 +80,10 @@ public interface Interceptor {
 
 最后，总结一下这个请求动作发生在CallServerInterceptor（也就是最后一个Interceptor）中，而且其中还涉及到Okio这个io框架，通过Okio封装了流的读写操作，可以更加方便，快速的访问、存储和处理数据。最终请求调用到了socket这个层次,然后获得Response。
 
+最近看到一个比较好的解释图 http://huachao1001.github.io/article.html?uOZGa337
+
+![](http://ww1.sinaimg.cn/large/b10d1ea5ly1fexr9lw7mfj20rs18gdhq.jpg)
+
 #### Retrofit2
 
 https://zhuanlan.zhihu.com/p/21662195
@@ -78,6 +104,44 @@ Retrofit retrofit = new Retrofit.Builder()
 http://brucezz.itscoder.com/use-apt-in-android
 
 一般构建这种编译期注解的项目分为四个部分，分别是注解相关模块，注解处理器，API 接口模块，示例 demo。其本质上还是利用 APT 技术，根据注解利用 Javapoet 和 auto-service 来在程序编译期间生成代码，从而能够让主程序去调用相关模块。当然，为了能达到最好的效果，用一点反射也是可以的，个人感觉目前影响程序的效率，大部分还是我们的编码水平。
+
+#### Android 事件分发机制
+
+http://www.infoq.com/cn/articles/android-event-delivery-mechanism
+
+当一个 view 需要处理事件时，若设置了 OnTouchListener ，则OnTouchLister 中的 OnTouch 方法会被调用，这个时候事件如何处理，要看 OnTouch 的返回值，如果返回 false ，则当前的 view 的 ontouchevent 方法会被调用；如果返回 true，那么 ontouchevent 则不会调用。由此可见给 view 设置的ontouchlisterner 其优先级要你 ontouchevent 高。在 ontouchevent 中，如果当前设置了 onclicklistener，那么它的 onclick 方法会被调用。可以看出，平常使用的 onclicklistener 其优先级最低，处于事件传递的最尾。
+
+事件传递先传递到 viewgroup，再分发到 view。但是通过 requestDisallowInterceptTouchEvent 方法可以干预父元素的分发过程。view 的 ontouchevent 默认会消费事件，除非它是不可点击的。
+
+![](http://ww1.sinaimg.cn/large/b10d1ea5ly1fexihki4n1j20ao05zwew.jpg)
+
+#### Activity 的启动流程
+
+http://huachao1001.github.io/article.html?feMdeAAE
+
+#### Dex 文件的结构
+
+DEX 文件这个截图出处我忘记了，找到的话会补上链接的。另外 dex 文件能否在 JVM 虚拟机上执行，或者 Class 文件能否在 Dalvik 虚拟机上执行？其实答案都是否定的，尽管 dex 和 class 文件有着很大关系，但是 Dalvik 并不是一个 Java 虚拟机，并没有遵循 Java 虚拟机的规范，使用的是寄存器架构，而不是 JVM 中常见的栈架构。
+
+![](http://ww1.sinaimg.cn/large/b10d1ea5ly1fexrbk7z05j20m80mqmz1.jpg)
+
+#### TCP 拥塞解决策略
+
+http://wetest.qq.com/lab/view/246.html
+
+#### 红黑树的结构和特性
+
+http://www.cnblogs.com/skywang12345/p/3245399.html
+
+红黑树始终是一个二叉搜索树，这种特性保证了其插入元素是有顺序的特性。
+
+![](http://ww1.sinaimg.cn/large/b10d1ea5ly1fexs8kjn9ej20ps0ckjud.jpg)
+
+* 每个节点或者是黑色，或者是红色。
+* 根节点是黑色。
+* 每个叶子节点（NIL）是黑色。 [注意：这里叶子节点，是指为空(NIL或NULL)的叶子节点！
+* 如果一个节点是红色的，则它的子节点必须是黑色的。
+* 从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点。
 
 #### Java 中 JDK1.7 与 1.8 的区别
 
@@ -191,9 +255,38 @@ public class Test {
 } 
 ```
 
-#### CMS收集器
+#### CMS收集器 和 G1 收集器
 
 https://www.zhihu.com/people/pang-pang-37-37/answers?page=3
+
+http://huachao1001.github.io/article.html?0wugT117
+
+CMS(Concurrent Mark Sweep) 收集器基于 “标记-清除”算法实现的，主要运作过程分为以下四个步骤。CMS 并发收集、低停顿。
+
+1. 初始标记
+2. 并发标记
+3. 重新标记
+4. 并发清除
+
+CMS 主要的缺点如下所示：
+
+> - `CMS`收集器对`CPU`资源非常敏感。在并发阶段，它虽然不会导致用户线程停顿，但是会因为占用一部分线程（或者说`CPU`资源）而导致应用程序变慢，总吞吐量会降低。
+> - `CMS`收集器无法处理浮动垃圾，可能出现`Concurrent Mode Failure`失败而导致另一次`Full GC`产生。由于`CMS`并发清理阶段用户线程还在运行着，伴随程序运行自然就还会有新的垃圾不断产生，这一部分垃圾出现在标记过程之后，`CMS`无法再当次收集中处理掉它们，治好留待下一次`GC`时再清理掉。这部分垃圾就称为“浮动垃圾”。因此，`CMS`不能像其他收集器那样等到老年代几乎完全被填满再进行手机，`CMS`需要预留一部分空间。
+> - 由于CMS基于“标记-清除”算法，意味着收集结束时会有大量空间碎片产生。
+
+G1（`Garbage First`）收集器是当今收集器技术发展的最前沿成果之一。`G1`是面向服务端应用的垃圾收集器，与其他`GC`收集器相比，`G1`具备如下特点：
+
+> - **并行与并发**：充分利用多`CPU`、多核环境下的硬件优势，使用多个`CPU`（`CPU`或`CPU`核心）来缩短`Stop-The-World`停顿时间。部分其他收集器需要停顿`Java`线程执行的`GC`动作，`G1`仍然能通过并发方式让`Java`程序继续执行。
+> - **分代收集**：与其他收集器一样，分代概念在G1中依然得以保存。
+> - **空间整合**：与`CMS`的“标记-清理”算法不同，`G1`从整体上看是基于“标记-整理”算法实现的收集器，从局部上看是基于“复制”算法实现的，这两种算法意味着`G1`运作期间不会产生内存空间碎片。
+> - **可预测的停顿**：这是`G1`相对于`CMS`的另一大优势，降低停顿时间是`G1`和`CMS`共同关注点，但`G1`除了追求低停顿外，还能建立可预测的停顿时间模型，能让使用者明确指定一个长度为`M`毫秒的时间片段内，消耗在垃圾收集上的时间不得从超出`N`毫秒，这几乎已经是实时`Java`的垃圾收集器的特征了。
+
+`G1`运作大致可划分为以下几个步骤：
+
+1. 初始标记
+2. 并发标记
+3. 最终标记
+4. 筛选回收
 
 #### NIO 和 BIO 的比较
 
@@ -304,26 +397,79 @@ http://6924918.blog.51cto.com/6914918/1283761
 
 #### Java 线程间通信
 
-**传统的线程通信方式**
+* 传统的线程通信方式
 
 可以借助于 Object 类的 wait 、notify、notifyall 三个方法。但是这三个方法必须由同步监视器synchronized对象来调用。
 
-- wait 导致当前线程等待，直到其他线程调用该同步监视器的 notify/notifyall 方法来唤醒该线程
-- notify 唤醒在此同步监视器上等待的单个线程，若存在多个，任意选择其中一个
-- notifyAll 唤醒所有的在此同步监视器上等待的线程
+1. wait 导致当前线程等待，直到其他线程调用该同步监视器的 notify/notifyall 方法来唤醒该线程
+2. notify 唤醒在此同步监视器上等待的单个线程，若存在多个，任意选择其中一个
+3. notifyAll 唤醒所有的在此同步监视器上等待的线程
 
-**使用 condition 来控制线程间通信**
+* 使用 condition 来控制线程间通信
 
 如果不使用 sync 关键字来进行同步，而使用 lock ，则系统中不存在隐式不同监视器，则只能调用 Java 提供的 condition 类来保持协调
 
-- await 类似于 wait
-- singal 类似于 notify
-- singalAll 类似于 notifyAll
+1. await 类似于 wait
+2. singal 类似于 notify
+3. singalAll 类似于 notifyAll
 
-**使用阻塞队列来进行线程间通信**
+使用阻塞队列来进行线程间通信
 
 Java5 提供的 BQ 接口，队列满/空，则生产者/消费者，往其中添加/取出都会存在阻塞。也就是说利用这个 BQ 可以很方便的实现生产者消费者模式。
 
-- ArrayBQ 基于数组实现的 BQ 队列
-- LInkedBQ 基于链表实现的 BQ 队列
-- PriorityBQ 具备优先级的队列，而并不是传统的取队尾的元素。
+1. ArrayBQ 基于数组实现的 BQ 队列
+2. LInkedBQ 基于链表实现的 BQ 队列
+3. PriorityBQ 具备优先级的队列，而并不是传统的取队尾的元素。
+
+#### Android 中 Service
+
+http://huachao1001.github.io/article.html?tlRlR66O
+
+![](http://ww1.sinaimg.cn/large/b10d1ea5ly1fewyy7ffdnj20at0e3abt.jpg)
+
+``` java
+public class ExampleService extends Service { 
+    int mStartMode;       // 标识服务被杀死后的处理方式 
+    IBinder mBinder;      // 用于客户端绑定的接口 
+    boolean mAllowRebind; // 标识是否使用onRebind 
+ 
+    @Override 
+    public void onCreate() { 
+        // 服务正被创建 
+    } 
+    @Override 
+    public int onStartCommand(Intent intent, int flags, int startId) { 
+        // 服务正在启动，由startService()调用引发 
+        return mStartMode; 
+    } 
+    @Override 
+    public IBinder onBind(Intent intent) { 
+        // 客户端用bindService()绑定服务 
+        return mBinder; 
+    } 
+    @Override 
+    public boolean onUnbind(Intent intent) { 
+        // 所有的客户端都用unbindService()解除了绑定 
+        return mAllowRebind; 
+    } 
+    @Override 
+    public void onRebind(Intent intent) { 
+        // 某客户端正用bindService()绑定到服务, 
+        // 而onUnbind()已经被调用过了 
+    } 
+    @Override 
+    public void onDestroy() { 
+        // 服务用不上了，将被销毁 
+    } 
+}
+```
+
+onStartCommand() 方法必须返回一个整数，这个整数描述系统在杀死服务之后该如何继续执行，其返回值必须是下面这是三个常量之一：
+
+> - START_NOT_STICKY：如果系统在onStartCommand()返回后杀死了服务，则不会重建服务了，除非还存在未发送的intent。 当服务不再是必需的，并且应用程序能够简单地重启那些未完成的工作时，这是避免服务运行的最安全的选项.
+> - START_STICKY：如果系统在onStartCommand()返回后杀死了服务，则将重建服务并调用onStartCommand()，但不会再次送入上一个intent， 而是用null intent来调用onStartCommand() 。除非还有启动服务的intent未发送完，那么这些剩下的intent会继续发送。 这适用于媒体播放器（或类似服务），它们不执行命令，但需要一直运行并随时待命。　
+> - START_REDELIVER_INTENT：如果系统在onStartCommand()返回后杀死了服务，则将重建服务并用上一个已送过的intent调用onStartCommand()。任何未发送完的intent也都会依次送入。这适用于那些需要立即恢复工作的活跃服务，比如下载文件。
+
+#### Activity 的启动过程
+
+http://huachao1001.github.io/article.html?feMdeAAE

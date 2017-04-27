@@ -26,6 +26,7 @@ categories: interview
 - Java 线程之间通信方式
 - Android 中 service 相关Service
 - 操作系统中和数据结构中堆栈之间的区别
+- Java8 函数式编程和 Lambda 表达式
 
 > 具体内容
 
@@ -487,3 +488,23 @@ http://blog.csdn.net/speedme/article/details/22943191
 - **堆（操作系统）**： 一般由程序员分配释放， 若程序员不释放，程序结束时可能由OS回收，分配方式倒是类似于链表。堆则是存放在二级缓存中，生命周期由虚拟机的垃圾回收算法来决定（并不是一旦成为孤儿对象就能被回收）。所以调用这些对象的速度要相对来得低一些
 - **堆（数据结构）**：堆可以被看成是一棵树，如：堆排序
 - **栈（数据结构）**：一种后进先出的数据结构
+
+#### Java8 中函数式编程
+
+http://blog.oneapm.com/apm-tech/226.html
+
+为什么会出现函数式编程和 lambda 表达式，主要还是因为在 Java 中传递函数参数的不方便。常见的 lambda 表达式如下所示：
+
+``` java
+(int a, int b) -> {  return a + b; }
+
+() -> System.out.println("Hello World");
+
+(String s) -> { System.out.println(s); }
+
+() -> 42
+
+() -> { return 3.1415 };
+```
+
+在函数式编程语言中，函数是一等公民。这种编程语言，提供了一种强大的功能，就是闭包。闭包的好处要理解一下，而在 Java 语言中最接近闭包的就是 lambda 表达式了。另外更加引申就涉及到了函数式接口了，这一块概念要与 lambda 区分开来。

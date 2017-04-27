@@ -11,6 +11,7 @@ categories: interview
 
 - HTTP 协议入门
 - HTTP1.0、HTTP1.1、HTTP2、HTTP 缓存、HTTP 状态码
+- 数字签名、数字证书、非对称密钥
 - 断点上传/下载如何实现
 - UDP 如何实现传输可靠性
 - Java  new 一个对象的过程
@@ -133,6 +134,10 @@ categories: interview
   - 3XX  这类状态码代表需要客户端采取进一步的操作才能完成请求。通常，这些状态码用来重定向，后续的请求地址（重定向目标）在本次响应的Location域中指明。
   - 4XX 客户端请求可能发生错误
   - 5XX 代表服务器在处理请求过程中可能发生的错误
+
+- 非对称密钥、数字签名、数字证书
+
+  https://www.zhihu.com/question/52493697/answer/131015846
 
 - UDP如何实现可靠性的传输
 

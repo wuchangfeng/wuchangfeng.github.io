@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ActiivtyRouter 的分析与理解
+title: ActivityRouter 的分析与理解
 date: 2017-01-18 16:54:22 +0800
 categories: android
 ---
@@ -23,7 +23,7 @@ ActivityRouter 源码分析
 
 在进行源码分析之前，先总结一下其大概的原理，就是用一个 Map 来存储具体的路由、实体 Activity 之间的映射。然后在利用 Android 自身的 Intent 机制，来进行界面的跳转。
 
-> 简单实用过程
+> 简单使用过程
 
 根据 readme 来说明一个简单的使用过程：
 

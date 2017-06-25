@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 操作系统常见知识点[转]
-date: 2017-03-27 16:17:39 +0800
+date: 2015-03-27 16:17:39 +0800
 categories: review
 ---
 

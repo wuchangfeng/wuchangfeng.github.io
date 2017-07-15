@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hello Lineage OS
+title: Lineage OS 初体验
 date: 2017-07-07 19:58:57 +0800
 categories: 
 ---
@@ -11,7 +11,10 @@ categories:
 
 ![](http://ww1.sinaimg.cn/large/b10d1ea5ly1fhbkbzgn5jj21340q8aho.jpg)
 
+Moto x 之前一直是欧版6.0 用了很长时间，之后卡的不行，而且掉电也快。因为我刷机的时候没有给它 root，所以一些像绿色守护和冰箱之类的软件也不能发挥最大的作用。实在受不了了，就给他退役了。并且只能单卡使用。后来就折腾，刷上了Lineage os。果然体验真实好不少，续航就很给力，而且也还是特别流畅。
+
 **小米5**
 
 ![](http://ww1.sinaimg.cn/large/b10d1ea5ly1fhbkhwi73uj23iz194npd.jpg)
 
+说实话，小米刷新系统我是有点犹豫的。因为MIUI8做的真的非常人性化，而且配合自家的机子，无论是续航还是流畅度都是一流的。

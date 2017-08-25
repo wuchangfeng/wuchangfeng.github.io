@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 我的 Trello 面板
+title: 我的 Trello 技术面板
 date: 2017-08-24 20:37:05 +0800
 categories: 
 ---

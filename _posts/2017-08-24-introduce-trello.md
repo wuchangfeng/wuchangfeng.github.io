@@ -11,8 +11,16 @@ categories:
 
 ### Android端
 
+分别是移动端的首页、某个面板、某个会话内容：
+
 ![](http://ww1.sinaimg.cn/mw690/006dXScfly1fiv39cl0h4j3241194h0i.jpg)
 
 ### Mac网页端
 
-![](http://ww1.sinaimg.cn/mw690/006dXScfly1fiv38qhu0oj31941kd18l.jpg)
+某个面板首页：
+
+![](http://ww1.sinaimg.cn/mw690/006dXScfly1fix1tgfztjj31x01askat.jpg)
+
+具体会话框：
+
+![](http://ww1.sinaimg.cn/mw690/006dXScfly1fix1udy1t5j31x01asarp.jpg)

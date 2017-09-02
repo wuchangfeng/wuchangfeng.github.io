@@ -103,11 +103,13 @@ a {
   }
 }
 
+
 mark {
   background: #FFFC76;
   padding: 0 5px;
 }
 
+/*引用核心代码*/
 blockquote {
   border-left: 3px solid #CCCCCC;
   margin: 10px 0;
@@ -297,6 +299,7 @@ code {
   font-size: 17px;
 }
 
+/*代码背景颜色*/
 pre {
   display: block;
   margin-top: 0;
@@ -305,7 +308,7 @@ pre {
   line-height: 1.4;
   white-space: pre;
   overflow-x: auto;
-  background-color: #F0FFFF;
+  background-color: #f2f2f2;
   border: 0.5px solid #DDDDDD;
   padding: 0.5rem;
   code {
@@ -337,6 +340,7 @@ iframe {
   width: 100%;
 }
 
+/*核心代码*/
 article {
   max-width: 700px;
   margin: 0 auto;
@@ -426,12 +430,15 @@ section {
         color: #757575;
         letter-spacing: 1px;
         text-transform: uppercase;
+        &:hover {
+            color: #2d6fd8;
+        }
       }
       @media (min-width: 992px) {
         a {
           border-bottom: 2px solid transparent;
           &:hover {
-            color: #f44242;
+            color: #2d6fd8;
           }
         }
       }

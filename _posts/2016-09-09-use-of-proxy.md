@@ -1,5 +1,5 @@
 ---
-title: 利用动态代理来做点事儿
+title: 深入理解 Java 之动态代理实现机制
 toc: true
 date: 2016-09-11 15:30:23
 tags: itsCoder Proxy Android 

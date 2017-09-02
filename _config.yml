@@ -1,5 +1,5 @@
 # 网站信息
-title:              "Less is More"
+title:              "less is more"
 description:        "个人小站"
 
 # 作者信息
@@ -24,6 +24,7 @@ highlighter:        rouge
 markdown:           kramdown
 kramdown:
     input:          GFM
+    syntax_highlighter: rouge
 sass:
     style:          :compressed
 

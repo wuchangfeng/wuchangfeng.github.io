@@ -81,82 +81,61 @@ categories:
   - 适用于解决前 n 大的算法
 
   ```java
-  public class ArrayHeap {
-    	// 待排序的数组
-      private int[] array;
-      public ArrayHeap(int[] arr) {
-          this.array = arr;
-      }
-      private int getParentIndex(int child) {
-          return (child - 1) / 2;
-      }
-      private int getLeftChildIndex(int parent) {
-          return 2 * parent + 1;
-      }
-      /**
-       * 初始化一个大根堆。
-       */
-      private void initHeap() {
-          int last = array.length - 1;
-          for (int i = getParentIndex(last); i >= 0; --i) { // 从最后一个非叶子结点开始筛选
-              int k = i;
-              int j = getLeftChildIndex(k);
-              while (j <= last) {
-                  if (j < last) {                    
-                      if (array[j] <= array[j + 1]) { // 右子节点更大
-                          j++;
+  public class HeapSort {
+      //对data数组从0到lastIndex建大顶堆
+      public static void buildMaxHeap(int[] data, int lastIndex){
+          //从lastIndex处节点（最后一个节点）的父节点开始
+          // http://bubkoo.com/2014/01/14/sort-algorithm/heap-sort/
+          for(int i=(lastIndex-1)/2;i>=0;i--){
+              //k保存正在判断的节点
+              int k=i;
+              //如果当前k节点的子节点存在，lastIndex 是最后一个节点的索引，不是其父节点的索引，要注意
+              while(k*2+1<=lastIndex){
+                  //k节点的左子节点的索引
+                  int biggerIndex=2*k+1;
+
+                  //如果biggerIndex小于lastIndex，即biggerIndex+1代表的k节点的右子节点存在
+                  if(biggerIndex<lastIndex){
+                      //若果右子节点的值较大
+                      if(data[biggerIndex]<data[biggerIndex+1]){
+                          //biggerIndex总是记录较大子节点的索引
+                          biggerIndex++;
                       }
                   }
-                  if (array[k] > array[j]) {           //父节点大于子节点中较大者，已经找到最终位置
-                      break; // 停止筛选
-                  } else {
-                      swap(k, j);
-                      k = j; // 继续筛选
+
+                  //如果k节点的值小于其较大的子节点的值
+                  if(data[k]<data[biggerIndex]){
+                      //交换他们
+                      swap(data,k,biggerIndex);
+                      //将biggerIndex赋予k，开始while循环的下一次循环，重新保证k节点的值大于其左右子节点的值
+                      // 要将最大的或者最小的一直往上顶上去
+                      k=biggerIndex;
+                  }else{
+                      break;
                   }
-                  j = getLeftChildIndex(k);
-              }// loop while
-          }// loop i
-      }
-      /**
-       * 调整堆。
-       */
-      private void adjustHeap(int lastIndex) {
-          int k = 0;
-          while (k <= getParentIndex(lastIndex)) {
-              int j = getLeftChildIndex(k);
-              if (j < lastIndex) {
-                  if (array[j] < array[j + 1]) {
-                      j++;
-                  }
-              }
-              if (array[k] < array[j]) {
-                  swap(k, j);
-                  k = j; // 继续筛选
-              } else {
-                  break; // 停止筛选
               }
           }
       }
-      /**
-       * 堆排序。
-       * */
-      public void sort() {
-          initHeap();
-          int last = array.length - 1;
-          while (last > 0) {
-              swap(0, last);
-              last--;
-              if (last > 0) { // 这里如果不判断，将造成最终前两个元素逆序。
-                  adjustHeap(last);
-              }
+      //交换
+      private static void swap(int[] data, int i, int j) {
+          int tmp=data[i];
+          data[i]=data[j];
+          data[j]=tmp;
+      }
+
+      public static void main(String[] args) {
+          int[] a={49,38,65,97,76,13,27,49,78,34,12,64};
+          int arrayLength=a.length;
+          //循环建堆
+          for(int i=0;i<arrayLength-1;i++){
+              //建堆
+              buildMaxHeap(a,arrayLength-1-i);
+              //交换堆顶和最后一个元素
+              swap(a,0,arrayLength-1-i);
+              System.out.println(Arrays.toString(a));
           }
       }
-      private void swap(int i, int j) {
-          int temp = array[i];
-          array[i] = array[j];
-          array[j] = temp;
-      }
-  }
+  } 
   ```
 
 - 选择排序

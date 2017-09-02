@@ -1,5 +1,5 @@
 ---
-title: Java 中的反射以及其应用
+title: 深入理解 Java 之反射机制的应用
 toc: true
 date: 2016-05-17 21:27:37
 tags: reflect

@@ -54,11 +54,41 @@ okhttp 对于任务的请求采用了 Dispatcher(反向代理)技术和线程池
 
 ## 二 . Retrofit
 
-阅读以下文章：
+**基本用法**
 
-[Retrofit 源码解析](http://www.jianshu.com/p/c1a3a881a144)
-[Retrofit 漂亮的解耦套路](http://www.jianshu.com/p/45cb536be2f4)
-[Retrofit 下动态代理的分析](http://www.jianshu.com/p/a56c61da55dd)
+第一步，声明API接口
+
+```java
+public interface GitHubService {
+  @GET("users/{user}/repos")
+  Call<List<Repo>> listRepos(@Path("user") String user);
+}
+```
+
+第二步，构造出 `Retrofit` 对象：
+
+```java
+Retrofit retrofit = new Retrofit.Builder()
+    .baseUrl("https://api.github.com/")
+    .addConverterFactory(GsonConverterFactory.create())
+    .build();
+```
+
+第三步，得到 API 接口，直接调用：
+
+```java
+GitHubService service = retrofit.create(GitHubService.class);
+Call<List<Repo>> repos = service.listRepos("octocat");
+```
+
+最后，就是调用 `repos` 执行 Call ：
+
+```java
+// sync
+repos.execute();
+// async
+repos.enqueue(...);
+```
 
 **总体设计**
 

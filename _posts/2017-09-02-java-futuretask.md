@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 深入理解 Java 之 FutureTask 的原理
+title: 深入理解 Java 之 FutureTask 和 Callable
 date: 2017-09-02 17:34:19 +0800
 categories: 
 ---

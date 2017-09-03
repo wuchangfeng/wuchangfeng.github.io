@@ -35,7 +35,15 @@ public void run() {
 }
 ```
 
+HandlerThread可以创建一个带有looper的线程。looper对象可以用于创建Handler类来进行来进行调度。看看其基本用法是怎样：
 
+``` java
+HandlerThread thread = newHandlerThread("handler_thread");
+thread.start();//必须要调用start方法
+final Handler handler = newHandler(thread.getLooper()){}
+```
+
+如上所示，就可以很轻松的创建Handler对象了。
 
 ## 二. IntentService
 

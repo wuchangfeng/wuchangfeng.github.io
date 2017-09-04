@@ -1,5 +1,5 @@
 ---
-title: 常见内存泄漏场景以及解决办法
+title: 深入理解 Android 之内存泄漏
 date: 2016-10-21 08:03:08
 tags: 内存泄漏
 layout: post

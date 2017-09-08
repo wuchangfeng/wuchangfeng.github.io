@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 深入理解 Android 之复杂类型的 RV
+title: 深入理解 Android 之复杂类型的 RecyclerView
 date: 2017-08-28 18:55:56 +0800
 categories: 
 ---

@@ -105,6 +105,9 @@ public interface Callable<V> {
 >  {@code Runnable}, however, does not return a result and cannot
 >  throw a checked exception.
 
+
+### Runnable
+
 点进去看一下Runnable接口的定义：
 
 ``` java
@@ -118,9 +121,13 @@ public interface Runnable {
 
 ### FutureTask
 
+接下来重点看一下示例中task的包装类FutureTask。如下所示发现RutureTask是实现RunnableFuture接口的一个类：
+
 ``` java
 public class FutureTask<V> implements RunnableFuture<V> 
 ```
+
+### RunnableFuture
 
 再去看看RunnableFuture的结构：
 
@@ -133,7 +140,8 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
     void run();
 }
 ```
-发现 RunnableFuture接口继承自Runnable和Future接口，接下来重点关注Future接口
+
+发现 RunnableFuture接口继承自Runnable和Future接口，接下来重点关注Future接口。
 
 ### Future
 
@@ -168,3 +176,4 @@ public interface Future<V> {
 ```
 获取callable的执行结果。
 
+OK，通过上述示例Demo的讲解，相信大家都应该明白了Callable与FutureTask的用法。

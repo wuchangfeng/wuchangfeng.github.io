@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 深入理解 Java 之 Sync 到底锁住了什么
+title: 深入理解 Java 之 synchronized 到底锁住了什么
 date: 2017-08-26 20:48:13 +0800
 categories: 
 ---

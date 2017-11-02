@@ -38,9 +38,8 @@ categories:
 
 **最后，感恩父母，感恩所有。梦想实现的感觉真好！！！**
 
-<div align=center>
-![](http://ww1.sinaimg.cn/large/006dXScfly1fkxtcd5menj30ci0m8tas.jpg)
-</div>
+
+
 
 
 

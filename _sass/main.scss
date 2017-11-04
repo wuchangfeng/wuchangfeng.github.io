@@ -382,6 +382,7 @@ article {
   }
 }
 
+/*Back键核心代码*/
 .back {
   text-align: center;
   a {
@@ -400,14 +401,14 @@ article {
 
 /*主页核心代码*/
 section {
-  max-width: 550px;
+  max-width: 500px;
   margin: 0 auto;
   ul {
     list-style: none;
     margin: 0;
     padding: 0;
     li {
-      margin: 25px 0;ip
+      margin: 20px 0;ip
       .title {
         max-width: 100%;
         overflow: hidden !important;

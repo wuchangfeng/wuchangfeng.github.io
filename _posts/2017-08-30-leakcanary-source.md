@@ -5,7 +5,7 @@ date: 2017-08-30 08:41:17 +0800
 categories: 
 ---
 
-分析一下LeakCanary的原理，基本的使用看其官网介绍即可，非常简单、易上手。同时在了解了本篇文章之后，熟悉了Leakcanary的基本工作原理以及代码结构，强烈推荐去了解一些Blockcanary的用处以及工作原理。对理解整个Android系统的消息机制工作过程，非常有好处。
+Android中的内存泄漏问题是性能优化的大头，不少开发者也为如何有效的检测出内存泄漏煞费苦心。今天来分析一下LeakCanary的原理，它的基本的使用看其官网介绍即可，非常简单、易上手。同时在了解了本篇文章之后，熟悉了Leakcanary的基本工作原理以及代码结构，强烈推荐去了解一些Blockcanary的用处以及工作原理。对理解整个Android系统的消息机制工作过程，非常有好处。
 
 ### 原理概览
 
@@ -14,15 +14,13 @@ LeakCanary的原理非常简单。正常情况下一个Activity在执行Destroy�
 
 ### 源码结构
 
- 1. leakcanary-watcher: 这是一个通用的内存检测器，对外提供一个 RefWatcher#watch(Object watchedReference),它不仅能够检测 Activity，还能监测任意常规的 Java Object 的泄漏情况。
+1. leakcanary-watcher: 这是一个通用的内存检测器，对外提供一个 RefWatcher#watch(Object watchedReference),它不仅能够检测Activity，还能监测任意常规的 Java Object 的泄漏情况。
 
- 2. leakcanary-android: 这个 module 是与 Android 的接入点，用来专门监测 Activity 的泄漏情况，
+2. leakcanary-android: 这个 module 是与 Android 的接入点，用来专门监测 Activity 的泄漏情况，内部使用了 application#registerActivityLifecycleCallbacks 方法来监听 onDestory 事件，然后利用 leakcanary-watcher 来进行弱引用＋手动 GC 机制进行监控。
 
-       内部使用了 application#registerActivityLifecycleCallbacks 方法来监听 onDestory 事件，然后利用 leakcanary-watcher 来进行弱引用＋手动 GC 机制进行监控。
+3. leakcanary-analyzer: 这个 module 提供了 HeapAnalyzer，用来对 dump 出来的内存进行分析并返回内存分析结果AnalysisResult，内部包含了泄漏发生的路径等信息供开发者寻找定位。
 
- 3. leakcanary-analyzer: 这个 module 提供了 HeapAnalyzer，用来对 dump 出来的内存进行分析并返回内存分析结果AnalysisResult，内部包含了泄漏发生的路径等信息供开发者寻找定位。
-
- 4. leakcanary-android-no-op: 这个 module 是专门给 release 的版本用的，内部只提供了两个完全空白的类 LeakCanary 和 RefWatcher，这两个类不会做任何内存泄漏相关的分析。因为 LeakCanary 本身会由于不断 gc 影响到 app 本身的运行，而且主要用于开发阶段的内存泄漏检测。因此对于 release 则可以 disable 所有泄漏分析。
+4. leakcanary-android-no-op: 这个 module 是专门给 release 的版本用的，内部只提供了两个完全空白的类 LeakCanary 和 RefWatcher，这两个类不会做任何内存泄漏相关的分析。因为 LeakCanary 本身会由于不断 gc 影响到 app 本身的运行，而且主要用于开发阶段的内存泄漏检测。因此对于 release 则可以 disable 所有泄漏分析。
 
 ### 流程分析
 

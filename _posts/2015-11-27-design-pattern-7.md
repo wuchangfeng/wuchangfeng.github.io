@@ -1,15 +1,9 @@
 ---
-title: 命令模式
+title: 设计模式之命令模式
 date: 2016-04-20 20:16:01
 tags: design-pattern
 categories: About Java
 ---
-Head first 设计模式-命令模式
-
-<!-- more -->
-
-## 定义
-
 
 命令（Command）模式：又称Action模式或者Transaction模式。它属于对象的行为模式。命令模式把一个请求或者操作封装到一个对象中。命令模式允许系统使用不同的请求把客户端参数化，对请求排队或者记录请求日志，可以提供命令的撤销和撤销功能。
 

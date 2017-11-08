@@ -1,5 +1,5 @@
 ---
-title: 策略模式
+title:设计模式之策略模式
 date: 2016-04-01 08:27:32
 tags: design-pattern
 categories: About Java

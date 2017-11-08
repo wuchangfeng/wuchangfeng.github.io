@@ -177,7 +177,7 @@ import java.util.Observable;
     	}
 	}
 
-	class CurrentConditionsDisplays implements Observer,DisplayElements{
+class CurrentConditionsDisplays implements Observer,DisplayElements{
      Observable observable;
      private float temp;
      private float hum;
@@ -203,7 +203,7 @@ import java.util.Observable;
 	     }
 	 }
 
-	public class WeatherObservableStation {
+public class WeatherObservableStation {
 
 	public static void main(String[] args) {
         WeatherDatas weatherDatas = new WeatherDatas();

@@ -13,8 +13,6 @@ Head first 设计模式-设计模式入门，面向接口编程入门，**策略
 
 * 用组合而不用继承的好处
 
-<!-- more -->
-
 
 ### 一 . 设计原则
 
@@ -81,84 +79,83 @@ interface FlyBehavior{
 行为类1，可以飞行：
 
 ``` java
-	// 行为类1，可以飞
-	class FlyWithWings implements FlyBehavior{
+// 行为类1，可以飞
+class FlyWithWings implements FlyBehavior{
 
     @Override
     public void fly() {
 
         System.out.println("i am flying");
     	}
-	}
+}
 ```
 
 行为类2，不可以飞行：
 
 ``` java
-    // 行为类2，不可以飞
-	class FlyNoWay implements FlyBehavior{
+// 行为类2，不可以飞
+class FlyNoWay implements FlyBehavior{
 
     	@Override
     	public void fly() {
     	    System.out.println("i can not fly");
     	}
-	}
+}
 ```
 
 行为类3，可以用火箭一起飞：
 ``` java
-	class FlyRocketPowered implements FlyBehavior{
+class FlyRocketPowered implements FlyBehavior{
     @Override
     public void fly() {
         System.out.println("I am flying with rocket");
     }
-	}
+}
 ```
 
 ``` java
-	// 行为接口
-	interface QuackBehavior{
+// 行为接口
+interface QuackBehavior{
     	public void quack();
-	}
-
+}
 ```
 
 行为类4，能够像鸭子一样叫：
 
 ``` java
-	// 行为实现类
-	class Quack implements QuackBehavior{
+// 行为实现类
+class Quack implements QuackBehavior{
     @Override
     public void quack() {
         System.out.println("Quack");
     }
-	}
+}
 ```
 
 行为类5，比较安静的鸭子类：
 ``` java
-	// 行为实现类
-	class MuteQuack implements QuackBehavior{
+// 行为实现类
+class MuteQuack implements QuackBehavior{
     @Override
     public void quack() {
         System.out.println("slience");
     }
-	}
+}
 ```
 行为类6，具备Squeak特征：
 ``` java
-	// 行为实现类
-	class Squeak implements QuackBehavior{
+// 行为实现类
+class Squeak implements QuackBehavior{
     @Override
     public void quack() {
         System.out.println("Squeak");
     }
-	}
+}
 ```
 Duck类：
 
 ``` java
-	// 基类
+// 基类
 abstract class Duck {
     FlyBehavior flyBehavior;
     QuackBehavior quackBehavior;
@@ -184,13 +181,13 @@ abstract class Duck {
     public void swim(){
         System.out.println("we all can swim");
     }
-	}
+}
 ```
 
 具体实现类MallardDuck：
 ``` java
-	// 子类
-	class MallardDuck extends Duck{
+// 子类
+class MallardDuck extends Duck{
     public MallardDuck() {
         quackBehavior = new Quack();
         flyBehavior = new FlyWithWings();
@@ -199,12 +196,12 @@ abstract class Duck {
     public void display() {
         System.out.println("I am a mallardduck");
     }
-	}
+}
 ```
 具体实现类ModeDuck：
 ``` java
-    // 模型鸭子
-	class ModeDuck extends Duck{
+// 模型鸭子
+class ModeDuck extends Duck{
     public ModeDuck() {
         quackBehavior = new Quack();
         flyBehavior = new FlyNoWay();
@@ -213,13 +210,13 @@ abstract class Duck {
     public void display() {
         System.out.println("I am a modelduck");
     }
-	}
+}
 ```
 
 测试类：
 ``` java
-    // 测试类
-	public class MiniDuckSimulator {
+// 测试类
+public class MiniDuckSimulator {
 
     public static void main(String[] args) {
         System.out.println("======绿头鸭子=====");

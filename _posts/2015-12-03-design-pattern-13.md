@@ -1,17 +1,12 @@
 ---
-title: 组合模式
+title: 设计模式之组合模式
 date: 2016-05-07 16:21:59
 tags: design-pattern
 categories: About Java
 ---
 
-Head first 设计模式-组合模式
-
 组合模式，将对象组合成树形结构以表示“部分-整体”的层次结构，组合模式使得用户对单个对象和组合对象的使用具有一致性。
-
 文件系统以及 Android 中的 View 以及 ViewGroup 就是这样的结构。
-
-<!-- more -->
 
 ### 一 . 定义引入
 

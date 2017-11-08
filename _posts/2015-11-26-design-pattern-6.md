@@ -9,7 +9,7 @@ categories: About Java
 为什么需要单例模式有些对象我们只需要一个：线程池，缓存，对话框，注册表等对象，如果制造多了实例，会产生问题。接着在思考一个问题静态修饰符为什么与单例模式有关系？
 
 ``` java
-	public MyClass{
+public MyClass{
 		private MyClass();
 		public static MyClass getInstance(){
 			return new MyClass();
@@ -22,7 +22,7 @@ categories: About Java
 经典的单例模式：
 
 ``` java
-	public class Singleton {
+public class Singleton {
 	private static Singleton uniqueInstance;
 	// other useful instance variables here
 
@@ -44,7 +44,7 @@ categories: About Java
 然而一切都不会这么简单，采用了上述的方法之后，程序执行过程中只会有一个实例，但是在使用**多线程**时候就会出现不少问题，出现**两个实例对象**，这样很容易导致一些问题，程序紊乱。
 
 ```java
-	public class Singleton {
+public class Singleton {
 	private static Singleton uniqueInstance;
 	// other useful instance variables here
 
@@ -71,7 +71,7 @@ categories: About Java
 用"双重加锁检查"，在getInstance() 中减少使用同步。
 
 ``` java
-	public class Singleton {
+public class Singleton {
 	private volatile static Singleton uniqueInstance;
  
 	private Singleton() {}
@@ -101,8 +101,7 @@ categories: About Java
 那么，有没有一种延时加载，并且能保证线程安全的简单写法呢？我们可以把Singleton实例放到一个静态内部类中，这样就避免了静态实例在Singleton**类加载的时候就创建对象**，并且由于静态内部类只会被加载一次，所以这种写法也是线程安全的：
 
 ```java
-
-	public class Singleton {
+public class Singleton {
 
     private static class Holder {
         private static Singleton singleton = new Singleton();
@@ -116,11 +115,7 @@ categories: About Java
 	}
 ```
 
-全局变量与单间模式之间的比较
-
-记住这个模式的目的是什么？确保类只有一个实例并提供全局访问，全部变量可以提供全局访问，但是不能保证只有一个实例。
-
-另外单利模式的类，**是不能被继承的**，因为其构造器是私有的，我们不能破坏一些约定俗成的股则。
+全局变量与单间模式之间的比较记住这个模式的目的是什么？确保类只有一个实例并提供全局访问，全部变量可以提供全局访问，但是不能保证只有一个实例。另外单利模式的类，**是不能被继承的**，因为其构造器是私有的，我们不能破坏一些约定俗成的股则。
 
 
 ## 总结 

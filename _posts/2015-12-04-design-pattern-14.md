@@ -8,14 +8,14 @@ categories: About Java
 建造者模式可以将一个**产品的内部表象**与**产品的生成过程**分割开来，从而可以使一个建造过程生成具有不同内部表象的产品对象。Builder 是一步一步创建一个**复杂的对象**，其允许用户只通过制定复杂对象的类型和内容就可以构建它们。用户不知道内部的具体构建细节。引起的思考就是当设计的类有许多属性的时候，并且这些属性都处于一种可选的状态，用户可以自由定制，那么就可以使用建造者模式。
 
 
-### 一 . 定义
+### 角色定义
 
 * 建造者(Builder)角色：给出一个抽象接口，以规范产品对象的各个组成成分的建造。
 * 具体建造者(Concrete Builder)角色：实现 Builder 角色提供的接口，一步一步完成创建产品实例的过程。
 * 指导者(Director)角色：导演者并没有具体产品类的知识，真正拥有产品类具体知识的是具体的建造者对象。
 * 产品(Product)角色：产品便是建造中的复杂对象。
 
-### 二 . 入门实例
+### 入门实例
 
 需要构建的房子，房子的属性有窗户、地板等：
 ``` java
@@ -84,7 +84,7 @@ public class BuilderPattern {
 }
 ```
 
-### 三 . Builder 在 AlertDialog 中的应用
+### Builder 在 AlertDialog 中的应用
 
 AlertDialog 属于无设计者(Director)模式的应用：
 
@@ -153,7 +153,6 @@ Builder建造者:
 ```
 
 接着我们在代码中去构建 AlertDialog 实例，链式的调用，感觉真是非常优雅：
-
 ``` java
 // to build an instance of AlertDialog
 new AlertDialog.Builder()
@@ -163,7 +162,7 @@ new AlertDialog.Builder()
 		 .show();
 ```
 
-### 四 . Builder 在 Retrofit 中的应用
+### Builder 在 Retrofit 中的应用
 
 Retrofit Builder 部分源码如下所示：
 ``` java
@@ -259,7 +258,7 @@ RestAdapter adapter = new RestAdapter.Builder()
         }).build();
 ```
 
-### 五 . 总结
+### 总结
 
 **1.建造模式的优点**
 

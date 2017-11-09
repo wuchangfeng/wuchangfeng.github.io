@@ -93,7 +93,6 @@ Sample sampleA= creator(1);
 ```
 
 而我们的客户代码，如下，仔细想想这样有什么好处? 解耦呗，不用去关心工厂怎么创建出pizza的。
-
 ``` java
 	public class PizzaStore{
 		SimplePizzaFactory factory;
@@ -115,7 +114,6 @@ Sample sampleA= creator(1);
 ```
 
 接着回到一个简单的问题简单工厂和工厂方法之间有什么区别？
-
 **简单工厂**把全部的事情在一个地方都出处理完了，而**工厂方法**在创建一个框架，让子类决定如何实现。比方说：在工厂方法中，orderPizza() 提供了一个一般的框架，以便创造出pizza，orderPizza() 依赖工厂方法创建具体类，并制造出实际的pizza。可通过集成pizzaStore类，来决定实际上制造出的pizza是什么。简单工厂的做法是，可以将对象的创建封装起来，但是简单工厂不具备工厂方法的弹性，**因为简单工厂不能变更在创建的产品**即，假如你要增加pizza的种类，你要去工厂里面修改，这样是很**麻烦**。
 
 
@@ -123,21 +121,17 @@ Sample sampleA= creator(1);
 
 加盟店想提供不同口味的pizza，我们不方便有一个不同口味的加盟店就创建一种口味的pizza工厂。毕竟有许多过程是相同的，我们可以通过继承父类的方法，单独分离出来多个pizza工厂，每个工厂只能创建一中pizza，pizza总店还是抽象的，因为具体创建pizza 要交给**分店**去实现。
 
-
 我们首先声明一个工厂方法，其为抽象的，让不同的子类去不同的实现：
-
 ``` java
 	public abstracy class PizzaStore{
 		
 		public Pizza orderPizza(String type){
 			Pizza pizza;
 			pizza = create(type);
-			
 			pizza.prepare();
 			pizza.bake();
 			pizza.cut();
 			pizza.box();
-			
 			return pizza;
 		}
 	 // 这个方法 负责实例化 Pizza，此方法就如同一个"工厂" 
@@ -146,47 +140,39 @@ Sample sampleA= creator(1);
 ```
 
 上面这个超类的 orderPizza() 并不知道正在创建的 Pizza() 是哪一种，它只知道，创建的 pizza，要被 bake()....
-
 当然，必须有子类 Pizza 店，负责做出不同口味的 Pizza，并且子类 Pizza 点可以复用父类 Pizza 店处理订单的方法，也就是说，所有加盟店处理订单的方法都是一样的，有一个统一的规则。
 
 具体的生产不同口味的pizza工厂：
-
 ```java
-	public class NYPizzaStore extends PizzaStore{
-		Pizza createPizza(String item){
-			if(item.equals("cheese")){
-				return new NYStyleCheesePizza();
-			}else if(){
+public class NYPizzaStore extends PizzaStore{
+	Pizza createPizza(String item){
+		if(item.equals("cheese")){
+			return new NYStyleCheesePizza();
+		}else if(){
 			
-			}else return null;
+		}else return null;
 		}
-	}
+}
 ```
 
 当我们想要一个 NYstylePizza 时候，可以到 NYstylePizza 去购买：
-
 ```java
-	public class NYstyleCheesePizza extends Pizza{
-
-		public NYstyleCheesePizza{
-		
-		// someting todo with pizza;	
-		}
-
-      //  override something with father Pizza；
+public class NYstyleCheesePizza extends Pizza{
+	public NYstyleCheesePizza{
+	// someting todo with pizza;	
 	}
+    //  override something with father Pizza；
+}
 ```
 
 当然，我们还需要有一个抽象 pizza 类，提供一些基本的属性和方法，各种风味的 pizza 都必须继承这个啊。
-
 ``` java
-	public abstract class Pizza{
-		// something with pizza;	
-	}
+public abstract class Pizza{
+	// something with pizza;	
+}
 ```
 
 最后顾客订餐啦：
-
 ```java
 	PizzaStore nyStore = new NYstylestore();
 	Pizza pizza = nystore.orderPizza("cheese");
@@ -204,21 +190,19 @@ Sample sampleA= creator(1);
 建造原料工厂的接口，Dough为一接口，每个原料都有对应的方法创建该原料。每个原料都是一个类：
 
 ``` java
-	public interface PizzaIngredientFactory {
-      public Dough createDough();
-      public Sauce createSauce();
-	  public Cheese createCheese();
-	  public Veggies[] createVeggies();
-	  public Pepperoni createPepperoni();
-	  public Clams createClam(); 
-	}
+public interface PizzaIngredientFactory {
+    public Dough createDough();
+    public Sauce createSauce();
+	public Cheese createCheese();
+	public Veggies[] createVeggies();
+	public Pepperoni createPepperoni();
+	public Clams createClam(); 
+}
 ```
 
 创建纽约原料工厂，实现了上述的接口：
-
 ``` java
 public class NYPizzaIngredientFactory implements PizzaIngredientFactory {
- 
 	public Dough createDough() {
 		return new ThinCrustDough();
 	}
@@ -246,8 +230,7 @@ public class NYPizzaIngredientFactory implements PizzaIngredientFactory {
 	}
 ```
 
-纽约原料工厂的实现。重做 Pizza
-
+纽约原料工厂的实现。重做 Pizza:
 ``` java
 public abstract class Pizza {
 	String name;
@@ -289,7 +272,6 @@ public abstract class Pizza {
 抽象 Pizza 类，定义一些通用的方法，比如对 Pizza 的包装等等
 
 继续重做 Pizza，这次是中国味道的Pizza:
-
 ``` java
 public class CheesePizza extends Pizza {
 	PizzaIngredientFactory ingredientFactory;
@@ -304,8 +286,7 @@ public class CheesePizza extends Pizza {
 		sauce = ingredientFactory.createSauce();
 		cheese = ingredientFactory.createCheese();
 	}
-	}
-
+}
 ```
 
 工厂提供原料来制作Pizza 。prepare中创建Pizza，每当创建 Pizza 需要原料时就跟工厂要。**注意**Pizza和区域原料之间被完全解耦，无论原料工厂在哪里，我们都不需要关心。
@@ -314,7 +295,6 @@ public class CheesePizza extends Pizza {
 
 ``` java
 public abstract class PizzaStore {
- 
 	protected abstract Pizza createPizza(String item);
 	public Pizza orderPizza(String type) {
 		Pizza pizza = createPizza(type);
@@ -325,11 +305,10 @@ public abstract class PizzaStore {
 		pizza.box();
 		return pizza;
 	}
-	}
+}
 ```
 
 纽约的Pizza店铺：
-
 ``` java
 public class NYPizzaStore extends PizzaStore {
  
@@ -361,13 +340,12 @@ public class NYPizzaStore extends PizzaStore {
 		} 
 		return pizza;
 		}
-	}
+}
 ```
 
-客户订购 Pizza
-
+客户订购 Pizza:
 ``` java
-	public class PizzaTestDrive {
+public class PizzaTestDrive {
  
 	public static void main(String[] args) {
 		PizzaStore nyStore = new NYPizzaStore();

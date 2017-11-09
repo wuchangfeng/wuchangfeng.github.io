@@ -7,7 +7,7 @@ categories: About Java
 
 模板方法体现了了一种延迟实现的思想。**模板方法模式**在一个方法中定义一个算法的骨架，而将一些步骤延迟到子类中。模板方法使得子类可以在不改变算法结构的情况下，重新定义算法的某些步骤。
 
-### 引入一
+### 实例引入
 
 抽象基类，定义了模板方法即 prepareRecipe：
 
@@ -97,7 +97,6 @@ public abstract class CaffeineBeverageWithHook {
 
 ``` java
 public class CoffeeWithHook extends CaffeineBeverageWithHook {
- 
 	public void brew() {
 		System.out.println("Dripping Coffee through filter");
 	}
@@ -136,8 +135,7 @@ public class CoffeeWithHook extends CaffeineBeverageWithHook {
 }
 ```
 
-测试类
-
+测试类：
 ``` java
 public class BeverageTestDrive {
 	public static void main(String[] args) {
@@ -160,7 +158,7 @@ public class BeverageTestDrive {
  
 		System.out.println("\nMaking coffee...");
 		coffeeHook.prepareRecipe();
-		}
+	}
 }
 ```
 
@@ -210,7 +208,6 @@ public class Duck implements Comparable {
 ```
 
 测试类：
-
 ``` java
 public class DuckSortTestDrive {
 
@@ -242,7 +239,6 @@ public class DuckSortTestDrive {
 ```
 
 查看Java Api中的sort()方法，其中可以将**mergeSort()**看成模板方法，进一步compartTo() 由**子类或者别的类**来实现。
-
 ``` java
  public static void sort(Object[] a) {
         if (LegacyMergeSort.userRequested)
@@ -257,6 +253,7 @@ public class DuckSortTestDrive {
         mergeSort(aux, a, 0, a.length, 0);
 }
 ```
+
 查看一下源码中mergeSort()中的实现：
 ``` java
 private static void mergeSort(Object[] src,

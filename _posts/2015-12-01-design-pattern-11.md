@@ -332,7 +332,6 @@ public class GumballMachine {
 ```
 
 测试程序
-
 ``` java
 public class GumballMachineTestDrive {
 

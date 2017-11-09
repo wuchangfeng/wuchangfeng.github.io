@@ -29,15 +29,15 @@ categories: About Java
 Command:可以有执行和撤销的方法
 
 ``` java
-	interface Command{
-	  void execute();
-	}
+interface Command{
+	void execute();
+}
 ```
 
 Command的实现类：MyCommand，这里命令的实现者也可以有多个
 
 ``` java
-	public class MyCommand implements Command {  
+public class MyCommand implements Command {  
     private Receiver receiver;  
   
     public MyCommand(Receiver receiver) {  
@@ -47,24 +47,23 @@ Command的实现类：MyCommand，这里命令的实现者也可以有多个
     @Override  
     public void execute() {  
         receiver.action();  
-    	}  
-	}
+    }  
+}
 ```
 
 Receiver(命令的接收者,执行者):从这里看，命令的执行者有相当大的自由空间，想干嘛干嘛
 
 ``` java
-	public class Receiver {  
-
-    public void action() {  
+public class Receiver {  
+ public void action() {  
         System.out.println("I have received the command!");  
     	}  
-	}
+}
 ```
  Invoker(命令的请求者):当然，这里的命令请求者，也可以有多个。另外对于下面这段代码，其为命令的调用者，可以明显感觉到调用者根本没有跟命令的执行者有丝毫的交互，根本不用管命令的执行者怎么去执行命令的。
 
 ``` java
-	public class Invoker {  
+public class Invoker {  
     private Command command;  
   
     public Invoker(Command command) {  
@@ -74,21 +73,20 @@ Receiver(命令的接收者,执行者):从这里看，命令的执行者有相�
     public void action() {  
         command.execute();  
 	    }  
-	} 
+} 
 ```
 
 TestCommand测试类：
 
 ``` java
-	public class TestCommand {  
-  
+public class TestCommand {  
     public static void main(String[] args) {  
         Receiver receiver = new Receiver();  
         Command command = new MyCommand(receiver);  
         Invoker invoker = new Invoker(command);  
         invoker.action();  
     	}  
-	}
+}
 ```
 
 上面看来：命令模式就是进行**命令的封装**，将命令的**发出者**和命令的**执行者**分隔开，委派给不同的对象，这样实现解耦。这样即使需求发生变化，也只需修改部分模块的代码，比如命令发生变化，只需修改其**命令的实现类**，命令接受者发生变化只需修改Receiver，命令的发出者发生变化就只需修改Invoker。
@@ -109,20 +107,18 @@ TestCommand测试类：
 从这3步可以看到，宫保鸡丁并不是我想吃就我来做，而是传达给别人去做。 我要的是一个结果——宫保鸡丁这道菜做好了，而我无需去关系这道菜是怎么去做的。 
 
 抽象命令角色(Command)
-
 ``` java
-	interface Command {  
-      //口令执行 
-      public void execute();  
-      //口令撤销  
-      public void undo();  
-   }
+interface Command {  
+    //口令执行 
+    public void execute();  
+    //口令撤销  
+    public void undo();  
+}
 ```
 
 口令 -- 经小二传递，具体命令(ConcreteCommand)角色
-
 ``` java
-	class OrderCommand implements Command {  
+class OrderCommand implements Command {  
       private CookReceiver cook;  
   
       public OrderCommand(CookReceiver cook) {  
@@ -138,14 +134,12 @@ TestCommand测试类：
       public void undo() {  
           cook.unCooking();  
       }  
-   }
+}
 ```
 
 厨师--真正的口令执行者，它就是命令的接受者(Receiver)角色
- 
 ``` java
-	class CookReceiver {  
-
+class CookReceiver {  
     public void cooking() {  
         System.out.println("开始炒宫保鸡丁了...");  
     }  
@@ -153,13 +147,12 @@ TestCommand测试类：
     public void unCooking() {  
         System.out.println("不要炒宫保鸡丁了...");  
      }  
-	} 
+} 
 ```
 
 顾客--真正的口令发出者，即模板中的 Invoker，同样在这里我们并没有去直接调用厨师的 cook() 方法
-
 ``` java
-	class Customer {  
+class Customer {  
     private Command command;  
   
     public Customer(Command command) {  
@@ -174,41 +167,36 @@ TestCommand测试类：
     public void unOrder() {  
         command.undo();  
     }  
-	} 
+} 
 ```
 
 客户端测试类
-
 ``` java
-	public class Test { 
-
-    	public static void main(String[] args) {  
-        //等待口令的执行者 --炒菜总得有个厨师吧.   
-        CookReceiver receiver = new CookReceiver();  
-        //等待将口令传达给厨师 --因为顾客要什么菜还不知道，但口令始终要传达到厨师耳朵里这是肯定的。 
-        Command cmd = new OrderCommand(receiver);  
-        Customer customer = new Customer(cmd);  
-        //执行口令   
-        customer.order();  
-        //撤销口令   
-        customer.unOrder();  
+public class Test { 
+    public static void main(String[] args) {  
+    //等待口令的执行者 --炒菜总得有个厨师吧.   
+    CookReceiver receiver = new CookReceiver();  
+    //等待将口令传达给厨师 --因为顾客要什么菜还不知道，但口令始终要传达到厨师耳朵里这是肯定的。 
+    Command cmd = new OrderCommand(receiver);  
+    Customer customer = new Customer(cmd);  
+    //执行口令   
+    customer.order();  
+    //撤销口令   
+    customer.unOrder();  
    	 }  
-	} 
+} 
 ```
 
-
-## 总结 1
+## 总结 
 
 * 命令模式中，**请求者不直接和接受者进行交互**，即请求者不包含接受者的应用，这样消除了彼此之间的耦合。即有命令这个中间件。
 
 * 命令者模式满足了软件的“开-闭原则”。如果增加新的具体命令和该命令的接受者，不必修改调用者的代码，调用者就可以直接使用新的命令对象。反之如果增加新的调用者，不必修改现有的具体命令和接受者。新增加的调用者就可以使用已有的具体命令。
 
-*　由于请求者的请求被封装到了具体命令中，那么就可以将具体命令保存到持久化媒介中，在需要的时候重新执行这个具体命令。因此使用命令者模式可以记录日志
+* 由于请求者的请求被封装到了具体命令中，那么就可以将具体命令保存到持久化媒介中，在需要的时候重新执行这个具体命令。因此使用命令者模式可以记录日志
 
 * 使用命令者模式可以对请求者的请求进行排队，每个请求者各自对应一个具体命令，因此可以按一定的顺序执行这些命令。
 
-以上总结来自 [java设计模式之命令模式](http://blog.csdn.net/u010142437/article/details/12362173)
 
 
 
-* 

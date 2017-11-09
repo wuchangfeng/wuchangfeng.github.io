@@ -10,11 +10,11 @@ categories: About Java
 
 ``` java
 public MyClass{
-		private MyClass();
-		public static MyClass getInstance(){
-			return new MyClass();
-		}
+	private MyClass();
+	public static MyClass getInstance(){
+		return new MyClass();
 	}
+}
 ```
 
 ## 实例
@@ -102,7 +102,6 @@ public class Singleton {
 
 ```java
 public class Singleton {
-
     private static class Holder {
         private static Singleton singleton = new Singleton();
     }

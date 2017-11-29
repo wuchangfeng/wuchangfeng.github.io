@@ -5,7 +5,7 @@ date: 2017-08-28 18:55:56 +0800
 categories: 
 ---
 
-深入 Android 之复杂类型的 Item的RecyclerView。这个知识点，我觉得是Android实际开发中必须要具备的。感觉就是完全面向接口编程的能否用好的能力的体现。Google了一下，发现下面这个BatterAdapter项目非常好，拿过来分析一下。
+深入Android之复杂类型的Item的RecyclerView。这个知识点个人觉得是Android实际开发中必须要具备的。感觉就是完全面向接口编程的能否用好的能力的体现。Google了一下，发现下面这个BetterAdapter项目非常好，拿过来分析一下。同时，我也强烈推荐你阅读下[AdapterDelegates](http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0810/3282.html)这篇博客，提供了一种新的思路来实现复杂类型的RV。
 
 ### 原生Adapter
 
@@ -95,7 +95,7 @@ public interface Visitable {
 }
 ```
 
-每个数据视图继承访问者接口，拥有返回自己本身特性的能力
+每个数据视图继承访问者接口，拥有返回自己本身特性的能力：
 
 ```java
 public interface Animal extends Visitable {
@@ -106,7 +106,7 @@ public interface Animal extends Visitable {
 }
 ```
 
-每个数据视图就能返回自己特有的特性以及返回自己的数据类型Type的能力了
+每个数据视图就能返回自己特有的特性以及返回自己的数据类型Type的能力了：
 
 ```java
 public class Car implements Visitable {
@@ -133,7 +133,7 @@ public class Car implements Visitable {
 }
 ```
 
-抽象工厂类，包含所有需要的类型和对应的ViewHolder
+抽象工厂类，包含所有需要的类型和对应的ViewHolder：
 
 ```java
 public interface TypeFactory {
@@ -147,7 +147,7 @@ public interface TypeFactory {
 }
 ```
 
-通过不同的Item对应的Layout，返回对应的Type类型以及ViewHolder视图。之所以将onCreateViewHolder也放在TypeFactory中，是由于每个 Adapter 中可能 model 和 type 的对应不同, 比如同一个 model M , 在 Adapter a1 中对应 type1, 在 Adapter a2 中对应 type2, 所以 onCreateViewHolder 的实现也需要放在 TypeFactory 中解耦.
+通过不同的Item对应的Layout，返回对应的Type类型以及ViewHolder视图。之所以将onCreateViewHolder也放在TypeFactory中，是由于每个Adapter中可能model和type的对应不同, 比如同一个model M , 在Adapter a1中对应type1, 在Adapter a2中对应type2, 所以 onCreateViewHolder的实现也需要放在TypeFactory中解耦.
 
 
 ```java

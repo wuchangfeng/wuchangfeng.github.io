@@ -37,7 +37,7 @@ categories:
 
 二次加密验证，验证手机号码，这个见得真不少，印象中唯一一次还是在Google邮箱体验过。另外对于删除的文件，有一定额度期限的找回功能。
 
-![](http://ww1.sinaimg.cn/large/b10d1ea5ly1fn3nk4vx72j20mh0hb0th.jpg)
+![](http://ww1.sinaimg.cn/large/b10d1ea5ly1fn4uoz1vs0j20lo0ak0t8.jpg)
 
 ### 全平台
 

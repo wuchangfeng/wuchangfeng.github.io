@@ -10,7 +10,8 @@ Hello，你好。这是 allenwu 的个人博客，目前还是在天津读书的
 
 对一切感兴趣的，都会投入精力去研究。同样觉得，作为一个学生，不应该局限自己的视角。多尝试总是好的，哪怕只是浅尝辄止。
 
-另外如果我有幸得到您的赏识并有工作机会提供或者推荐，欢迎加我的微信。十分感谢。我的简历放在Google Driver上，如有不便，可以告知我。
+博客的内容方向除了技术之外，偶尔也会因为亢奋写一些电子产品的使用体验，以及一些小众软件“不全面”的体验。
+
 
 * [GitHub](https://github.com/wuchangfeng)
 * [Resume](https://drive.google.com/open?id=0B6gujcpxNOMYN2hZYmtQUk11X2c)

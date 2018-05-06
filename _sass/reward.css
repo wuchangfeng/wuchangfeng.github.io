@@ -1,0 +1,58 @@
+#rewardButton {
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    letter-spacing: normal;
+    text-transform: none;
+    text-indent: 0;
+    text-shadow: none;
+    background-color: transparent;
+}
+
+#rewardButton span {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    font-style: normal;
+    font-variant: normal;
+    font-stretch: normal;
+    font-size: 2.4em;
+    text-align: center;
+    line-height: 60px;
+    background: #f44336;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+#rewardButton span:hover {
+    background: #f7877f;
+}
+
+#QR {
+    padding-top: 10px;
+}
+
+#QR a {
+    border: 0;
+}
+
+#QR img {
+    width: 180px;
+    max-width: 100%;
+    display: inline-block;
+    margin: 0 1em;
+}
+
+#wechat p {
+    font-weight: bold;
+    color: #1BB823;
+}
+
+#alipay p {
+    font-weight: bold;
+    color: #1CA9E6;
+}

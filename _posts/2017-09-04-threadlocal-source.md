@@ -93,8 +93,8 @@ Thread#2 null
             createMap(t, value);
     }
 ```
-如上所示，大部分解释已经在代码中做出，注意注释1处，得到map对象之后，用的`this`作为key，this在这里代表的是当前线程的对象即t。
-另外就是第二句根据getMap获取一个ThreadLocalMap，其中getMap中传入了参数t(当前线程对象)，这样就能够获取`每个线程的ThreadLocal`了。
+如上所示，大部分解释已经在代码中做出，注意注释1处，得到map对象之后，用的`this`作为key，this在这里代表的是当前线程的ThreadLocal对象。
+另外就是第二句根据getMap获取一个ThreadLocalMap，其中getMap中传入了参数t(当前线程对象)，这样就能够获取每个线程的`ThreadLocal`了。
 继续跟进到ThreadLocalMap中查看set方法：
 
 #### ThreadLocalMap

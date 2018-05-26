@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 为什么你应该全面切换到Kotlin
+title: 为什么你应该全面切换到 Kotlin
 date: 2018-05-22 20:42:59 +0800
 categories: 
 ---

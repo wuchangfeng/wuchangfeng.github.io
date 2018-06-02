@@ -5,7 +5,7 @@ date: 2018-05-22 20:42:59 +0800
 categories: 
 ---
 
-**[翻译加工来自一片medium的文章](https://medium.com/@magnus.chatt/why-you-should-totally-switch-to-kotlin-c7bbde9e10d5)**，感谢原作者。
+**[翻译加工来自一篇medium的文章](https://medium.com/@magnus.chatt/why-you-should-totally-switch-to-kotlin-c7bbde9e10d5)**，感谢原作者。
 
 ### 0. 与Java无缝兼容
 

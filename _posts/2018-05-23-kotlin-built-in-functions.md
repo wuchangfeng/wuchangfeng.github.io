@@ -47,7 +47,7 @@ hello,kotlin
 ```kotlin
 public inline fun <T> T.apply(block: T.() -> Unit): T { block(); return this }
 ```
-解释：函数内可以用this替代调用apply函数的对象，返回值为该对象自己。
+解释：函数内可以用this替代调用apply函数的对象，返回值为该对象自己
 
 
 ### 2. run
@@ -71,7 +71,7 @@ public inline fun <T, R> T.run(block: T.() -> R): R {
     return block()
 }
 ```
-解释：根据上述执行代码，run函数返回闭包内最后一行。
+解释：根据上述执行代码，run函数返回闭包内最后一行
 
 ### 3. also
 
@@ -94,7 +94,7 @@ public inline fun <T> T.also(block: (T) -> Unit): T {
     return this
 }
 ```
-解释：从源码的定义可以看出，also执行block(闭包)，并返回this，即调用also函数的对象。
+解释：从源码的定义可以看出，also执行block(闭包)，并返回this，即调用also函数的对象
  
 ### 4. with
 
@@ -114,6 +114,6 @@ string
 ```kotlin
 public inline fun <T, R> with(receiver: T, block: T.() -> R): R = receiver.block()
 ```
-解释：并不是扩展函数，将指定对象作为函数的参数，在作用域内this替代该对象，返回值为该对象的最后一行。指定的T作为闭包的receiver，使用参数中闭包的返回结果。
+解释：并不是扩展函数，将指定对象作为函数的参数，在作用域内this替代该对象，返回值为该对象的最后一行。指定的T作为闭包的receiver，使用参数中闭包的返回结果
 
 以上，注意阅读Kotlin相关高阶函数的源码时候，如果函数中最后一个参数为闭包，那么最后一个参可以不写在括号中，而写在括号后面，如果只有一个参数，括号也可以去掉。

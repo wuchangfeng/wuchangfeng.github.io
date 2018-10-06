@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java 中一些好的编码风格
-date: 2018-10-01 22:55:41 +0800
+date: 2018-10-04 22:55:41 +0800
 categories: 
 ---
 
@@ -383,7 +383,7 @@ Object object = null;
 if(Objects.isNull(object){
     // TODO
 }
-``` 
+```
 
 ``` java
 String string = "";
@@ -477,7 +477,7 @@ if(....){ // 这是注释
 }
 
 boolean result = StringUtils.isBlank(varA) || Objects.isNull(varB); // 这是注释注释注释注释注释注释注释
-``` 
+```
 
 ``` java
 // 友好的行注释

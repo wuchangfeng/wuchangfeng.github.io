@@ -56,6 +56,14 @@ allprojects {
 
 同时 Android 工程的 buildToolsVersion 太低，将25改成27。
 
+### Gradle 版本升级
+
+gradle 版本要升级到 3.xx 吧，如果你的项目 gradle 版本是 2.xx之类。由此首要带来的的就是 compile 要改成implemention，本质上带来的好处是分包编译，加快编译速度。但是如果你的项目有多个 module 的话，并且 subModule要为 mainModule 提供 api 等，注意需要将 compile 改成 api. 另外，也要注意包含 apt 的依赖，如 eventbus 也要改一下依赖方式。
+
+### so 库的兼容性
+
+这个坑，如果没有一定经验真的很难发现。flutter 最后打包出的 apk 解压出来发现包含有 libflutter.so 包。然而为了兼容性的提高，flutter 会在四个不同类型的目录下放置 so 包，这就很很容易导致问题，因为大部分项目为了减少包大小以及追求合理性的兼容，只会有一个类似 armeabi 或者 armeabi-v7a 等。如此，解决方式就是修改 flutter.gradle 脚本中的相应 so 包注入代码，使其只注入特定目录下。这一点可以参考美团的 flutter 文章，其中有对应脚本实现。
+
 ### 验证
 
 最后，在 Android 宿主工程的 MainActivity 的 onCreate 方法中，加入以下代码，验证是否能够成功调起 Flutter 对应的页面：

@@ -6,14 +6,14 @@ categories:
 ---
 
 
-看到一篇非常好的文章，结合自己工作一段时间的感触，非常有体会。转载过来，对一些格式进行修正，并加上自己的一些体会。分享给大家，也给自己警示。
+看到一篇非常好的文章，结合自己工作一段时间的感触，非常有体会。转载过来，对一些格式进行修正，并加上自己的一些心得。给自己警示，也分享给大家。
 
 **本文来自 YQS_Love 的CSDN 博客 ，全文地址请点击：https://blog.csdn.net/YQS_Love/article/details/79432048?utm_source=copy**
 
 #### 1.方法名称的意义要明确 
 
   在提供方法时，一定要明确方法的用意，不然，他人在看到这个方法时会有歧义，以为用错了。
-例如： 我想根据no获取大于no的所有数据，而如下的方法其实是获取等于no的意思，而不是大于no的，因此会带来歧义。（我之前就犯过这样的错误 :(）
+例如： 我想根据 no 获取大于 no 的所有数据，而如下的方法其实是获取等于 no 的意思，而不是大于 no 的，因此会带来歧义。（我之前就犯过这样的错误 :(）
 
 ``` java
 // 不友好的定义
@@ -35,8 +35,7 @@ public List<Book> getBookListByGtNo(int no);
 
   在给方法提供参数时，方法的命名最好根据参数列表进行命名，这样调用者通过方法即可看到参数的调用顺序，而不必进入方法内查看参数列表，但此规则仅仅适用于参数较少的方法。
 
-例如：我想通过故事ID和用户ID去获取单个故事或者列表，给定故事ID和用户ID都是long型。
-
+例如：我想通过故事 ID 和用户 ID 去获取单个故事或者列表，给定故事 ID 和用户 ID 都是 long 型。
 
 ``` java
 // 不友好的定义
@@ -52,11 +51,11 @@ public Story getStoryByUidAndSid(Long uid,Long sid);
 
 #### 3.不返回给客户端映射数据库的实体类
 
-  在给客户端做接口时，返回的数据字段一定要是一个自定义的类，如果返回的结果直接是映射数据库的类，那么这将是灾难。在客户端需要增加返回字段时，你不得不在重新开一个新的接口。虽然有注解可以忽略掉让dao层不识别扩展的字段，但对于客户端变化如此之快的业务，这样做也不是明智之举，也会使得原始类变得臃肿，难以维护。（这个只有做过api接口和客户端对接的业务才会有深深的体会）
+  在给客户端做接口时，返回的数据字段一定要是一个自定义的类，如果返回的结果直接是映射数据库的类，那么这将是灾难。在客户端需要增加返回字段时，你不得不在重新开一个新的接口。虽然有注解可以忽略掉让 dao 层不识别扩展的字段，但对于客户端变化如此之快的业务，这样做也不是明智之举，也会使得原始类变得臃肿，难以维护。（这个只有做过api接口和客户端对接的业务才会有深深的体会）
 
 #### 4.能用包装类型时坚决不用基本类型
 
-  在定义的bean时，基本类型最好使用包装类，而数组最好使用List，因为List可以使用Java的一些新特性，用起来更方便，也能给他人提供很好的调用，除此之外，对List的操作要比操作数组安全得多，当然，这么做有不好之处，出现空指针的概率变大了，编码时要时刻注意。同时，有时候数据库的查询结果可能是 null，因为自动拆箱，用基本数据类型接收有 NPE 风险。（好处还不止这些）
+  在定义的 bean 时，基本类型最好使用包装类，而数组最好使用 List，因为 List 可以使用 Java 的一些新特性，用起来更方便，也能给他人提供很好的调用，除此之外，对 List 的操作要比操作数组安全得多，当然，这么做有不好之处，出现空指针的概率变大了，编码时要时刻注意。同时，有时候数据库的查询结果可能是 null，因为自动拆箱，用基本数据类型接收有 NPE 风险。（好处还不止这些）
 
 ``` java
 // 不友好的定义
@@ -74,7 +73,6 @@ public class TestClass{
 }
 ```
 
-
 ``` java
 // 友好的定义
 public class TestClass{
@@ -91,9 +89,9 @@ public class TestClass{
 }
 ```
 
-####  5.杜绝if else的层层嵌套
+####  5.杜绝 if else 的层层嵌套
 
-  在编码过程中，**如果能够使用反向条件过滤的逻辑，就先过滤掉，这样可以避免if else结构的层层嵌套**，使得代码看起来层次结构非常的清晰易懂，也便于维护。如下代码块，你更喜欢看哪块代码呢？
+  在编码过程中，**如果能够使用反向条件过滤的逻辑，就先过滤掉，这样可以避免 if else 结构的层层嵌套**，使得代码看起来层次结构非常的清晰易懂，也便于维护。如下代码块，你更喜欢看哪块代码呢？
 
 ``` java
 // 不友好的代码
@@ -143,91 +141,20 @@ public StringBuilder testMethod(HttpServletRequest request, Long commentsId) {
 
 ####  6.不要为了省事，编写较多的内部类
 
-  在编写代码时，如果你的类需要一些框架或者别人用无惨构造方法去构造对象的时候，尽量不要使用内部类的形式，如果非得要使用内部类，一定要将类定义为静态的，否则会导致这个内部类无法被构造。如果你忘记写这个static了（除非你非要这么做），那么将会给他人带来无数的“坑”。
+  在编写代码时，如果你的类需要一些框架或者别人用无惨构造方法去构造对象的时候，尽量不要使用内部类的形式，如果非得要使用内部类，一定要将类定义为静态的，否则会导致这个内部类无法被构造。如果你忘记写这个 static 了（除非你非要这么做），那么将会给他人带来无数的“坑”。
 
 
 ####  7.不要吝啬空行
 
-  编写代码时，可以根据业务将代码分行，用空行告知代码下一步是做什么的，**在你觉得该留空行的地方的留上空行**，而不是整个方法一行空行都没有，那样的代码真的很糟糕。（例子可能给得不恰当）
-
-``` java
-// 不友好的代码
-public void testMethod(int day) {
-    MoneyDayStatisticsBean moneyDayStatisticsBean = new MoneyDayStatisticsBean();
-    DateTime time = DateTime.now().minusDays(day);
-    String date = time.toString("yyyyMMdd");
-    Long start = getMinMillis(time);
-    Long end = getMaxMillis(time);
-    StatsWithdrawCostResultDto statsWithdrawCostResultDto = withdrawStatsJob.statsWithdrawCost(start, end);
-    moneyDayStatisticsBean.setId(redisIDService.generate(MoneyDayStatisticsBean.class));
-    MoneyDayStatisticsBean lastMoneyDayStatisticsBean = moneyDayStatisticsDao.findLastBean();
-    if (!Objects.isNull(lastMoneyDayStatisticsBean)) {
-        moneyDayStatisticsBean.setTotalCost(lastMoneyDayStatisticsBean.getTotalCost().add(moneyDayStatisticsBean.getPlatformCost()));
-    } else {
-        moneyDayStatisticsBean.setTotalCost(moneyDayStatisticsBean.getPlatformCost());
-    }
-    moneyDayStatisticsBean.setCreateTime(DateTime.now().getMillis());
-    WlTaskIncomePay incomePayByDate = businessStatService.getIncomePayByDate(date);
-    long totalIncome = businessStatService.getTotalIncome(date);
-    Double totalIncomeMoney = NumUtil.dividedBy100(totalIncome);
-    moneyDayStatisticsBean.setTotalIncome(totalIncomeMoney);
-    moneyDayStatisticsBean.setIncome(Objects.isNull(incomePayByDate) ?
-            0 : NumUtil.dividedBy100(incomePayByDate.getIncomeTotal()));
-    double totalCost = moneyDayStatisticsBean.getTotalCost().doubleValue();
-    long res = totalIncome - NumUtil.multiplyBy100(totalCost);
-    moneyDayStatisticsBean.setTotalSurplus(NumUtil.dividedBy100(res));
-    moneyDayStatisticsDao.save(moneyDayStatisticsBean);
-}
-```
-
-``` java
-// 友好的代码
-public void testMethod(int day) {
-
-    MoneyDayStatisticsBean moneyDayStatisticsBean = new MoneyDayStatisticsBean();
-
-    DateTime time = DateTime.now().minusDays(day);
-    String date = time.toString("yyyyMMdd");
-    Long start = getMinMillis(time);
-    Long end = getMaxMillis(time);
-
-    StatsWithdrawCostResultDto statsWithdrawCostResultDto = withdrawStatsJob.statsWithdrawCost(start, end);
-    MoneyDayStatisticsBean lastMoneyDayStatisticsBean = moneyDayStatisticsDao.findLastBean();
-
-    moneyDayStatisticsBean.setId(redisIDService.generate(MoneyDayStatisticsBean.class));
-    if (!Objects.isNull(lastMoneyDayStatisticsBean)) {
-        moneyDayStatisticsBean.setTotalCost(lastMoneyDayStatisticsBean.getTotalCost().add(moneyDayStatisticsBean.getPlatformCost()));
-    } else {
-        moneyDayStatisticsBean.setTotalCost(moneyDayStatisticsBean.getPlatformCost());
-    }
-
-    moneyDayStatisticsBean.setCreateTime(DateTime.now().getMillis());
-
-    WlTaskIncomePay incomePayByDate = businessStatService.getIncomePayByDate(date);
-
-    long totalIncome = businessStatService.getTotalIncome(date);
-    Double totalIncomeMoney = NumUtil.dividedBy100(totalIncome);
-
-    moneyDayStatisticsBean.setTotalIncome(totalIncomeMoney);
-    moneyDayStatisticsBean.setIncome(Objects.isNull(incomePayByDate) ?
-            0 : NumUtil.dividedBy100(incomePayByDate.getIncomeTotal()));
-
-    double totalCost = moneyDayStatisticsBean.getTotalCost().doubleValue();
-    long res = totalIncome - NumUtil.multiplyBy100(totalCost);
-    moneyDayStatisticsBean.setTotalSurplus(NumUtil.dividedBy100(res));
-
-    moneyDayStatisticsDao.save(moneyDayStatisticsBean);
-}
-```
-
+  编写代码时，可以根据业务逻辑将代码分行，用空行告知代码下一步是做什么的，**在你觉得该留空行的地方的留上空行**，而不是整个方法一行空行都没有，那样的代码真的很糟糕。
 
 ####  8.不让代码连火车
 
-  编写代码时，一行代码不要太长，如果太长，可在和合适的地方断行。我使用的工具是IDEA，我的建议是，代码的长度不要超过IDEA设定的两条竖线，多那么一丁点也是可以的。同时，方法的参数也应该在合适的地方断行，方便在查看方法时能够快速找到。 
-  如下图，超级长的代码，已经远远的超出IDEA设定的竖线。合适的做法是在appkey变量名后断行，这样更加优雅和美观。 
+  编写代码时，一行代码不要太长，如果太长，可在和合适的地方断行。我使用的工具是 IDEA，我的建议是，代码的长度不要超过 IDEA 设定的两条竖线，多那么一丁点也是可以的。同时，方法的参数也应该在合适的地方断行，方便在查看方法时能够快速找到。 
+  如下图，超级长的代码，已经远远的超出IDEA设定的竖线。合适的做法是在 appkey 变量名后断行，这样更加优雅和美观。 
 
 
-####  9.定义API接口时，一个参数占据一行
+####  9.定义 API 接口时，一个参数占据一行
 
   定义接口时，最好的做法是一个参数占据一行，不要因为参数短，让几个参数占据一行，这使得在查看接口时，不能很好的识别参数的类型、名称等其他属性。
 
@@ -269,24 +196,24 @@ public JSONResult getUserMessage(@ApiParam("查询时间") @RequestParam(value =
 
   看过很多前辈代码，有大写的，有小写的，让人感觉很乱。我的建议是将这些变量定义成大写，借助开发工具，能够快速识别这些变量时说明类型。
 
-####  11.利用IDEA的功能对代码按照一定的规则分块
+####  11.利用 IDEA 的功能对代码按照一定的规则分块
 
-  有时候一个类中，代码可能比较多，业务也比较复杂，在他人查看代码时，如果这些业务方法没有进行分类排版，而是错中复杂的穿插在各行，这样的代码是很糟糕的。IDEA提供了如下命令：
+  有时候一个类中，代码可能比较多，业务也比较复杂，在他人查看代码时，如果这些业务方法没有进行分类排版，而是错中复杂的穿插在各行，这样的代码是很糟糕的。IDEA 提供了如下命令：
 
-//region 业务模块名称
-//endregion 业务模块名称12
+// region 业务模块名称
+// endregion 业务模块名称12
 
 在这个标签内的代码，可以灵活的展开和隐藏。这样，我们在编码时，就可以将相同业务的方法放入到此代码中，那么，在review代码时，就变得轻松多了。
 
 
-####  12.一定要重载bean类的toString()方法
+####  12.一定要重载 bean 类的 toString() 方法
 
-  构建bean对象时，一定要重载toString()方法，在方法执行抛出异常时，可以直接调用 类的 toString()方法打印其属性值，便于排查问题，而不是需要debug才能知道类的属性值。
+  构建 bean 对象时，一定要重载 toString()方法，在方法执行抛出异常时，可以直接调用 类的 toString() 方法打印其属性值，便于排查问题，而不是需要 debug 才能知道类的属性值。
 
 
-#### 13.Object的equals方法最正确的用法
+#### 13.Object 的 equals 方法最正确的用法
 
-  Object 的 equals 方法容易抛空指针异常，如果明确的知道某个变量不可能为空指针，应使用常量或确定有值的对象来调用equals。 例如：
+  Object 的 equals 方法容易抛空指针异常，如果明确的知道某个变量不可能为空指针，应使用常量或确定有值的对象来调用 equals。 例如：
 
 ``` java
 // 不友好的代码
@@ -295,17 +222,17 @@ object.equals("test");
 
 ``` java
 // 友好的代码
-"test".equals(object);12345
+"test".equals(object);
 ```
 
-####  14.使用private隐藏不想让外界访问的方法
+####  14.使用 private 隐藏不想让外界访问的方法
 
-  现在开发项目都是基于IDE，IDE的代码提示功能方便了我们的开发。因此，在平时的开发中，如果某些方法不需要让外部所调用而引起错误，那么应该将其修饰为private的，这样可以减少错误调用导致的程序错误。编码时脑袋里不要理所当然的都是public。**对比下，Android开发时候控件的索引都是用private修饰的**
+  现在开发项目都是基于 IDE，IDE 的代码提示功能方便了我们的开发。因此，在平时的开发中，如果某些方法不需要让外部所调用而引起错误，那么应该将其修饰为 private 的，这样可以减少错误调用导致的程序错误。编码时脑袋里不要理所当然的都是public。**对比下，Android 开发时候控件的索引都是用 private 修饰的**
 
 
 ####  15.利用集合运算提高程序的效率以及代码简洁度
 
-  做项目开发时会经常遇到这样的情况，从用户表得到了一批用户id集合，根据业务需求需要过滤掉一些不符合业务需求的用户id，将余下的用户id在进行别的也操作。那么，经常看到有同事是通过如下代码来处理的：
+  做项目开发时会经常遇到这样的情况，从用户表得到了一批用户 id 集合，根据业务需求需要过滤掉一些不符合业务需求的用户 id，将余下的用户 id 在进行别的也操作。那么，经常看到有同事是通过如下代码来处理的：
 
 ``` java
 List<Long> uidList = new ArrayList<>();
@@ -400,12 +327,12 @@ if(CollectionUtils.isEmpty(datas){
 这些方法还有反向条件的方法：Objects.nonNull(obj),StringUtils.isNotBlank(obj),CollectionUtils.isNotEmpty(obj),这样的代码更加直观的表达了开发者的用意，且使得代码更加的优雅。
 
 
-####  17.定义类的成员变量时，Boolean类型不要以is开头
+####  17.定义类的成员变量时，Boolean 类型不要以 is 开头
 
   定义为基本数据类型 boolean isSuccess； 的属性，它的方法也是 isSuccess()， 框架在反向解析的时候， “以为”对应的属性名称是 success，导致属性获取不到，进而抛出异常。
 
 
-####  18.能不用else坚决不用
+####  18.能不用 else 坚决不用
 
   话不多说，直接上代码，你更喜欢哪块代码呢？
 
@@ -447,9 +374,9 @@ public class TestService {
 }
 ```
 
-####  20.使用Java8 lambda简化代码，使代码不仅优雅还高大上
+####  20.使用 Java8 lambda 简化代码，使代码不仅优雅还高大上
 
-   一段普通的方法与Java8 lambda语法的示例。
+   一段普通的方法与 Java8 lambda语法的示例。
 
 ``` java
 // 普通的代码
@@ -492,7 +419,7 @@ boolean result = StringUtils.isBlank(varA) || Objects.isNull(varB);
 
 ####  22.接口类中的方法和属性不要加任何修饰符号
 
-这一点经常在老司机代码中看见，IDE会提示没啥用。
+这一点经常在老司机代码中看见，IDE 会提示没啥用。
 
 ``` java
 // 不友好的定义
@@ -532,7 +459,7 @@ if(...){
 
 ####  24. 容易被遗忘的关键字 - switch
 
-  在某些控制语句中，如果能用switch解决的，推荐使用switch，例如条件表达式是枚举常量或者其他可使用switch完成的，应都用switch来控制，switch不仅可以使代码简洁，且分支跳转效率要比if else效率高。同时需要注意，**即使default分支什么都不处理，我们也应该写上**。补充，最后一个case的break一定要写。
+  在某些控制语句中，如果能用 switch 解决的，推荐使用 switch，例如条件表达式是枚举常量或者其他可使用 switch 完成的，应都用 switch 来控制，switch 不仅可以使代码简洁，且分支跳转效率要比if else 效率高。同时需要注意，**即使 default 分支什么都不处理，我们也应该写上**。补充，最后一个 case 的 break 一定要写。
 
 ``` java
 // 不友好的代码
@@ -562,7 +489,7 @@ switch(var){
 
 ####  25. 集合初始化时尽量指定集合初始值
 
-  ArrayList 尽量使用 ArrayList( int initialCapacity) 初始化，Map等其他集合类类似。特别是对于一些明确知道集合大小的情况下最为妥当，可以防止集合扩容而牺牲不必要的空间和时间。
+  ArrayList 尽量使用 ArrayList( int initialCapacity) 初始化，Map 等其他集合类类似。特别是对于一些明确知道集合大小的情况下最为妥当，可以防止集合扩容而牺牲不必要的空间和时间。
 
 ``` java
 // 不友好的代码（例子为接收Redis的响应结果,外部传入taskKeyList）
@@ -586,10 +513,10 @@ for (String taskKey : taskKeyList) {
 }
 ```
 
-####  26.获取系统时间戳用System. currentTimeMillis()
+####  26.获取系统时间戳用S ystem. currentTimeMillis()
 
-  获取当前毫秒数 System. currentTimeMillis(); 而不是 new Date(). getTime()，或者JodaTime的 new DataTime()。如果想获取更加精确的纳秒级时间值，用 System. nanoTime()。 
-  Reason:System. currentTimeMillis()是一个native方法，并且被static修饰，效率更高，而new开辟的对象不仅消耗空间，还浪费时间。
+  获取当前毫秒数 System. currentTimeMillis(); 而不是 new Date(). getTime()，或者 JodaTime 的 new DataTime()。如果想获取更加精确的纳秒级时间值，用 System. nanoTime()。 
+  Reason:System. currentTimeMillis()是一个 native 方法，并且被 static 修饰，效率更高，而 new 开辟的对象不仅消耗空间，还浪费时间。
 
 
 ####  27.循环体中的语句要考量try-catch性能。 
@@ -644,11 +571,11 @@ public void tryCatchTest() {
 }
 ```
 
-1） 使用Redis的有序集合时，一定要注意如果想要实现分页时，Redis不会将分页的大小减1，而是从0到分页大小的下标取数据，所有如果分页取20，那么最终结果是21个。因为它是按照数组的下标取值的。如果想要取第二页，那么，如果按照mysql的分页规则，那么，redis的size需要加上offset的值，否则分页将不正确。（以上仅限Redis的集合类）
+1） 使用 Redis 的有序集合时，一定要注意如果想要实现分页时，Redis 不会将分页的大小减 1，而是从 0 到分页大小的下标取数据，所有如果分页取20，那么最终结果是 21个。因为它是按照数组的下标取值的。如果想要取第二页，那么，如果按照 mysql 的分页规则，那么，redis 的size 需要加上 offset 的值，否则分页将不正确。（以上仅限Redis的集合类）
 
 2）在从数据库中获取带状态的数据时，一定要加上状态。比如，现在要获取一个任务，这个任务的状态类型有下线、删除和有效状态，那么，在获取某个任务时，一定要带状态，否则当有相同数据但状态不同时，就会产生错误。
 
-3） 在使用Map时，一定要注意数据类型要一致。 
+3） 在使用 Map 时，一定要注意数据类型要一致。 
 
 例如：
 Map<String,String> datas = new HashMap<>();
@@ -658,23 +585,23 @@ datas.put("10002","oo");
 Long testKey = 10001L;
 String res = datas.get(testKey);
 
-不要以为res的值为“haha”，那你就错了，res的值为null.查看源码变可以知道，Map的方法：V get(Object key); 其实是将key键当做对象来处理的，因此，会导致取不到结果，正确的做法是将Long类型的key转化为String型或者存储和取值保存一样的方式，如下：
+不要以为 res 的值为“haha”，那你就错了，res 的值为 null.查看源码变可以知道，Map 的方法：V get(Object key); 其实是将 key 键当做对象来处理的，因此，会导致取不到结果，正确的做法是将 Long 类型的 key 转化为 String 型或者存储和取值保存一样的方式，如下：
 
 String res = datas.get(String.valueOf(testKey));1
 
 这样就可以得到正确的结果。注意:
 
-1） 自定义对象比较记得重载hashCode和equals方法。 
-  在使用CollectionUtils时，一定要小心用户自定义对象类集合的比较，因为这些自定义类如果没有重载hashCode和equals方法时，将得不到你想要的结果。 
+*  自定义对象比较记得重载 hashCode 和 equals 方法。 
+  在使用 CollectionUtils 时，一定要小心用户自定义对象类集合的比较，因为这些自定义类如果没有重载 hashCode 和 equals 方法时，将得不到你想要的结果。 
 
-2）编写MySQL语句时，对每个字段都加‘`field_name`’。 MySQL环境对sql语句中出现关键字时，如果没有加“` `”的话，会报语法错误，导致项目出现Server Error，因此，以后项目编码过程中最好都带“` `”，防止不必要的bug，增加不必要的Bug修复操作。
+* 编写 MySQL 语句时，对每个字段都加‘`field_name`’。 MySQL环境对sql语句中出现关键字时，如果没有加“` `”的话，会报语法错误，导致项目出现 Server Error，因此，以后项目编码过程中最好都带“` `”，防止不必要的bug，增加不必要的Bug修复操作。
 
-3） 小心整形数相除得不到小数部分。 两个整形相除会得不到小数部分，因此需要转化除数。 
+* 小心整形数相除得不到小数部分。 两个整形相除会得不到小数部分，因此需要转化除数。 
 例如： 
 double res = 10 / 3.0; 
-必须将3写成3.0，否则结果将是3.0，而不是3.333
+必须将3写成 3.0，否则结果将是 3.0，而不是 3.333
 
-4）基本数据类型的包装类对象之间值的比较，全部都用equals方法比较。 
+* 基本数据类型的包装类对象之间值的比较，全部都用 equals 方法比较。 
   对于 Integer var=?在-128 至 127 之间的赋值， Integer 对象是在 
 IntegerCache. cache 产生，会复用已有对象，这个区间内的 Integer 值可以直接使用==进行 
 判断，但是这个区间之外的所有数据，都会在堆上产生，并不会复用已有对象，这是一个大坑， 

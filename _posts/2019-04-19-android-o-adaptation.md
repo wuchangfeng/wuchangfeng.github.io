@@ -10,7 +10,7 @@ categories:
 ### 应用快捷方式创建的改变
 
 Android 8.0 对应用快捷方式做出了以下变更：` com.android.launcher.action.INSTALL_SHORTCUT`
- 广播不再会对您的应用有任何影响，因为它现在是私有的隐式广播。相反，您应使用 `ShortcutManager`类中的 `requestPinShortcut`函数创建应用快捷方式。以下是 Android O 以及之后 OS 创建快捷方式的逻辑：
+ 广播不再会对您的应用有任何影响，因为它现在是私有的隐式广播。相反，您应使用 `ShortcutManager`类中的 `requestPinShortcut`函数创建应用快捷方式。以下是 Android O 以及之后 Android 系统创建快捷方式的逻辑：
 
 ```java
 ShortcutManager shortcutManager = (ShortcutManager) context.getSystemService(Context.SHORTCUT_SERVICE);
@@ -31,7 +31,7 @@ ShortcutManager shortcutManager = (ShortcutManager) context.getSystemService(Con
 
 Android N 在 App 间对 `file://` 的分享做了严格的校验，所有包含 `file://` 的 URI 的 Intent 离开开发 App (调用相机拍照`,`剪裁图片`,`调用系统安装器安装 Apk)，传递一个 File ，都会抛出 FileUriExposedException 的错误，并且引发 Crash。实际上也提供了解决方案，那就是 FileProvider，通过 `comtent://` 的模式替换掉 `file://` ，同时，需要开发者主动升级 targetSdkVersion 到 24 才会执行此策略，也留给了开发者升级的时间。
 
-不过，如果实在来不及或者只需要渠道适配的话，可以采用以下取巧模式，在基类 onCreate 中添加即可，具体可以参考[stackoverflow这个回复](https://stackoverflow.com/questions/44821017/fileuriexposedexception-using-android-7)：
+不过，如果实在来不及或者只需要渠道适配的话，可以采用以下取巧模式，在基类 onCreate() 方法中添加即可，具体可以参考[stackoverflow 这个回复](https://stackoverflow.com/questions/44821017/fileuriexposedexception-using-android-7)：
 
 ```java
 StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
@@ -44,7 +44,7 @@ StrictMode.setVmPolicy(builder.build());
 
 ```java
 intent.action = "com.example.test.CLOSE”;
-intent.setPackage(getPackageName()); //指定包名
+intent.setPackage(getPackageName()); // 指定包名
 context.sendBroadcast(intent);
 ```
 
@@ -116,7 +116,7 @@ private class NetworkCallbackImpl extends ConnectivityManager.NetworkCallback {
 
 ### 悬浮窗权限问题
 
-如果项目中有使用到悬浮窗并且进行相应的悬浮窗权限适配，则极易出现关键字为 `  android.view.WindowManager$BadTokenException` crash 日志。使用 `SYSTEM_ALERT_WINDOW` 权限的应用无法再使用以下窗口类型来在其他应用和系统窗口上方显示提醒窗口：`TYPE_PHONE`,`TYPE_PRIORITY_PHONE`,`TYPE_SYSTEM_ALERT`,`TYPE_SYSTEM_OVERLAY`，`TYPE_SYSTEM_ERROR`。相反，应用必须使用名为 `TYPE_APPLICATION_OVERLAY` 的新窗口类型。该情形适配较简单，做以下区别适配即可：
+如果项目中有使用到悬浮窗并且进行相应的悬浮窗权限适配，则极易出现关键字为 `  android.view.WindowManager$BadTokenException` Crash 日志。使用 `SYSTEM_ALERT_WINDOW` 权限的应用无法再使用以下窗口类型来在其他应用和系统窗口上方显示提醒窗口：`TYPE_PHONE`,`TYPE_PRIORITY_PHONE`,`TYPE_SYSTEM_ALERT`,`TYPE_SYSTEM_OVERLAY`，`TYPE_SYSTEM_ERROR`。相反，应用必须使用名为 `TYPE_APPLICATION_OVERLAY` 的新窗口类型。该情形适配较简单，做以下区别即可：
 
 ```java
 if (Build.VERSION.SDK_INT >= 26) {
@@ -151,4 +151,4 @@ NotificationCompat.Builder builder = new NotificationCompat.Builder(context, Not
 
 ### 后台服务限制
 
-如果针对 Android 8.0 的应用尝试在不允许其创建后台服务的情况下使用 startService() 函数，则该函数将引发一个 IllegalStateException。因而所有的 startService() 都有必要进行安全启动，即 try-catch 大法。
+如果针对 Android 8.0 的应用尝试在不允许其创建后台服务的情况下使用 startService() 函数，则该函数将引发一个 IllegalStateException。因而所有的 startService() 都有必要进行安全启动，即 Try-Catch 大法。

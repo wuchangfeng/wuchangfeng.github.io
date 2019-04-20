@@ -29,9 +29,9 @@ ShortcutManager shortcutManager = (ShortcutManager) context.getSystemService(Con
 
 ### FileProvider机制的出现(Android N)
 
-Android N 在 App 间对 `file://` 的分享做了严格的校验，所有包含 `file://` 的 URI 的 Intent 离开开发 App (调用相机拍照`,`剪裁图片`,`调用系统安装器安装 Apk)，传递一个 File ，都会抛出 FileUriExposedException 的错误，并且引发 Crash。实际上也提供了解决方案，那就是 FileProvider，通过 `comtent://` 的模式替换掉 `file://` ，同时，需要开发者主动升级 targetSdkVersion 到 24 才会执行此策略，也留给了开发者升级的时间。
+Android N 在 App 间对 `file://` 的分享做了严格的校验，所有包含 `file://` 的 URI 的 Intent 离开当前 App (调用相机拍照`,`剪裁图片`,`调用系统安装器安装 Apk)，若未做适配，传递 File 都会抛出 FileUriExposedException 的错误，并且会引发应用的 Crash。实际上 Android 官方也提供了解决方案即 FileProvider 机制，通过 `content://` 的模式替换掉 `file://` ，开发者主动升级项目 targetSdkVersion 到 24 才会执行此策略。
 
-不过，如果实在来不及或者只需要渠道适配的话，可以采用以下取巧模式，在基类 onCreate() 方法中添加即可，具体可以参考[stackoverflow 这个回复](https://stackoverflow.com/questions/44821017/fileuriexposedexception-using-android-7)：
+不过，如果实在来不及或者只需要部分渠道适配的话，可以采用一些取巧模式，即在基类 onCreate() 方法中添加如下代码即可，具体可以参考[stackoverflow 这个回复](https://stackoverflow.com/questions/44821017/fileuriexposedexception-using-android-7)：
 
 ```java
 StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
@@ -62,6 +62,7 @@ Android N 移除了三项隐式广播，以帮助优化内存使用和电量消�
 // 基类
 private MainActivity extend Activity{
   private void onCreate(){
+      // 注册
     networkCallback = new NetworkCallbackImpl();
         NetworkRequest.Builder builder = new NetworkRequest.Builder();
         NetworkRequest request = builder.build();
@@ -70,6 +71,7 @@ private MainActivity extend Activity{
   }
   
   private void onDestory(){
+      // 解注册
     connectivityManager.unregisterNetworkCallback(networkCallback);
   }
 }

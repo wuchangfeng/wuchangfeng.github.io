@@ -14,7 +14,7 @@ categories:
 
 * 1.2 启动和终止线程，分别从构造线程、启动、终断和终止角度讲述
 
-* 1.3 线程间通讯，分别从volatile和synchronized 关键字、等待通知、管道输入和输出、Thread.join()、ThreadLocal使用角度讲述
+* 1.3 线程间通讯(线程安全)，分别从 volatile 和 synchronized 关键字、等待通知、管道输入和输出、Thread.join()、ThreadLocal使用角度讲述
 
 
 ### 2.Java 中的线程池
@@ -23,22 +23,22 @@ categories:
 
 * 2.2 流程是提交线程-核心线程池是否已满- 队列是否已满-线程池是否已满-按照策略处理无法执行的任务
 
-* 2.3 线程池基本参数如：corePoolSize线程池基本大小-任务队列-ThreadFactory-线程池最大数量-饱和策略
+* 2.3 线程池基本参数如：corePoolSize 线程池基本大小-任务队列- ThreadFactory -线程池最大数量-饱和策略
 
 ### 3.Executor 框架
 
-* 3.1 理解Executor接口框架，其成员主要：ThreadPoolExecutor、ScheduledThreadPoolExecutor、Future接口、Runnable接口、Callable接口，工具类Executors
+* 3.1 理解 Executor 接口框架，其成员主要：ThreadPoolExecutor、ScheduledThreadPoolExecutor、Future 接口、Runnable 接口、Callable 接口，工具类 Executors
 
-* 3.2 ThreadPoolExecutor详解，上述框架的核心类，分别从 FixedThreadPool、singleThreadExecutor、CachedThreadPool角度讲述
+* 3.2 ThreadPoolExecutor 详解，上述框架的核心类，分别从 FixedThreadPool、singleThreadExecutor、CachedThreadPool 角度讲述
 
 * 3.3 理解一个知识点即：FutureTask，异步计算的结果，明白其作用、使用、实现原理
 
 
 ### 4.Java 并发容器和框架
 
-* 4.1 要知道ConcurrentHashMap出现的原因，实现关键点记住分段锁、Segment等，另外同类型的要知道ConcurrentLinkedQueue
+* 4.1 要知道 ConcurrentHashMap 出现的原因，实现关键点记住分段锁、Segment 等，另外同类型的要知道ConcurrentLinkedQueue
 
-* 4.2 知道Java中的阻塞队列，阻塞队列实现原理即当队列满了不会让你继续入队，出队同理，典型的阻塞队列如 ArrayBlockingQueue、LinkedBlockingQueue等
+* 4.2 知道 Java 中的阻塞队列，阻塞队列实现原理即当队列满了不会让你继续入队，出队同理，典型的阻塞队列如 ArrayBlockingQueue、LinkedBlockingQueue 等
 
 * 4.3 一个少见的知识点 Fork/Join框架
 
@@ -55,50 +55,50 @@ categories:
 
 ### 6.Java 中的锁
 
-* 6.1 Lock接口 其实现原理基本上都是通过聚合了一个AQS的子类来完成线程访问控制的
+* 6.1 Lock 接口 其实现原理基本上都是通过聚合了一个 AQS 的子类来完成线程访问控制的
 
-* 6.2 队列同步器 AQS是实现锁的关键，其使用一个int成员变量表示同步状态，通过内置的FIFO队列完成资源获取线程的排队工作
+* 6.2 队列同步器 AQS 是实现锁的关键，其使用一个int 成员变量表示同步状态，通过内置的 FIFO 队列完成资源获取线程的排队工作
 
 * 6.3 重入锁 ReentrantLock 表示该锁能够支持一个线程对资源的重复加锁
 
 * 6.4 读写锁 可以同一时间允许多个线程访问，通过分离读锁和写锁，并发性比一般的排他锁有了很大提升
 
-* 6.5 Condition接口，理解它的作用，可以更加精细的控制多线程的唤醒与休眠
+* 6.5 Condition 接口，理解它的作用，可以更加精细的控制多线程的唤醒与休眠
 
-* 6.x 这部分一个常见的对比就是Sync与Lock的区别联系。从中要知道悲观锁与乐观锁的概念、公平锁与非公平锁的概念。
+* 6.x 这部分一个常见的对比就是 Sync 与 Lock 的区别联系。从中要知道悲观锁与乐观锁的概念、公平锁与非公平锁的概念。
 
 ### 7.Java 并发编程底层实现原理
 
-* 7.1 volatile的应用与原理，记住其实现关键字内存屏障，记得要对比Sync的区别和联系
+* 7.1 volatile 的应用与原理，记住其实现关键字内存屏障，记得要对比 Sync 的区别和联系
 
-* 7.2 synchronized的实现原理与应用 ，记住JVM基于进入和退出Monitor对象来实现方法和代码块同步的
+* 7.2 synchronized 的实现原理与应用 ，记住 JVM 基于进入和退出 Monitor 对象来实现方法和代码块同步的
 对于普通方法，锁是当前实例对象
-对于静态同步方法，锁是当前类的Class对象
-对于同步方法块，锁是Sync括号里配置的对象
+对于静态同步方法，锁是当前类的 Class 对象
+对于同步方法块，锁是 Sync 括号里配置的对象
 
-* 7.3 原子操作的实现原理，Java中实现原子操作是锁和CAS操作。CAS操作面临一个ABA和循环时长问题
+* 7.3 原子操作的实现原理，Java  中实现原子操作是锁和 CAS 操作。CAS 操作面临一个 ABA 和循环时长问题
 
 ### 8.Java 内存模型
 
-* 8.1 Java内存模型的基础，关键问题：通信和同步
+* 8.1 Java 内存模型的基础，关键问题：通信和同步
 
 * 8.2 重排序 编译器和处理器会对操作进行重排序
 
 * 8.3 顺序一致性
 
-* 8.4 volatile的内存语义
+* 8.4 volatile 的内存语义
 
 * 8.5 锁的内存语义
 
-* 8.6 final的内存语义 这一点在日常的博客中见的比较少，切入点可能是在多线程如何确保用final修饰的常量不会被改变？或者说final修饰的变量在一个线程中被赋值，另一个线程中会不会得到同样的数值？
+* 8.6 final 的内存语义 这一点在日常的博客中见的比较少，切入点可能是在多线程如何确保用 final 修饰的常量不会被改变？或者说 final 修饰的变量在一个线程中被赋值，另一个线程中会不会得到同样的数值？
 
-* 8.7 happens-before，如果一个操作结果需要对另一个操作结果可见，则这两个操作之间必须具备happens-before关系
+* 8.7 happens-before，如果一个操作结果需要对另一个操作结果可见，则这两个操作之间必须具备 happens-before 关系
 
 * 8.8 双重检查锁定与延迟初始化，经典的单利双锁问题
 
 ### 9.Java 中的13个原子操作
 
-* 原子操作比较容易理解，经典问题类似：i++操作是否线程安全？JDK1.5开始提供Atomic包来保证原子操作安全，一共有13个操作。
+* 原子操作比较容易理解，经典问题类似：i++ 操作是否线程安全？JDK1.5 开始提供 Atomic 包来保证原子操作安全，一共有 13 个操作。
 
 ### 10.Java 并发编程实战
 

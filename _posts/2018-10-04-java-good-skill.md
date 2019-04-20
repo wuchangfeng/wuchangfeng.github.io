@@ -94,30 +94,6 @@ public class TestClass{
   在编码过程中，**如果能够使用反向条件过滤的逻辑，就先过滤掉，这样可以避免 if else 结构的层层嵌套**，使得代码看起来层次结构非常的清晰易懂，也便于维护。如下代码块，你更喜欢看哪块代码呢？
 
 ``` java
-// 不友好的代码
-public StringBuilder testMethod(HttpServletRequest request, Long commentsId){
-
-    StringBuilder rst;                
-    if (commentsId == null || commentsId <= 0) {
-        rst = ApiResBuilder.json(ActionStatus.PARAMAS_ERROR.inValue(), "invalid-comments_id");
-    } else {
-        CommentsBean comment = commentsService.get(commentsId);
-        if (comment == null) {
-            rst = ApiResBuilder.json(CommunityActionStatus.COMMENTS_NOT_EXISTS);
-        } else {
-            long uid = (Long) request.getAttribute(APIkey.uid);
-            if (commentsService.praise(uid, commentsId, comment.getReply2thread())) {
-                rst = ApiResBuilder.json(ActionStatus.NORMAL_RETURNED);
-            } else {
-                rst = ApiResBuilder.json(ActionStatus.UNKNOWN);
-            }
-        }
-    }        
-    return rst;
-}
-```
-
-``` java
 // 友好的代码
 public StringBuilder testMethod(HttpServletRequest request, Long commentsId) {
 
@@ -408,9 +384,8 @@ boolean result = StringUtils.isBlank(varA) || Objects.isNull(varB); // 这是注
 
 ``` java
 // 友好的行注释
-
 // 这是注释
-if(....){ 
+if(....{ 
 }
 
 // 这是注释注释注释注释注释注释注释
@@ -571,40 +546,6 @@ public void tryCatchTest() {
 }
 ```
 
-1） 使用 Redis 的有序集合时，一定要注意如果想要实现分页时，Redis 不会将分页的大小减 1，而是从 0 到分页大小的下标取数据，所有如果分页取20，那么最终结果是 21个。因为它是按照数组的下标取值的。如果想要取第二页，那么，如果按照 mysql 的分页规则，那么，redis 的size 需要加上 offset 的值，否则分页将不正确。（以上仅限Redis的集合类）
 
-2）在从数据库中获取带状态的数据时，一定要加上状态。比如，现在要获取一个任务，这个任务的状态类型有下线、删除和有效状态，那么，在获取某个任务时，一定要带状态，否则当有相同数据但状态不同时，就会产生错误。
-
-3） 在使用 Map 时，一定要注意数据类型要一致。 
-
-例如：
-Map<String,String> datas = new HashMap<>();
-datas.put("10001","haha");
-datas.put("10002","oo");
-
-Long testKey = 10001L;
-String res = datas.get(testKey);
-
-不要以为 res 的值为“haha”，那你就错了，res 的值为 null.查看源码变可以知道，Map 的方法：V get(Object key); 其实是将 key 键当做对象来处理的，因此，会导致取不到结果，正确的做法是将 Long 类型的 key 转化为 String 型或者存储和取值保存一样的方式，如下：
-
-String res = datas.get(String.valueOf(testKey));1
-
-这样就可以得到正确的结果。注意:
-
-*  自定义对象比较记得重载 hashCode 和 equals 方法。 
-  在使用 CollectionUtils 时，一定要小心用户自定义对象类集合的比较，因为这些自定义类如果没有重载 hashCode 和 equals 方法时，将得不到你想要的结果。 
-
-* 编写 MySQL 语句时，对每个字段都加‘`field_name`’。 MySQL环境对sql语句中出现关键字时，如果没有加“` `”的话，会报语法错误，导致项目出现 Server Error，因此，以后项目编码过程中最好都带“` `”，防止不必要的bug，增加不必要的Bug修复操作。
-
-* 小心整形数相除得不到小数部分。 两个整形相除会得不到小数部分，因此需要转化除数。 
-例如： 
-double res = 10 / 3.0; 
-必须将3写成 3.0，否则结果将是 3.0，而不是 3.333
-
-* 基本数据类型的包装类对象之间值的比较，全部都用 equals 方法比较。 
-  对于 Integer var=?在-128 至 127 之间的赋值， Integer 对象是在 
-IntegerCache. cache 产生，会复用已有对象，这个区间内的 Integer 值可以直接使用==进行 
-判断，但是这个区间之外的所有数据，都会在堆上产生，并不会复用已有对象，这是一个大坑， 
-推荐使用 equals 方法进行判断。
 
 

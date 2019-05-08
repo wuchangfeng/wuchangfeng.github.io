@@ -1,6 +1,6 @@
 ---
 title: 在 Ubuntu 下创建虚拟独立 Python 环境
-date: 2016-10-29 11:02:57
+date: 2015-10-29 11:02:57
 tags: virtualenv
 layout: post
 

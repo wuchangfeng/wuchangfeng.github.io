@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Django Web 开发之 Vino 小站
-date: 2016-10-11 20:22:08 +0800
+date: 2015-10-11 20:22:08 +0800
 categories: Django
 ---
 

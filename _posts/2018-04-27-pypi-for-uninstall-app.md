@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 用于批量卸载 App 的 Pypi 库
-date: 2017-01-20 16:55:13 +0800
+date: 2018-01-20 16:55:13 +0800
 categories: 
 ---
 

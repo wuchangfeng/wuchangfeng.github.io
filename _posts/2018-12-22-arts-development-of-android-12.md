@@ -1,10 +1,8 @@
 ---
+layout: post
 title: Bitmap 的加载优化以及 Cache 相关
-toc: true
-tags: Android 
-categories: 读书笔记
-description:
-feature:
+date: 2019-03-22 22:14:43 +0800
+categories: 
 ---
 
 本章介绍 Bitmap 的加载优化以及 Cache 相关内容。

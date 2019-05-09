@@ -5,11 +5,7 @@ date: 2019-03-22 22:14:43 +0800
 categories: 
 ---
 
-本章介绍 Bitmap 的加载优化以及 Cache 相关内容。
-
-<!--more-->
-
-## 一 . 高效加载 Bitmap
+### 高效加载 Bitmap
 
 BitMapFactory 提供了四类方法: decodeFile,decodeResource,decodeStream 和 decodeByteArray 分别用于从文件系统,资源,输入流以及字节数组中加载出一个 Bitmap 对象。
 
@@ -77,9 +73,7 @@ mImageView.setImageBitmap(
 decodeSampledBitmapFromResource(getResource(),R.id.myimage,100,100));
 ```
 
-
-
-## 二 . Android 中的缓存策略
+### Android 中的缓存策略
 
 目前常用的算法是 LRU，即近期最少使用算法，当缓存存满时，会优先淘汰**近期最少使用的缓存对象**
 
@@ -144,9 +138,7 @@ mDiskLruCache = DiskLruCache.open(diskCaCheDir,1,1,Disk_CACHE_SIZE);
     }
 ```
 
-
-
-## 三 . ImageLoader 的实现
+###  ImageLoader 的实现
 
 具备的功能,即图片的同步加载,异步加载,图片的压缩,内存缓存,磁盘缓存以及网络拉取。
 
@@ -166,7 +158,7 @@ mDiskLruCache = DiskLruCache.open(diskCaCheDir,1,1,Disk_CACHE_SIZE);
 
 **ImageLoader源码可以看[ImageLoader的实现](https://github.com/singwhatiwanna/android-art-res/blob/master/Chapter_12/src/com/ryg/chapter_12/loader/ImageLoader.java)**
 
-## 四 . ImageLoader 的使用
+### ImageLoader 的使用
 
 核心是 ImageAdapter , 其中的 getView() 的核心方法如下:
 
@@ -198,8 +190,6 @@ public View getView(int position, View convertView, ViewGroup parent) {
 ```
 
 对于上述代码 ImageAdapter 来说, ImageLoader 的加载图片的复杂过程，更不需要知道。
-
-
 
 **优化列表卡顿现象:**
 

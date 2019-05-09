@@ -1,5 +1,5 @@
 ---
-title:  关于 HandlerThread 和 IntentService 
+title:  Android 中的 HandlerThread 和 IntentService 
 toc: true
 categories: 读书笔记
 tags: Android
@@ -9,14 +9,10 @@ feature:
 
 本篇介绍 HandlerThread 和 IntentService 相关概念。
 
-<!--more-->
-
-### 引言
-
 * HandlerThread 是什么？能做什么？与 Handler 和 Thread 是何种关系？
 * IntentService 是什么？与 Service 是何种关系？是线程吗？与线程何种关系？有什么优点？
 
-## 一. HandlerThread
+###  HandlerThread
 
 从 handlerThread 的实现来看它和普通的 Thread 有着显著的不同，普通的 Thread 中的 run() 方法都是在执行一个耗时任务，而 HandlerThread 的 run() 方法中却创建了消息队列，外界需要通过 handler 的消息方式来通知 HandlerThread 来执行一个具体的任务。如果你想看一个实例以及源码解析可以看[彻底了解 HandlerThread](http://blog.csdn.net/lmj623565791/article/details/47079737)
 
@@ -45,7 +41,7 @@ final Handler handler = newHandler(thread.getLooper()){}
 
 如上所示，就可以很轻松的创建Handler对象了。
 
-## 二. IntentService
+### IntentService
 
 之前我们有情况需要在 Service 进行一些后台的耗时操作，但是又不能直接在 Service 中进行，此时会选择在 Service 中再开一个线程，但是这样不够优雅，因为我们需要自己去管理 Service 的生命周期以及子线程。
 
@@ -166,8 +162,3 @@ public abstract class IntentService extends Service {
 注意下：回调完成后回调用 stopSelf(msg.arg1)，注意这个 msg.arg1 是个 int 值，相当于一个请求的唯一标识。每发送一个请求，会生成一个唯一的标识，然后将请求放入队列，当全部执行完成(最后一个请求也就相当于getLastStartId == startId)，或者当前发送的标识是最近发出的那一个（getLastStartId == startId），则会销毁我们的Service.很简单的道理如果我们使用 stopSelf() 的话，会立即停止服务，这时候可能还会有其他的消息没有处理，如果传入的是 -1 则直接销毁。
 
 那么，当任务完成销毁 Service 回调 onDestory，可以看到在 onDestroy 中释放了我们的Looper:mServiceLooper.quit()。
-
-### 三. 参考和扩展阅读
-
-* 《Android 开发艺术探索》
-* [当 Service 遇上 Handler](http://blog.csdn.net/lmj623565791/article/details/47143563)

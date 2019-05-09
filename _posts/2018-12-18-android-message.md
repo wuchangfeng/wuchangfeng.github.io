@@ -9,19 +9,15 @@ feature:
 
 本篇介绍 Handler 和 Message 以及 Looper 的基本用法和工作原理。
 
-<!--more-->
-
-## 零. 引言
+#### 引言
 
 Handler 基本的用法和实例 Demo 可以看[这里](https://github.com/wuchangfeng/Blog-Resource/blob/master/Arts-Development-of-Android-10-Demo.md)。
 
 Handler到底是什么呢？简单点将 Handler 是 Android 中引入的一种让开发者参与处理线程中消息循环的机制。每 个 Hanlder 都关联了一个线程，每个线程内部都维护了一个消息队列 MessageQueue，这样 Handler 实际上也就关联了一个消息队列。可以通过 Handler 将 Message 和 Runnable 对象发送到该 Handler 所关联线程的MessageQueue 中，然后该消息队列一直在循环拿出一个 Message，对其进行处理，处理完之后拿出下一个Message，继续进行处理，周而复始。当创建一个 Handler 的时候，该 Handler 就绑定了 **当前创建 Hanlder**的线程。从这时起，该 Hanlder 就可以发送 Message 和 Runnable 对象到该 Handler 对应的消息队列中，当从MessageQueue 取出某个 Message 时，会让 Handler 对其进行处理。
 
-## 一. 简介
-
 Android 中消息机制主要为 Handler 的消息机制，其底层需要 MessageQueue(消息队列用单链表来实现) 和 Looper 的支持。MessageQueue 只负责存储消息，Looper 可以来处理消息。Looper 中的 ThreadLocal 可以在每个线程中存储数据。Handler 创建时候会采用当前线程的 Looper 来构造消息循环系统，这时候就是 ThreadLocal 来获取当前线程的 Looper 了。Handler 主要作用就是将一个任务切换到某个指定的线程中去执行。Handler 创建时候,会采用当前线程的 Looper 来构建消息循环系统。
 
-## 二. ThreadLocal 的工作原理
+#### ThreadLocal 的工作原理
 
 ThreadLocal 是一个 **线程内部的数据存储类**，通过它可以在指定的线程中存储数据，数据存储之后，只有在指定线程中才可以获取的存储的数据，对于其他线程则无法获取到数据。
 
@@ -31,11 +27,11 @@ ThreadLocal 是一个 **线程内部的数据存储类**，通过它可以在指
 
 对于 ThreadLocal 的一些详细操作和解释可以参见 《Android 开发艺术探索》 P379.
 
-## 三. MessageQueue 的工作原理
+####  MessageQueue 的工作原理
 
 消息队列在 Android 指的是 MessageQueue . MQ 中包含两个操作：插入和读取。读取操作本身会伴随着删除操作。enqueueMessage 对应着插入方法即往消息队列中插入一条消息。next 作用是从消息队列中取出一条消息并且将其从消息队列中移除。MQ 虽然称为消息队列但是其内部实现还是**单链表**,对插入和删除操作友好嘛。next 是一个无限循环的方法，如果消息队列中没有消息则其一直阻塞。
 
-## 四. Looper 的工作原理
+#### Looper 的工作原理
 
 Looper 在消息循环机制中扮演着循环的角色。一直不停的查看 MQ 是否有消息。有消息就立刻处理。没有就一直阻塞。**Looper 的构造方法会创建一个 MQ,**然后将当前的线程对象保存起来：
 
@@ -100,7 +96,7 @@ public static final void loop() {
 
 如上即为 loop() 方法。loop() 方法的核心就是调用 MQ 的 next 方法，而 next 是一个阻塞操作，如果没有消息就一直阻塞在那里。一旦返回消息 msg.target.dispatchMessage(msg) 就会处理这条消息。**其中 msg.target** 就是发送这条消息的 Handler 对象。  
 
-## 五. Handler 的工作原理
+#### Handler 的工作原理
 
 问题：**Handler 为什么会造成内存泄漏？** 简单点将就是 message 持有 Handler 的引用。而 Handler 又**潜在**的持有外部类的引用。[详细解释以及解决办法参见这里](http://www.jianshu.com/p/cb9b4b71a820 )
 
@@ -139,13 +135,13 @@ public interface Callback{
 
 该种写法可以参见**实例二。**
 
-## 六. 主线程的消息循环
+#### 主线程的消息循环
 
 Android 主线程就是 ActivityThread，入口方法为 main。在 main 中系统会通过 Looper.prepareMainLoper() 来创建主线程的 Looper 以及 MessageQueue，并通过 Looper.loop() 来开启主线程的消息循环。
 
 主线程的消息循环开启之后，ActivityThread 还需要一个 Handler 来和消息队列进行交互，这个 Handler 就是 ActivityThread.H,它内部定义了一组消息类型包含了四大组件的启动和停止过程。
 
-## 七. 引申阅读
+#### 引申阅读
 
 另外除了发送消息之外，我们还有以下几种方法可以在子线程中进行 UI 操作：
 
@@ -153,12 +149,4 @@ Android 主线程就是 ActivityThread，入口方法为 main。在 main 中系�
 - Activity 的 runOnUiThread() 方法。
 - 思考一下为什么建议在 viewHolder 前面添加 static 方法。
 
-## 八. 参考文章
-
-- [Android异步消息处理机制完全解析，带你从源码的角度彻底理解](http://blog.csdn.net/guolin_blog/article/details/9991569)
-
-- 《Android 开发艺术探索》
-
-- [Handler 的基本用法解析](http://blog.csdn.net/iispring/article/details/47115879)
-
-  ​
+​

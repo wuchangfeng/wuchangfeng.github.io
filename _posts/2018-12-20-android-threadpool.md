@@ -7,15 +7,13 @@ feature:
 
 本篇介绍 Android 中的线程池 ThreadPoolExecutor 相关概念。
 
-<!--more-->
-
-## 一. Android 中的线程池
+### Android 中的线程池
 
 1. 重用线程池中的线程,避免因为线程的创建和开销所代理的性能影响。
 2. 能够有效控制线程池的最大并发数,避免互相抢占系统资源所导致组赛。
 3. 能够对线程进行简单的管理,提供定时执行以及指定循环时间间隔等。
 
-## 二. ThreadPoolExecutor 
+### ThreadPoolExecutor
 
 Android 中的线程池都是直接或者间接来配置 ThreadPoolExecutor，其概念来源于 Java 中的 Executor。
 
@@ -58,21 +56,21 @@ ThreadPoolExecutor 执行任务时遵循的规则如下规则：
 
 另外如果想看 **AsyncTask** 中的 ThreadPoolExecutor 的配置是怎么样的，可以参见 《Android 开发艺术探索》 P409.
 
-## 三. 线程池的分类
+### 线程池的分类
 
-### 3.1 FixedThreadPool
+#### FixedThreadPool
 
 线程**数量固定**的线程池。当线程处于空闲状态时，他们不会被回收，除非线程池被关闭。当所有线程都处于活动状态时候，新任务处于等待状态。直到有线程空闲出来。**FixedThreadPool 只有核心线程**，并且核心线程不会被回收。这样就加快了它的反应速度。
 
-### 3.2 ScheduledThreadPool
+#### ScheduledThreadPool
 
 核心线程数没有限制。非核心线程闲置则会被回收。主要用于执行定时任务和具有固定周期的重复任务。
 
-### 3.3 SingleThreadExecutor
+#### SingleThreadExecutor
 
 **只有一个核心线程**。确保所有任务都在同一个线程中按顺序执行。这使得任务之间不需要处理线程同步的问题。
 
-### 3.4 CachedThreadPool
+####  CachedThreadPool
 
 只有非核心线程。并且线程数量不固定，可以说无限多个。空闲线程都有超时机制。这种线程池比较适合执行大量的耗时较少的任务。
 
@@ -102,11 +100,4 @@ private void runThreadPool() {
         ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
         singleThreadExecutor.execute(command);
 ```
-
-
-
-## 四. 参考和引申阅读
-
-* 《Android 开发艺术探索》11章
-* [[ThreadPoolExecutor源码学习笔记](http://extremej.itscoder.com/threadpoolexecutor_source/)](http://extremej.itscoder.com/threadpoolexecutor_source/)
 

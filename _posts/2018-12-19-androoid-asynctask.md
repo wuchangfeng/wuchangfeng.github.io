@@ -1,5 +1,5 @@
 ---
-title: AsyncTask 的使用方法和工作原理
+title: AsyncTask 的工作原理
 toc: true
 categories: 读书笔记
 tags: Android
@@ -9,9 +9,7 @@ feature:
 
 本篇介绍 AsyncTask 的使用方法和工作原理。
 
-<!--more-->
-
-## 一 . 概述
+### 概述
 
 1. 线程分为主线程和子线程,子线程执行耗时操作。
 2. 除了 Thread 之外,AsyncTask 和 IntentService 还有 HandlerThread 也是一些特殊的线程。
@@ -21,7 +19,7 @@ feature:
 6. Android 中也引入了线程池的概念，这样可以减少频繁的创建和销毁线程。
 7. Android 中线程也分为主线程和子线程,它们之间的作用区别很明显。
 
-## 二 . AsyncTask 使用
+#### AsyncTask 使用
 
 AsyncTask 的使用方式如下实例 Demo:
 
@@ -78,7 +76,7 @@ new DownloadTask().execute(url1，url2，url3);
 2. onProgressUpdate 用于更新界面中的下载进度，运行在主线程中，当 **publishProgress** 被调用时，此方法就会**被调用。**不像 Handler 中需要发送和接受消息来切换线程了。
 3. 当下载任务完成后，onPostExecute 方法就会**被调用。** 它也是运行在主线程中。
 
-## 三. 源码分析
+#### 源码分析
 
 程序的执行入口是 new AsyncTask().execute() 我们自然要看一下 AsyncTask 的构造方法执行了哪些初始化工作：
 
@@ -275,13 +273,7 @@ AsyncTask 封装了 Thread 和 Handler, 通过 AsyncTask 可以更加方便的�
 5. 在 Android 1.6 之前 AT 是串行执行任务的(可同时执行 5 个任务)，那时候采用线程池来处理并行任务，但是从 3.0 开始为了避免 AT 所带来的并发错误，AT 又采用一个线程来串行执行任务(只能执行 1 个任务)。尽管如此，3.0 之后仍然可以通过 AT 的 executeOnExecutor 方法来**并行**执行任务。对于这一点的实验可以看 《Android 开发艺术探索》P403。
 6. 如果要**深究为什么 Android 3.0 以上 AT 默认不并行执行**，可以看[这篇](http://www.jianshu.com/p/a8b1861f2efc?utm_campaign=haruki&utm_content=note&utm_medium=reader_share&utm_source=qq)文章。
 
-## 五. 参考文章
-
-- 《Android 开发艺术探索》
-
-- [Android AsyncTask完全解析，带你从源码的角度彻底理解](http://blog.csdn.net/guolin_blog/article/details/11711405)
-
-  ​
+​
 
 
 

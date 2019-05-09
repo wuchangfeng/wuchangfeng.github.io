@@ -11,22 +11,17 @@ feature:
 
 根据 Crazy Java 中的例子类学习一下，如何利用 APT 在编译时获取注解信息。
 
-
-<!--more-->
-
-### 一 . 概念理解
+#### 概念理解
 
 **编译**时处理**注解**：APT 一种注解处理工具，对源文件进行检测，找出源文件包含的注解信息，然后针对注解信息做处理。
 
 而 Hibernate 框架就具备该功能，可以在 java 源文件中放置一些 Annotation，然后使用 APT 工具根据该 Annotation 生成一份 XML 文件。
 
-
-
 Java 提供的 javac.exe 工具有一个 -processor 选项，他可以指定一个 Annotation 处理器，在编译源文件时通过其指定了 Annotation 处理器，那么这个 Annotation 处理器将会在编译时提取并处理 java 源文件中的 Annotation。
 
 Annotation 处理器需要实现 javax.annotation.process 包下的 Processor 接口，并且实现该接口中的所有方法，会采用继承 AbstractProcessor 方式来实现 Annotation 处理器。
 
-### 二 . 实例代码
+#### 实例代码
 
 **注解文件**
 
@@ -212,9 +207,7 @@ public class HibernateAnnotationProcessor
 
 XML 文件中浅绿色字体就是 Person.java 中的 Annotation 部分。从这份生成的 XML 文件中可以看出 APT 工具确实可以简化程序的开发，可以将一些关键信息通过 Annotation 写在程序中，然后利用 APT 工具生成额外的文件。
 
-
-
-### 三 . 分析总结
+#### 分析总结
 
 * 与通过反射来获取信息不同的是，此处 Annotation 处理器使用 RoundEnvironment 来获取注解信息，RoundEnvironment 包含了一个 getElementsAnnotatedWith() 方法，可以根据 Annotation 获取需要处理的程序单元。
 * Element 里包含一个 getKind()，其返回 Element 所代表的程序单元，返回值可以为 ElementKind.CLASS(类)，ElementKind.FIELD(成员变量)...

@@ -7,11 +7,7 @@ description:
 feature:
 ---
 
-本篇介绍 Handler 和 Message 以及 Looper 的基本用法和工作原理。
-
-#### 引言
-
-Handler 基本的用法和实例 Demo 可以看[这里](https://github.com/wuchangfeng/Blog-Resource/blob/master/Arts-Development-of-Android-10-Demo.md)。
+本篇介绍 Handler 和 Message 以及 Looper 的基本用法和工作原理。Handler 基本的用法和实例 Demo 可以看[这里](https://github.com/wuchangfeng/Blog-Resource/blob/master/Arts-Development-of-Android-10-Demo.md)。
 
 Handler到底是什么呢？简单点将 Handler 是 Android 中引入的一种让开发者参与处理线程中消息循环的机制。每 个 Hanlder 都关联了一个线程，每个线程内部都维护了一个消息队列 MessageQueue，这样 Handler 实际上也就关联了一个消息队列。可以通过 Handler 将 Message 和 Runnable 对象发送到该 Handler 所关联线程的MessageQueue 中，然后该消息队列一直在循环拿出一个 Message，对其进行处理，处理完之后拿出下一个Message，继续进行处理，周而复始。当创建一个 Handler 的时候，该 Handler 就绑定了 **当前创建 Hanlder**的线程。从这时起，该 Hanlder 就可以发送 Message 和 Runnable 对象到该 Handler 对应的消息队列中，当从MessageQueue 取出某个 Message 时，会让 Handler 对其进行处理。
 
@@ -19,13 +15,7 @@ Android 中消息机制主要为 Handler 的消息机制，其底层需要 Messa
 
 #### ThreadLocal 的工作原理
 
-ThreadLocal 是一个 **线程内部的数据存储类**，通过它可以在指定的线程中存储数据，数据存储之后，只有在指定线程中才可以获取的存储的数据，对于其他线程则无法获取到数据。
-
-对于 Handler 来讲它需要获取 **当前线程的 looper** ,这时候 ThreadLocal 就是不二之选。
-
-从 ThreadLocal 的 set 和 get 方法可以看出 ，他们所操作的对象都是当前线程的 LocalValues 对象的 table 数组，因此在不同线程中访问同一个 ThreadLocal 的 set 和 get 方法，他们对 ThreadLoca 所做的操作仅限于各自线程的内部。
-
-对于 ThreadLocal 的一些详细操作和解释可以参见 《Android 开发艺术探索》 P379.
+ThreadLocal 是一个 **线程内部的数据存储类**，通过它可以在指定的线程中存储数据，数据存储之后，只有在指定线程中才可以获取的存储的数据，对于其他线程则无法获取到数据。对于 Handler 来讲它需要获取 **当前线程的 looper** ,这时候 ThreadLocal 就是不二之选。从 ThreadLocal 的 set 和 get 方法可以看出 ，他们所操作的对象都是当前线程的 LocalValues 对象的 table 数组，因此在不同线程中访问同一个 ThreadLocal 的 set 和 get 方法，他们对 ThreadLoca 所做的操作仅限于各自线程的内部。对于 ThreadLocal 的一些详细操作和解释可以参见 《Android 开发艺术探索》 P379.
 
 ####  MessageQueue 的工作原理
 
@@ -66,9 +56,7 @@ public static final void prepare() {
 } 
 ```
 
-原来是给**每一个线程至多设置一个 Looper 对象啊！而且是通过前面的 ThreadLocal 来设置的！**
-
-Looper 最重要的一个方法是 loop 方法，只有调用了 Loop 后，消息循环系统才会正真的起作用。
+原来是给**每一个线程至多设置一个 Looper 对象啊！而且是通过前面的 ThreadLocal 来设置的！**Looper 最重要的一个方法是 loop 方法，只有调用了 Loop 后，消息循环系统才会正真的起作用。
 
 ```java
 public static final void loop() {  

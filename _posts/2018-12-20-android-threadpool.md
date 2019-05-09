@@ -15,9 +15,7 @@ feature:
 
 ### ThreadPoolExecutor
 
-Android 中的线程池都是直接或者间接来配置 ThreadPoolExecutor，其概念来源于 Java 中的 Executor。
-
-它线程池的正真实现者。下面是一个比较常用的构造方法:
+Android 中的线程池都是直接或者间接来配置 ThreadPoolExecutor，其概念来源于 Java 中的 Executor。它线程池的正真实现者。下面是一个比较常用的构造方法:
 
 ```java
 Public ThreadPoolExecutor(int corePoolSize,
@@ -72,9 +70,7 @@ ThreadPoolExecutor 执行任务时遵循的规则如下规则：
 
 ####  CachedThreadPool
 
-只有非核心线程。并且线程数量不固定，可以说无限多个。空闲线程都有超时机制。这种线程池比较适合执行大量的耗时较少的任务。
-
-线程池典型使用方法：
+只有非核心线程。并且线程数量不固定，可以说无限多个。空闲线程都有超时机制。这种线程池比较适合执行大量的耗时较少的任务。线程池典型使用方法如下所示：
 
 ``` java
 private void runThreadPool() {

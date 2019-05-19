@@ -5,7 +5,7 @@ date: 2019-05-19 08:03:33 +0800
 categories: 
 ---
 
-### windowmanager
+### WindowManager
 
 Activity 类似一个管理者(生命周期与逻辑处理)，管理视图(Window、View)的添加与删除，以及它们之间的交互；
 Window 的具体实现是 PhoneWindow，PhoneWindow 持有 DecorView 的实例。Window 通过 WindowManager 将 DecorView 加载到其中，并将 DecorView 交给 ViewRoot ，进行视图绘制以及其他交互。

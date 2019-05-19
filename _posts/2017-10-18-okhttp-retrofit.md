@@ -10,8 +10,6 @@ feature:
 
 阅读关于 Android 通信库 OKhttp ，Retrofit 的一些博客以及源码的收获和总结。
 
-<!--more-->
-
 ## 零 . Http 
 
 阅读该篇文章：
@@ -56,7 +54,7 @@ HTTP1.0最早在网页中使用是在1996年，那个时候只是使用一些较
 4. 服务端推送（server push），同SPDY一样，HTTP2.0也具有server push功能。
 
 
-## 一 . OKHttp
+## OKHttp
 
 阅读以下文章：
 
@@ -96,7 +94,7 @@ okhttp 对于任务的请求采用了 Dispatcher(反向代理)技术和线程池
 
 另外 okhttp 还用双端队列来进行任务的缓存。而对于等待队列的移动 okhttp 采用了在 try/finally 中调用 finished 函数，而并没有用锁来实现。
 
-## 二 . Retrofit
+## Retrofit
 
 **基本用法**
 

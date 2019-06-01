@@ -46,12 +46,10 @@ categories:
 ### 5.Java 中的并发工具类 
 
 * 5.1 等待多线程完成的 CountDownLatch，允许一个或者多个线程等待其他线程完成操作
-
 * 5.2 同步屏障 CyclicBarrier ，让一组线程到达一个屏障，直到最后一个线程到达，屏障解除。注意对比 CountDownLatch 的区别
-
 * 5.3 控制线程并发数的 Semaphore，协调各类线程让其合理的使用公共资源
-
 * 5.4 线程间交换数据的 Exchanger
+* 5.5 此处补充 wait 和 notify 那一套
 
 ### 6.Java 中的锁
 

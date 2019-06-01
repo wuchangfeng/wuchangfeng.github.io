@@ -7,9 +7,7 @@ description:
 feature:
 ---
 
-本篇介绍 Handler 和 Message 以及 Looper 的基本用法和工作原理。Handler 基本的用法和实例 Demo 可以看[这里](https://github.com/wuchangfeng/Blog-Resource/blob/master/Arts-Development-of-Android-10-Demo.md)。
-
-Handler到底是什么呢？简单点将 Handler 是 Android 中引入的一种让开发者参与处理线程中消息循环的机制。每 个 Hanlder 都关联了一个线程，每个线程内部都维护了一个消息队列 MessageQueue，这样 Handler 实际上也就关联了一个消息队列。可以通过 Handler 将 Message 和 Runnable 对象发送到该 Handler 所关联线程的MessageQueue 中，然后该消息队列一直在循环拿出一个 Message，对其进行处理，处理完之后拿出下一个Message，继续进行处理，周而复始。当创建一个 Handler 的时候，该 Handler 就绑定了 **当前创建 Hanlder**的线程。从这时起，该 Hanlder 就可以发送 Message 和 Runnable 对象到该 Handler 对应的消息队列中，当从MessageQueue 取出某个 Message 时，会让 Handler 对其进行处理。
+ Handler 是 Android 中引入的一种让开发者参与处理线程中消息循环的机制。每 个 Hanlder 都关联了一个线程，每个线程内部(ThreadLocal)都维护了一个消息队列 MessageQueue，这样 Handler 实际上也就关联了一个消息队列。可以通过 Handler 将 Message 和 Runnable 对象发送到该 Handler 所关联线程的MessageQueue 中，然后该消息队列一直在循环拿出一个 Message，对其进行处理，处理完之后拿出下一个Message，继续进行处理，周而复始。当创建一个 Handler 的时候，该 Handler 就绑定了 **当前创建 Hanlder**的线程。从这时起，该 Hanlder 就可以发送 Message 和 Runnable 对象到该 Handler 对应的消息队列中，当从MessageQueue 取出某个 Message 时，会让 Handler 对其进行处理。
 
 Android 中消息机制主要为 Handler 的消息机制，其底层需要 MessageQueue(消息队列用单链表来实现) 和 Looper 的支持。MessageQueue 只负责存储消息，Looper 可以来处理消息。Looper 中的 ThreadLocal 可以在每个线程中存储数据。Handler 创建时候会采用当前线程的 Looper 来构造消息循环系统，这时候就是 ThreadLocal 来获取当前线程的 Looper 了。Handler 主要作用就是将一个任务切换到某个指定的线程中去执行。Handler 创建时候,会采用当前线程的 Looper 来构建消息循环系统。
 
@@ -90,7 +88,7 @@ public static final void loop() {
 
 在前面的实例中我们通过 handler 将 msg 发送出去。我们自然想知道 handler 将 msg 发送到哪里去了？为什么后续还可以在 handler 中去处理 msg 呢？
 
-通过查看源码，我们发现 sendMessage() 方法最终会通过一个叫 sendMessageAtTime() 的方法将 msg 发送出去。发送的目的地又是哪里呢？进一步查看源码是 MessageQueue 中。其中插队和出队的操作分别交给了 enqueueMessage() 和 Looper.loop() 这两个方法。
+通过查看源码，我们发现所有 sendMessage() 方法最终会通过一个叫 sendMessageAtTime() 的方法将 msg 发送出去。发送的目的地又是哪里呢？进一步查看源码是 MessageQueue 中。其中插队和出队的操作分别交给了 enqueueMessage() 和 Looper.loop() 这两个方法。
 
 它的简单逻辑就是如果当前 MQ 中存在 msg (即待处理消息)，就将这个消息出队，然后让下一条消息成为mMessages，否则就进入一个阻塞状态，一直等到有新的消息入队。在 loop() 方法中，每当有一个消息出队，就将它传递到 msg.target 的 dispatchMessage() 方法中，那这里 msg.target 又是什么呢？其实就是 Handler 的对象。可以在 sendMessageAtTime( ) 方法中看到。但是此处不同的是 handler 的 dispatchMessage 方法是在创建 Handler 时所使用的 Looper 中执行的，这样就成功的将逻辑代码切换到指定的线程中去了。
 

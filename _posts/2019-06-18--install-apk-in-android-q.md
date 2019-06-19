@@ -50,5 +50,5 @@ android.content.ActivityNotFoundException: No Activity found to handle Intent { 
         }
 ```
 
-代码写完，编译，发现问题完美解决。在此验证，应该是 Android Q 的沙箱机制产生的影响。
+代码写完，编译，问题完美解决。在此验证，应该是 Android Q 的沙箱机制产生的影响。
 

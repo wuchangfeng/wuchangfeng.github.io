@@ -1,6 +1,6 @@
 ---
 layout: post
-title: QUCI：基于UDP的HTTP3.0[转载]
+title: QUIC：基于UDP的HTTP3.0[转载]
 date: 2019-07-13 17:20:14 +0800
 categories: 
 ---

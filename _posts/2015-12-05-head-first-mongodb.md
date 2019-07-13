@@ -5,14 +5,6 @@ date: 2015-11-30 20:12:44 +0800
 categories: MongoDB
 ---
 
-<!--more--> 
-
-
-
-![mongodb_logo.jpg](http://7xrl8j.com1.z0.glb.clouddn.com/mongodb_logo.jpg)
-
-
-
 在师兄的推荐下，开始使用 NoSQL 类型数据库。记录一下日常使用过程中一些基本的东西。主要的特点如下：
 
 1. NoSQL，指的是非关系型的数据库。NoSQL 有时也称作Not Only SQL的缩写，是对不同于传统的关系型数据库的数据库管理系统的统称。

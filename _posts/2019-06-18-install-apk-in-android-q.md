@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 解决 Android Q 下应用内安装 Apk 的问题
+title: Android Q 应用内安装 Apk
 date: 2019-06-12 22:02:00 +0800
 categories: 
 ---

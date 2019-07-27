@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Android 项目直接依赖 Flutter Module AAR
+title: Native 项目依赖 Flutter AAR
 date: 2019-07-27 09:59:29 +0800
 categories: 
 ---

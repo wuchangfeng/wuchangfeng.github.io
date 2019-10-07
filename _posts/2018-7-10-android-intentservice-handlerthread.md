@@ -7,10 +7,7 @@ description:
 feature:
 ---
 
-本篇介绍 HandlerThread 和 IntentService 相关概念。
-
-* HandlerThread 是什么？能做什么？与 Handler 和 Thread 是何种关系？
-* IntentService 是什么？与 Service 是何种关系？是线程吗？与线程何种关系？有什么优点？
+本篇介绍 HandlerThread 和 IntentService 相关概念。HandlerThread 是什么？能做什么？与 Handler 和 Thread 是何种关系？IntentService 是什么？与 Service 是何种关系？是线程吗？与线程何种关系？有什么优点？
 
 ###  HandlerThread
 
@@ -34,7 +31,7 @@ public void run() {
 HandlerThread可以创建一个带有looper的线程。looper对象可以用于创建Handler类来进行来进行调度。看看其基本用法是怎样：
 
 ``` java
-HandlerThread thread = newHandlerThread("handler_thread");
+HandlerThread thread = new HandlerThread("handler_thread");
 thread.start();//必须要调用start方法
 final Handler handler = newHandler(thread.getLooper()){}
 ```
@@ -43,7 +40,7 @@ final Handler handler = newHandler(thread.getLooper()){}
 
 ### IntentService
 
-之前我们有情况需要在 Service 进行一些后台的耗时操作，但是又不能直接在 Service 中进行，此时会选择在 Service 中再开一个线程，但是这样不够优雅，因为我们需要自己去管理 Service 的生命周期以及子线程。
+之前我们有情况需要在 Service 进行一些后台的耗时操作，但是又不能直接在 Service 中进行，此时会选择在 Service 中再开一个线程，但是这样不够优雅，**因为我们需要自己去管理 Service 的生命周期以及子线程**。
 
 IntentService 是一种特殊的服务(封装了 HandlerThread 和 Handler)，继承与 Service 并且是一个抽象类。并且由于它是服务的原因导致他的优先级比单纯的线程高很多。IntentService 适用于高优先级的 Service(不容易被杀死)。IntentService 封装了 Handler 和 HandlerThread。你可以通过 startService(Intent) 来提交请求，该 Service会在需要的时候创建，当完成所有的任务以后自己关闭，且请求是在工作线程处理的。
 

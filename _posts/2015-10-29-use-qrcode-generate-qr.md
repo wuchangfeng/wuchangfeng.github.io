@@ -6,11 +6,7 @@ layout: post
 
 ---
 
-本篇文章讲述如何在 Python 环境中使用 qrcode 模块来生成个性化二维码图片。同事如果你对这块东西感兴趣，我推荐你阅读我的 workflow 开发指南，你可以开发一个生成二维码的 workflow，其应用场景还是非常广泛的，如讲一个链接快速转换成二维码。
-
-<!--more-->
-
-QrCode 官方地址在[这里](https://github.com/lincolnloop/python-qrcode)
+本篇文章讲述如何在 Python 环境中使用 qrcode 模块来生成个性化二维码图片。同事如果你对这块东西感兴趣，我推荐你阅读我的 workflow 开发指南，你可以开发一个生成二维码的 workflow，其应用场景还是非常广泛的，如讲一个链接快速转换成二维码。QrCode 官方地址在[这里](https://github.com/lincolnloop/python-qrcode)
 
 ### 安装模块
 

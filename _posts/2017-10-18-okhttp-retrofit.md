@@ -10,7 +10,7 @@ feature:
 
 阅读关于 Android 通信库 OKhttp ，Retrofit 的一些博客以及源码的收获和总结。
 
-## 零 . Http 
+## Http 
 
 阅读该篇文章：
 

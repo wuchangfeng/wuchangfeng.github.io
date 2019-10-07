@@ -10,8 +10,6 @@ feature:
 
  本篇文章介绍动态代理的基本原理以及在 Java 和 Android 中的一些用法。
 
-<!-- more -->
-
 - 文章来源：itsCoder 的 [WeeklyBolg](https://github.com/itsCoder/weeklyblog) 项目
 - itsCoder主页：[http://itscoder.com/](http://itscoder.com/)
 - 作者：[allenwu](https://wuchangfeng.github.io/)

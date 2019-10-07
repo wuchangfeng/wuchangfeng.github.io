@@ -8,11 +8,7 @@ description:
 feature:
 ---
 
-最近看一些大神的代码,发现了 Android 引入了几个很酷的注解类型,应该很早了，只是一直没用过。Google 了一下,转载了这篇文章。
-
-<!--more-->
-
-**下面这篇文章转自 [更上一层楼－Android研发工程师高级进阶](https://asce1885.gitbooks.io/android-rd-senior-advanced/content/shen_ru_qian_chu_android_support_annotations.html)**
+最近看一些大神的代码,发现了 Android 引入了几个很酷的注解类型,应该很早了，只是一直没用过。Google 了一下,转载了这篇文章。**下面这篇文章转自 [更上一层楼－Android研发工程师高级进阶](https://asce1885.gitbooks.io/android-rd-senior-advanced/content/shen_ru_qian_chu_android_support_annotations.html)**
 
 ##  一.  Nullness注解
 

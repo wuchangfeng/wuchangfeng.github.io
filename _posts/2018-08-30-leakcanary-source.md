@@ -9,7 +9,7 @@ Android中的内存泄漏问题是性能优化的大头，不少开发者也为�
 
 ### 原理概览
 
-LeakCanary的原理非常简单。正常情况下一个Activity在执行Destroy之后就要销毁，LeakCanary做的就是在一个Activity Destroy之后将它放在一个WeakReference中，然后将这个WeakReference关联到一个ReferenceQueue，查看ReferenceQueue是否存在Activity的引用，如果不在这个队列中，执行一些GC清洗操作，再次查看。如果不存在则证明该Activity泄漏了，之后Dump出heap信息，并用haha这个开源库去分析泄漏路径。
+LeakCanary的原理非常简单。正常情况下一个Activity在执行Destroy之后就要销毁，LeakCanary做的就是在一个Activity 被Destroy之后将它放在一个WeakReference中，然后将这个WeakReference关联到一个ReferenceQueue，查看ReferenceQueue队列是否存在这个Activity的引用，如果不在这个队列中，执行一些GC清洗操作，再次查看。如果仍然不存在则证明该Activity泄漏了，之后Dump出heap信息，并用haha这个开源库去分析泄漏路径。
 
 
 ### 源码结构

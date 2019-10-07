@@ -254,7 +254,5 @@ MW用于存储对象自身的运行时数据，如哈希码、GC分代年龄、�
 
 Monitor可以理解成一个同步工具，也可以是一个同步机制。所有的Java对象都是天生的Monitor，每一个对象都可以成为Monitor的潜质。其实线程私有的数据结构，每一个线程都有一个可用的monitor record列表，同时还有一个全局的可用列表。每一个被锁住的对象都会和一个monitor关联。
 
-
-
 关于各种sync锁详细知识可以参见[死磕Java并发值sync关键字](http://blog.csdn.net/chenssy/article/details/54883355)
 

@@ -11,11 +11,7 @@ categories: MongoDB
 2. MongoDB 是一个基于**分布式**文件存储的数据库。
 3. 主要用于超多规模型数据的存储，存储的数据量也非常大，因而其查询效率非常好，可以说为查询效率而生。
 
-简单点说，NoSQL 简直为大数据而生。
-
-大部分图标来自[菜鸟教程](http://www.runoob.com/mongodb/mongodb-create-database.html)
-
-<!-- more --> 
+简单点说，NoSQL 简直为大数据而生。大部分图标来自[菜鸟教程](http://www.runoob.com/mongodb/mongodb-create-database.html)
 
 
 ### 一 . 安装 MongoDB

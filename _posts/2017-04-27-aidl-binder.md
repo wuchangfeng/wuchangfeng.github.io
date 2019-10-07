@@ -7,14 +7,12 @@ categories: android
 
 我们从Android中的多进程通信开始来从Android层面深入到Binder机制。整个Binder机制太重要了，对于理解整个Android系统来说，Binder是其工作的核心，所以得要好好理解一下。
 
-### Binder是啥
+### Binder概念
 
 Binder是Android中的一个类，实现了IBinder接口，从IPC角度来说，Binder是Android中一种跨进程通信机制；从Android FrameWork角度来说，Binder是ServiceManager连接各种Manager(ActivityManager、WindowManager)和相应ManagerService的桥梁，从Android应用层来说Binder是客户端和服务端通信的媒介。其实说白了就是一种Android层面的通信机制，大家知道Androids是基于Linux层面的系统，Linux本身就存在多种IPC通信机制，为啥Android要自己提出一个通信机制呢，主要原因以下几点：
 
 1：从性能的角度数据拷贝次数：Binder数据拷贝只需要一次，而管道、消息队列、Socket都需要2次，但共享内存方式一次内存拷贝都不需要；从性能角度看，Binder性能仅次于共享内存。
-2：从稳定性的角度Binder是基于C/S架构的，简单解释下C/S架构，是指客户端(Client)和服务端(Server)组成的架构，Client端有什么需求，直接发送给Server端去完成，架构清晰明朗，Server端与Client端相对独立，稳定性较好；而共享内存实现方式复杂，没有客户与服务端之别， 需要充分考虑到访问临界资源的并发同步问题，否则可能会出现死锁等问题；从这稳定性角度看，Binder架构优越于共享内存。
-
-后续的内容推荐你看[为什么Android采用Binder作为通信机制](https://www.zhihu.com/question/39440766/answer/89210950)
+2：从稳定性的角度Binder是基于C/S架构的，简单解释下C/S架构，是指客户端(Client)和服务端(Server)组成的架构，Client端有什么需求，直接发送给Server端去完成，架构清晰明朗，Server端与Client端相对独立，稳定性较好；而共享内存实现方式复杂，没有客户与服务端之别， 需要充分考虑到访问临界资源的并发同步问题，否则可能会出现死锁等问题；从这稳定性角度看，Binder架构优越于共享内存。后续的内容推荐[为什么Android采用Binder作为通信机制](https://www.zhihu.com/question/39440766/answer/89210950)
 
 ### 借助AIDL理解Binder
 

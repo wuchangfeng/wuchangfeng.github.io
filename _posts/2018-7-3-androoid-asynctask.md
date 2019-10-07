@@ -270,7 +270,7 @@ AsyncTask 封装了 Thread 和 Handler, 通过 AsyncTask 可以更加方便的�
 2. AsyncTask 的 **对象** 必须在 **主线程中创建**。
 3. execute 必须在 UI 线程中调用。
 4. 不要在程序中直接调用上述前四个方法。
-5. 在 Android 1.6 之前 AT 是串行执行任务的(可同时执行 5 个任务)，那时候采用线程池来处理并行任务，但是从 3.0 开始为了避免 AT 所带来的并发错误，AT 又采用一个线程来串行执行任务(只能执行 1 个任务)。尽管如此，3.0 之后仍然可以通过 AT 的 executeOnExecutor 方法来**并行**执行任务。对于这一点的实验可以看 《Android 开发艺术探索》P403。
+5. 在 Android 1.6 之前 AsyncTask 是串行执行任务的(可同时执行 5 个任务)，那时候采用线程池来处理并行任务，但是从 3.0 开始为了避免 AT 所带来的并发错误，AT 又采用一个线程来串行执行任务(只能执行 1 个任务)。尽管如此，3.0 之后仍然可以通过 AT 的 executeOnExecutor 方法来**并行**执行任务。对于这一点的实验可以看 《Android 开发艺术探索》P403。
 6. 如果要**深究为什么 Android 3.0 以上 AT 默认不并行执行**，可以看[这篇](http://www.jianshu.com/p/a8b1861f2efc?utm_campaign=haruki&utm_content=note&utm_medium=reader_share&utm_source=qq)文章。
 
 ​

@@ -5,9 +5,7 @@ date: 2019-03-22 22:14:43 +0800
 categories: 
 ---
 
-高效加载 Bitmap，BitMapFactory 提供了四类方法: decodeFile,decodeResource,decodeStream 和 decodeByteArray 分别用于从文件系统,资源,输入流以及字节数组中加载出一个 Bitmap 对象。
-
-高效加载 Bitmap 很简单,即采用 BitMapFactory.options 来加载所需要尺寸图片。BitMapFactory.options 就可以按照一定的采样率来加载缩小后的图片,将缩小后的图片置于 ImageView 中显示。
+BitMapFactory 提供了四类方法: decodeFile,decodeResource,decodeStream 和 decodeByteArray 分别用于从文件系统,资源,输入流以及字节数组中加载出一个 Bitmap 对象。高效加载 Bitmap 很简单,即采用 BitMapFactory.options 来加载所需要尺寸图片。BitMapFactory.options 就可以按照一定的采样率来加载缩小后的图片,将缩小后的图片置于 ImageView 中显示。
 
 通过采样率即可高效的加载图片,遵循如下方式获取采样率:
 
@@ -62,8 +60,6 @@ public int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, in
 }
 ```
 
-
-
 实际使用就可以像下面这样了,如加载 100*100 的图片大小,就可以像下面这样高效的加载图片了:
 
 ```java
@@ -73,7 +69,7 @@ decodeSampledBitmapFromResource(getResource(),R.id.myimage,100,100));
 
 ### Android 中的缓存策略
 
-目前常用的算法是 LRU，即近期最少使用算法，当缓存存满时，会优先淘汰**近期最少使用的缓存对象**，LruCache。LruCache 是一个泛型类，其内部实现机制是 LinkedHashMap 以**强引用**的方式存储外部的缓存对象，提供了 get() 和 put() 来完成缓存对象的存取。当缓存满了,移除较早的缓存对象,再添加新的。LruCache 是线程安全的。
+目前常用的算法是 LRU，即近期最少使用算法，当缓存存满时，会优先淘汰**近期最少使用的缓存对象**，LruCache。LruCache 是一个泛型类，其内部实现机制是 LinkedHashMap 以**强引用**的方式存储外部的缓存对象，提供了 get 和 put 方法来完成缓存对象的存取。当缓存满了,移除较早的缓存对象,再添加新的。并且 LruCache 是线程安全的。
 
 - 强引用:直接的对象引用
 - 软引用:当一个对象只有软引用时,系统内存不足时,会被 gc 回收
@@ -162,6 +158,6 @@ public View getView(int position, View convertView, ViewGroup parent) {
 
 **优化列表卡顿现象:**
 
-1. 不要在 getView() 中做加载图片的操作,那样肯定会耗时,像这个例子中一样,交给 ImageLoaer 来实现。
+1. 不要在 getView() 中做加载图片的操作,那样肯定会耗时,像这个例子中一样,交给 ImageLoader 来实现。
 2. 控制异步加载频率, 如果用户刻意的频繁的上下滑动,可能在一瞬间加载几百个异步任务,这样会给线程池造成拥堵。解决的办法是考虑在用户滑动列表时,停止加载图片。等到列表停下来时,在进行异步加载任务。
 3. 开启硬件加速:给Activity添加配置android:hardwareAccelerated="true"

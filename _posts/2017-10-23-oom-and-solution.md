@@ -8,8 +8,6 @@ layout: post
 
 阅读《Android开发艺术探索》中关于性能优化之**内存泄漏优化**所做读书笔记。结合网上资料，列举出一些常见的内存泄漏场景，以及相应解决策略。最后介绍下使用 LeakCanary 来检测 App 是否存在内存泄漏。
 
-<!--more-->
-
 关于什么是内存泄漏以及内存泄漏的危害，本文不做赘述，不了解的读者可以自行 Google 或者参考文章结尾部分给出的参考链接。文章中的实例地址在[这里](https://github.com/wuchangfeng/DemoRes/tree/master/LeakSample)，可以验证一下所述。
 
 ### Handler 导致的内存泄漏

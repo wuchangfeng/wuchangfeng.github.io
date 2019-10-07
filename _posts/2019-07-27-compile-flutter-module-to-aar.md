@@ -7,11 +7,11 @@ categories:
 
 为了降低 Flutter 对于原生项目的侵入性，方便项目组里 Native 开发人员编译开发，考虑将 Flutter Module 开发的跨平台功能模块单独抽离打包为 AAR，Google 一番结合实际操作，记录要点如下：
 
-#### 1：创建 Flutter Module 开发跨平台端的功能
+### 创建 Flutter Module 开发跨平台端的功能
 
 这里就按照 Flutter Project 来开发就好了，不用跟 native 工程一起编译，比较方便的体验热重载功能。
 
-#### 2：打包 Flutter Module 成为 AAR 文件
+### 打包 Flutter Module 成为 AAR 文件
 
 android 目录下 app 层级下：
 
@@ -95,11 +95,11 @@ Project 层级下的 build.gradle 如下
   } 
 ```
 
-#### 3: 解压 AAR 文件对齐 so 类型
+### 解压 AAR 文件对齐 so 类型
 
 AAR 文件中解压出的 so 类型，要跟 native 项目中的 so 类型一致，否则会出现错误，建议统一为 armeabi-v7a 类型。
 
-#### 4：native 端 调用 
+### Native 端 调用
 
 Android 端桥接页面，直接导航至 Flutter 的默认路由界面：
 
@@ -121,6 +121,6 @@ Intent intent = new Intent(this, FlutterBridgeActivity.class);
 startActivity(intent);
 ```
 
-#### 5：容易出现的问题
+### 容易出现的问题
 
 主要是打包 AAR 文件时，对于 Plugin 的引入，之前以为 Plugin 所有的内容以及依赖都包含在 Plugin 产物中，但是实际上不是，Plugin 的一些 compile 依赖并不会包含在其中，所以在 Native 引用 Flutter AAR 时要注意，如果没有对应的类和文件，要在 Native Project 中自己加上依赖。

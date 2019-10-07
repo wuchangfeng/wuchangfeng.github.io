@@ -5,9 +5,7 @@ date: 2019-05-25 10:00:09 +0800
 categories: 
 ---
 
-Toast的源码分析
-
-本篇文章简要分析下Toast的源码。
+本篇文章简要分析下 Android Toast 的显示原理。
 
 ```java
  Toast.makeText(this,"toast",Toast.LENGTH_LONG).show();

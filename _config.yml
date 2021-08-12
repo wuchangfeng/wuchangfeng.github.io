@@ -1,11 +1,11 @@
 # 网站信息
-title:              "CHANG FENG"
+title:              "blog"
 description:        "个人小站"
 
 # 作者信息
-author_name:        "allenwu"
+author_name:        "allen"
 author_email:       wuchangfeng2015@gmail.com
-twitter_username:   allenwu
+twitter_username:   allen
 
 # 网站设置
 baseurl:            ""
